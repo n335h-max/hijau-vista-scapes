@@ -2,7 +2,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FormLabel } from "@/components/ui/form";
 import {
   Dialog,
   DialogContent,
@@ -37,7 +36,12 @@ const AdminLoginDialog: React.FC<AdminLoginDialogProps> = ({
         </DialogHeader>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
-            <FormLabel htmlFor="password">Password</FormLabel>
+            <label 
+              htmlFor="password" 
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              Password
+            </label>
             <Input
               id="password"
               type="password"
