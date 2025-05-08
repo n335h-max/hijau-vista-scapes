@@ -47,8 +47,11 @@ const Navigation = () => {
       <div className="container-custom flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="font-display text-2xl font-bold text-hijau-dark">
-            Hijau <span className="text-hijau-blue">Group</span>
+          <span className="font-display text-2xl font-bold text-hijau-dark relative group">
+            Hijau{" "}
+            <span className="text-hijau-blue relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300">
+              Group
+            </span>
           </span>
         </Link>
 
@@ -58,23 +61,26 @@ const Navigation = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`font-medium hover:text-hijau-blue transition-colors ${
+              className={`font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
                 location.pathname === link.path
-                  ? "text-hijau-blue"
-                  : "text-hijau-dark"
+                  ? "text-hijau-blue after:bg-hijau-blue after:scale-x-100"
+                  : "text-hijau-dark after:bg-hijau-yellow"
               }`}
             >
               {link.name}
             </Link>
           ))}
-          <Button asChild className="bg-hijau-blue hover:bg-hijau-blue/90">
+          <Button 
+            asChild 
+            className="bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+          >
             <Link to="/contact">Book Now</Link>
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-hijau-dark"
+          className="md:hidden text-hijau-dark p-2 rounded-full bg-gray-100/80 hover:bg-gray-200/80 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -83,22 +89,22 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg animate-fade-in">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg animate-fade-in">
           <div className="container-custom py-4 flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`py-2 font-medium ${
+                className={`py-3 px-4 rounded-md font-medium transition-colors ${
                   location.pathname === link.path
-                    ? "text-hijau-blue"
-                    : "text-hijau-dark"
+                    ? "text-hijau-blue bg-hijau-blue/10"
+                    : "text-hijau-dark hover:bg-gray-100"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild className="bg-hijau-blue hover:bg-hijau-blue/90 w-full">
+            <Button asChild className="bg-hijau-blue hover:bg-hijau-blue/90 w-full shadow-md">
               <Link to="/contact">Book Now</Link>
             </Button>
           </div>

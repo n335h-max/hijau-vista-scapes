@@ -25,13 +25,22 @@ const AdminLoginDialog: React.FC<AdminLoginDialogProps> = ({
   onPasswordChange,
   onLogin,
 }) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      onLogin();
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] border-hijau-blue/10">
         <DialogHeader>
-          <DialogTitle>Admin Login</DialogTitle>
+          <DialogTitle className="text-hijau-blue text-xl">Admin Login</DialogTitle>
           <DialogDescription>
             Enter your password to access the admin area.
+            <div className="mt-2 p-2 bg-blue-50 text-blue-700 text-sm rounded-md">
+              <span className="font-medium">Note:</span> The default admin password is "admin123"
+            </div>
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4">
@@ -48,12 +57,14 @@ const AdminLoginDialog: React.FC<AdminLoginDialogProps> = ({
               placeholder="Enter admin password"
               value={password}
               onChange={(e) => onPasswordChange(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
             />
           </div>
           <Button 
             type="button" 
             onClick={onLogin}
-            className="w-full bg-hijau-blue hover:bg-hijau-blue/90"
+            className="w-full bg-hijau-blue hover:bg-hijau-blue/90 transition-all"
           >
             Login
           </Button>

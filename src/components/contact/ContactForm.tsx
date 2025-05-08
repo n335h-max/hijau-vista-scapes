@@ -3,14 +3,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -26,11 +22,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 // Form schema validation
 const formSchema = z.object({
@@ -40,7 +31,6 @@ const formSchema = z.object({
   address: z.string().min(5, { message: "Address must be at least 5 characters" }),
   service: z.string({ required_error: "Please select a service" }),
   message: z.string().optional(),
-  date: z.date({ required_error: "Please select a date for consultation" }),
 });
 
 interface ContactFormProps {
@@ -70,7 +60,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
     
     toast({
       title: "Booking Request Submitted",
-      description: "We'll contact you shortly to confirm your appointment.",
+      description: "We'll contact you shortly to confirm your appointment details and preferred date.",
     });
     
     form.reset();
@@ -91,8 +81,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
   ];
 
   return (
-    <div>
-      <h2 className="heading-medium text-hijau-blue mb-8">Book a Consultation</h2>
+    <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100">
+      <h2 className="heading-medium text-hijau-blue mb-8 relative inline-block">
+        Book a Consultation
+        <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-hijau-yellow rounded-full"></span>
+      </h2>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -103,7 +96,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your name" {...field} />
+                  <Input 
+                    placeholder="Your name" 
+                    {...field} 
+                    className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -118,7 +115,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
                 <FormItem>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your phone number" {...field} />
+                    <Input 
+                      placeholder="Your phone number" 
+                      {...field} 
+                      className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -132,7 +133,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
                 <FormItem>
                   <FormLabel>Email Address</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your email" {...field} />
+                    <Input 
+                      placeholder="Your email" 
+                      {...field} 
+                      className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -147,7 +152,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
               <FormItem>
                 <FormLabel>Address</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your address" {...field} />
+                  <Input 
+                    placeholder="Your address" 
+                    {...field} 
+                    className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -166,7 +175,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
                   value={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="border-gray-300 focus:ring-hijau-blue/20">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                   </FormControl>
@@ -185,49 +194,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
 
           <FormField
             control={form.control}
-            name="date"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel>Preferred Date</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        className={cn(
-                          "w-full pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                        date < new Date() || 
-                        date > new Date(new Date().setMonth(new Date().getMonth() + 3))
-                      }
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="message"
             render={({ field }) => (
               <FormItem>
@@ -235,7 +201,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
                 <FormControl>
                   <Textarea
                     placeholder="Tell us more about your project or requirements"
-                    className="min-h-[120px]"
+                    className="min-h-[120px] border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
                     {...field}
                   />
                 </FormControl>
@@ -244,13 +210,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
             )}
           />
 
-          <Button 
-            type="submit" 
-            className="w-full bg-hijau-blue hover:bg-hijau-blue/90"
-            size="lg"
-          >
-            Submit Booking Request
-          </Button>
+          <div className="pt-4">
+            <Button 
+              type="submit" 
+              className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+              size="lg"
+            >
+              Submit Booking Request
+            </Button>
+            <p className="text-gray-500 text-sm text-center mt-3">
+              After submission, we'll contact you to schedule your preferred date and time.
+            </p>
+          </div>
         </form>
       </Form>
     </div>
