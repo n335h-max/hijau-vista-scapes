@@ -1,16 +1,17 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const BookNowButton = () => {
   return (
     <div className="fixed bottom-8 right-8 z-40">
-      <Link
-        to="/contact"
-        className="btn-book-now flex items-center justify-center text-base font-medium shadow-lg hover:shadow-xl"
+      <Button
+        asChild
+        className="rounded-full px-6 py-6 bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl text-white"
       >
-        Book Now
-      </Link>
+        <Link to="/contact">Book Now</Link>
+      </Button>
     </div>
   );
 };

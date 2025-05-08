@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
@@ -51,11 +52,9 @@ const formSchema = z.object({
 });
 
 const Contact = () => {
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const [adminPassword, setAdminPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
   const { toast } = useToast();
 
@@ -75,7 +74,7 @@ const Contact = () => {
   // Extract service from URL if available
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const serviceParam = params.get("service");
+    const serviceParam = params.get('service');
     
     if (serviceParam) {
       form.setValue("service", serviceParam);
@@ -112,7 +111,6 @@ const Contact = () => {
     });
     
     form.reset();
-    setSelectedDate(undefined);
   };
 
   // Service options
@@ -413,7 +411,6 @@ const Contact = () => {
                                 date > new Date(new Date().setMonth(new Date().getMonth() + 3))
                               }
                               initialFocus
-                              className="pointer-events-auto"
                             />
                           </PopoverContent>
                         </Popover>
@@ -429,9 +426,9 @@ const Contact = () => {
                       <FormItem>
                         <FormLabel>Additional Message (Optional)</FormLabel>
                         <FormControl>
-                          <textarea
-                            className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          <Textarea
                             placeholder="Tell us more about your project or requirements"
+                            className="min-h-[120px]"
                             {...field}
                           />
                         </FormControl>
