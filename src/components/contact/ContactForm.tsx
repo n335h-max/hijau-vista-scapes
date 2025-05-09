@@ -1,37 +1,18 @@
+
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
+import { contactFormSchema, ContactFormValues } from "@/utils/contactFormValidation";
 
-// Form schema validation
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  phone: z.string().min(10, { message: "Please enter a valid phone number" }),
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  address: z.string().min(5, { message: "Address must be at least 5 characters" }),
-  package: z.string({ required_error: "Please select a package" }),
-  message: z.string().optional(),
-});
+// Import form section components
+import PersonalInfoFields from "./form-sections/PersonalInfoFields";
+import AddressField from "./form-sections/AddressField";
+import PackageField from "./form-sections/PackageField";
+import MessageField from "./form-sections/MessageField";
+import SubmitButton from "./form-sections/SubmitButton";
 
 interface ContactFormProps {
   initialService?: string;
@@ -43,8 +24,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
   const navigate = useNavigate();
 
   // Create form
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       phone: "",
@@ -66,7 +47,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
   }, [initialService, initialMessage, form]);
 
   // Form submission handler
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = (values: ContactFormValues) => {
     console.log(values);
     
     // Navigate to the booking page with the form data
@@ -77,14 +58,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
     });
   };
 
-  // Package options - only the 4 specific package types
-  const packageOptions = [
-    "Smart Package",
-    "Signature Package",
-    "Elite Package",
-    "Custom Package"
-  ];
-
   return (
     <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100">
       <h2 className="heading-medium text-hijau-blue mb-8 relative inline-block">
@@ -94,139 +67,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Full Name</FormLabel>
-                <FormControl>
-                  <Input 
-                    placeholder="Your name" 
-                    {...field} 
-                    className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder="Your phone number" 
-                      {...field} 
-                      className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email Address</FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder="Your email" 
-                      {...field} 
-                      className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-
-          <FormField
-            control={form.control}
-            name="address"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Address</FormLabel>
-                <FormControl>
-                  <Input 
-                    placeholder="Your address" 
-                    {...field} 
-                    className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="package"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Type of Package</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  value={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger className="border-gray-300 focus:ring-hijau-blue/20">
-                      <SelectValue placeholder="Select a package" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {packageOptions.map((packageName) => (
-                      <SelectItem key={packageName} value={packageName}>
-                        {packageName}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Additional Message (Optional)</FormLabel>
-                <FormControl>
-                  <Textarea
-                    placeholder="Tell us more about your project or requirements"
-                    className="min-h-[120px] border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <div className="pt-4">
-            <Button 
-              type="submit" 
-              className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
-              size="lg"
-            >
-              Proceed to Booking Calendar
-            </Button>
-            <p className="text-gray-500 text-sm text-center mt-3">
-              Select your details to proceed to our booking calendar.
-            </p>
-          </div>
+          <PersonalInfoFields control={form.control} />
+          <AddressField control={form.control} />
+          <PackageField control={form.control} />
+          <MessageField control={form.control} />
+          <SubmitButton />
         </form>
       </Form>
     </div>
