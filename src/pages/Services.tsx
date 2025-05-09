@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import TinyHouseShowcase from "@/components/services/TinyHouseShowcase";
 import WaterFeatureShowcase from "@/components/services/WaterFeatureShowcase";
 import LawnMaintenanceShowcase from "@/components/services/LawnMaintenanceShowcase";
 import ConstructionShowcase from "@/components/services/ConstructionShowcase";
+import HardscapeShowcase from "@/components/services/HardscapeShowcase";
 
 // Service types for filtering
 type ServiceCategory = "all" | "residential" | "commercial";
@@ -206,6 +208,9 @@ const Services = () => {
 
       {/* Construction Showcase Section */}
       <ConstructionShowcase />
+
+      {/* Hardscape Showcase Section */}
+      <HardscapeShowcase />
 
       {/* Lawn Maintenance Showcase Section */}
       <LawnMaintenanceShowcase />
