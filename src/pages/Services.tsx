@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import GrassInstallationShowcase from "@/components/services/GrassInstallationShowcase";
 import TinyHouseShowcase from "@/components/services/TinyHouseShowcase";
+import WaterFeatureShowcase from "@/components/services/WaterFeatureShowcase";
 
 // Service types for filtering
 type ServiceCategory = "all" | "residential" | "commercial";
@@ -201,6 +201,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Water Feature Showcase Section */}
+      <WaterFeatureShowcase />
 
       {/* Grass Installation Showcase Section */}
       <GrassInstallationShowcase />
