@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ContactFormValues } from "@/utils/contactFormValidation";
+import { User, Mail, Phone } from "lucide-react";
 
 interface PersonalInfoFieldsProps {
   control: Control<ContactFormValues>;
@@ -23,15 +24,18 @@ const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({ control }) => {
         name="name"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Full Name</FormLabel>
+            <FormLabel className="flex items-center gap-2 text-hijau-dark font-medium">
+              <User className="h-4 w-4 text-hijau-blue" />
+              Full Name
+            </FormLabel>
             <FormControl>
               <Input 
                 placeholder="Your name" 
                 {...field} 
-                className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                className="border-gray-200 focus:border-hijau-blue focus:ring-hijau-blue/20 transition-all rounded-md"
               />
             </FormControl>
-            <FormMessage />
+            <FormMessage className="text-red-500" />
           </FormItem>
         )}
       />
@@ -42,15 +46,18 @@ const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({ control }) => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number</FormLabel>
+              <FormLabel className="flex items-center gap-2 text-hijau-dark font-medium">
+                <Phone className="h-4 w-4 text-hijau-blue" />
+                Phone Number
+              </FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Your phone number" 
                   {...field} 
-                  className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                  className="border-gray-200 focus:border-hijau-blue focus:ring-hijau-blue/20 transition-all rounded-md"
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />
@@ -60,15 +67,18 @@ const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({ control }) => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email Address</FormLabel>
+              <FormLabel className="flex items-center gap-2 text-hijau-dark font-medium">
+                <Mail className="h-4 w-4 text-hijau-blue" />
+                Email Address
+              </FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Your email" 
                   {...field} 
-                  className="border-gray-300 focus:border-hijau-blue focus:ring-hijau-blue/20"
+                  className="border-gray-200 focus:border-hijau-blue focus:ring-hijau-blue/20 transition-all rounded-md"
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className="text-red-500" />
             </FormItem>
           )}
         />

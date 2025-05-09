@@ -59,7 +59,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100">
+    <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
       <h2 className="heading-medium text-hijau-blue mb-8 relative inline-block">
         Book a Consultation
         <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-hijau-yellow rounded-full"></span>
