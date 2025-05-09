@@ -5,14 +5,15 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const GalleryPreview = () => {
-  // Gallery images array with updated images including water features
+  // Gallery images array with updated images including lawn maintenance
   const galleryImages = [
     "/lovable-uploads/ce002d00-e396-47a6-8a1c-0890bb70d2aa.png",
     "/lovable-uploads/e1133523-440f-4ec3-8b9f-a93906fc0272.png",
     "/lovable-uploads/96f1860e-e387-4f26-81ab-948b14420cbc.png",
     "/lovable-uploads/5ddcc32d-dfe8-4ac6-b43c-af1bed3a8191.png",
     "/lovable-uploads/5ab02348-939e-497b-865f-f5d6d14bcc81.png",
-    "/lovable-uploads/1a73e93c-f297-44cc-ab0d-e55e138cc1c4.png",  // Water feature 1
+    "/lovable-uploads/1a73e93c-f297-44cc-ab0d-e55e138cc1c4.png",  // Water feature
+    "/lovable-uploads/02a8e859-1456-4cf5-b47d-d1da981c88fb.png",  // Lawn maintenance
   ];
 
   return (
