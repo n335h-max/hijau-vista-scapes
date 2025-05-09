@@ -5,6 +5,24 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Leaf, Droplet, Construction, Filter, ArrowRight } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 
 // Package category type for filtering
 type PackageCategory = "residential" | "commercial";
@@ -22,18 +40,62 @@ interface Package {
   color: string;
 }
 
+// Custom package service options
+const serviceOptions = [
+  "Landscape Design & Build",
+  "Consultation",
+  "Landscape 3D & CAD Drawing",
+  "Landscape Ideas (Hardscape & Softscape)",
+  "Construction",
+  "Natural & Artificial Grass Installation",
+  "Water Feature",
+  "Tiny House / Playhouse",
+  "Lawn Maintenance",
+  "Nursery",
+];
+
+// Form schema
+const customPackageSchema = z.object({
+  services: z.array(z.string()).min(1, {
+    message: "Please select at least one service",
+  }),
+});
+
+type CustomPackageFormValues = z.infer<typeof customPackageSchema>;
+
 const Packages = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState<PackageCategory>("residential");
+  const [customPackageDialogOpen, setCustomPackageDialogOpen] = useState(false);
+
+  // Form for custom package
+  const form = useForm<CustomPackageFormValues>({
+    resolver: zodResolver(customPackageSchema),
+    defaultValues: {
+      services: [],
+    },
+  });
 
   // Handle package selection
   const handleSelectPackage = (packageName: string) => {
     navigate(`/contact?package=${encodeURIComponent(packageName)}`);
   };
 
-  // Create custom package
+  // Create custom package - opens dialog
   const handleCreateCustomPackage = () => {
-    navigate("/services");
+    setCustomPackageDialogOpen(true);
+  };
+
+  // Submit custom package form
+  const onSubmitCustomPackage = (data: CustomPackageFormValues) => {
+    // Create a message from selected services
+    const servicesMessage = `Selected services:\n${data.services.join("\n")}`;
+    
+    // Navigate to contact page with the selected services
+    navigate(`/contact?package=Custom Package&message=${encodeURIComponent(servicesMessage)}`);
+    
+    // Close the dialog
+    setCustomPackageDialogOpen(false);
   };
 
   // List of packages
@@ -255,6 +317,83 @@ const Packages = () => {
           </div>
         </div>
       </section>
+
+      {/* Custom Package Dialog */}
+      <Dialog open={customPackageDialogOpen} onOpenChange={setCustomPackageDialogOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-hijau-blue">Create Your Custom Package</DialogTitle>
+            <DialogDescription>
+              Select the services you're interested in for your custom landscape package. 
+              You can choose multiple options.
+            </DialogDescription>
+          </DialogHeader>
+
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmitCustomPackage)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="services"
+                render={() => (
+                  <FormItem>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                      {serviceOptions.map((service) => (
+                        <FormField
+                          key={service}
+                          control={form.control}
+                          name="services"
+                          render={({ field }) => {
+                            return (
+                              <FormItem
+                                key={service}
+                                className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"
+                              >
+                                <FormControl>
+                                  <Checkbox
+                                    checked={field.value?.includes(service)}
+                                    onCheckedChange={(checked) => {
+                                      return checked
+                                        ? field.onChange([...field.value, service])
+                                        : field.onChange(
+                                            field.value?.filter(
+                                              (value) => value !== service
+                                            )
+                                          )
+                                    }}
+                                  />
+                                </FormControl>
+                                <FormLabel className="text-sm font-normal cursor-pointer">
+                                  {service}
+                                </FormLabel>
+                              </FormItem>
+                            )
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </FormItem>
+                )}
+              />
+              
+              <div className="flex justify-end gap-4">
+                <Button 
+                  type="button" 
+                  variant="outline"
+                  onClick={() => setCustomPackageDialogOpen(false)}
+                >
+                  Cancel
+                </Button>
+                <Button 
+                  type="submit" 
+                  className="bg-hijau-blue hover:bg-hijau-blue/90"
+                >
+                  Book Custom Package
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

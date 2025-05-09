@@ -14,15 +14,18 @@ const Contact = () => {
   const { toast } = useToast();
   const [serviceParam, setServiceParam] = useState<string | null>(null);
   const [packageParam, setPackageParam] = useState<string | null>(null);
+  const [messageParam, setMessageParam] = useState<string | null>(null);
 
-  // Extract service from URL if available
+  // Extract parameters from URL if available
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const service = params.get('service');
     const packageName = params.get('package');
+    const message = params.get('message');
     
     setServiceParam(service);
     setPackageParam(packageName);
+    setMessageParam(message);
   }, [location.search]);
 
   // Admin login handler
@@ -90,7 +93,7 @@ const Contact = () => {
             <ContactInfoSection onAdminLogin={() => setLoginDialogOpen(true)} />
 
             {/* Booking Form */}
-            <ContactForm initialService={initialService} />
+            <ContactForm initialService={initialService} initialMessage={messageParam} />
           </div>
         </div>
       </section>

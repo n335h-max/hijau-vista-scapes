@@ -36,9 +36,10 @@ const formSchema = z.object({
 
 interface ContactFormProps {
   initialService?: string;
+  initialMessage?: string | null;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessage }) => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -51,7 +52,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
       email: "",
       address: "",
       service: initialService || "",
-      message: "",
+      message: initialMessage || "",
     },
   });
 
