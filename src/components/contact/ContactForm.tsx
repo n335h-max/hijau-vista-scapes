@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -39,6 +40,7 @@ interface ContactFormProps {
 
 const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   // Create form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,14 +58,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
   // Form submission handler
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    // In a real application, you would send this data to your backend
     
-    toast({
-      title: "Booking Request Submitted",
-      description: "We'll contact you shortly to confirm your appointment details and preferred date.",
+    // Navigate to the booking page with the form data
+    navigate("/booking", { 
+      state: { 
+        contactDetails: values 
+      } 
     });
-    
-    form.reset();
   };
 
   // Service options
@@ -216,10 +217,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService }) => {
               className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
               size="lg"
             >
-              Submit Booking Request
+              Proceed to Booking Calendar
             </Button>
             <p className="text-gray-500 text-sm text-center mt-3">
-              After submission, we'll contact you to schedule your preferred date and time.
+              Select your details to proceed to our booking calendar.
             </p>
           </div>
         </form>

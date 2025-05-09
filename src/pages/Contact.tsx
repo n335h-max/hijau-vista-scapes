@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import ContactInfoSection from "@/components/contact/ContactInfoSection";
 import ContactForm from "@/components/contact/ContactForm";
@@ -9,8 +9,8 @@ import AdminLoginDialog from "@/components/contact/AdminLoginDialog";
 const Contact = () => {
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
   const [adminPassword, setAdminPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [serviceParam, setServiceParam] = useState<string | null>(null);
 
@@ -25,12 +25,17 @@ const Contact = () => {
   const handleAdminLogin = () => {
     // Simple password check - in a real app, use proper authentication
     if (adminPassword === "admin123") {
-      setIsAdmin(true);
+      // Set admin status in localStorage (in a real app, use secure tokens/cookies)
+      localStorage.setItem("isHijauAdmin", "true");
       setLoginDialogOpen(false);
+      
       toast({
         title: "Admin Login Successful",
         description: "You now have access to booking management.",
       });
+      
+      // Redirect to admin bookings page
+      navigate("/admin/bookings");
     } else {
       toast({
         title: "Login Failed",
