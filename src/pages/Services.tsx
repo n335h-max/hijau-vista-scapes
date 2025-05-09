@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import WaterFeatureShowcase from "@/components/services/WaterFeatureShowcase";
 import LawnMaintenanceShowcase from "@/components/services/LawnMaintenanceShowcase";
 import ConstructionShowcase from "@/components/services/ConstructionShowcase";
 import HardscapeShowcase from "@/components/services/HardscapeShowcase";
+import SoftscapeShowcase from "@/components/services/SoftscapeShowcase";
 
 // Service types for filtering
 type ServiceCategory = "all" | "residential" | "commercial";
@@ -162,6 +162,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Softscape Showcase Section - Added before construction since it's a core service */}
+      <SoftscapeShowcase />
 
       {/* Services List */}
       <section className="section-padding bg-white">

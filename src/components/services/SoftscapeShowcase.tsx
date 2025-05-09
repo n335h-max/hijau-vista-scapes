@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Leaf, Droplet, List } from "lucide-react";
+import { Leaf, Droplet, List, Flower, TreePalm, Shrub } from "lucide-react";
 
 interface SoftscapeService {
   id: number;
@@ -45,6 +45,33 @@ const SoftscapeShowcase = () => {
       image: "/lovable-uploads/0c08177c-abfa-475a-ab4f-26b0d98aa520.png",
       features: ["Mixed plantings", "Color themes", "Seasonal interest", "Easy maintenance"],
       price: 5500
+    },
+    {
+      id: 4,
+      name: "Minimalist Plant Arrangements",
+      description: "Clean, modern landscape designs with strategic plant placement for maximum visual impact with minimal elements.",
+      icon: <TreePalm className="h-5 w-5" />,
+      image: "/lovable-uploads/dbeeaf61-797b-40df-a7e9-a7b0a93204ae.png",
+      features: ["Clean aesthetics", "Strategic placement", "Low maintenance", "Modern appeal"],
+      price: 3800
+    },
+    {
+      id: 5,
+      name: "Commercial Greenery Solutions",
+      description: "Professional plant installations for commercial spaces, creating welcoming and impressive business environments.",
+      icon: <Flower className="h-5 w-5" />,
+      image: "/lovable-uploads/2365ff66-44be-4943-ace0-539f74703ad1.png",
+      features: ["Corporate-friendly", "Low maintenance", "High visual impact", "Space optimization"],
+      price: 6200
+    },
+    {
+      id: 6,
+      name: "Architectural Plant Features",
+      description: "Statement plant arrangements that complement architectural elements and enhance building exteriors.",
+      icon: <Shrub className="h-5 w-5" />,
+      image: "/lovable-uploads/2cac424d-c277-46c1-a93f-80404c7bb5b2.png",
+      features: ["Architectural integration", "Vertical interest", "Texture variety", "Year-round appeal"],
+      price: 4200
     }
   ];
 
@@ -112,6 +139,27 @@ const SoftscapeShowcase = () => {
         </div>
 
         <div className="text-center mt-10">
+          <div className="bg-green-50 rounded-lg p-6 mb-6">
+            <h3 className="text-xl font-semibold mb-3 text-green-800">Featured Softscape: Tropical Heliconia Garden</h3>
+            <div className="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+              <img
+                src="/lovable-uploads/1c44c350-d4dc-4863-ac34-a1e1bc37bb48.png"
+                alt="Tropical Heliconia Garden"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="text-green-700 mb-3">
+              Our signature tropical garden design featuring dramatic heliconia plants with striking flowers, 
+              perfect for creating bold visual statements and privacy screens.
+            </p>
+            <div className="flex flex-wrap gap-2 justify-center mb-4">
+              <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Bird of Paradise</span>
+              <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Exotic Blooms</span>
+              <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Tropical Design</span>
+              <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Privacy Screen</span>
+            </div>
+          </div>
+          
           <p className="text-hijau-dark/80 mb-4">
             Looking for custom softscape designs for your specific environment and aesthetic preferences?
             Our plant experts can create the perfect plant composition for your space.
