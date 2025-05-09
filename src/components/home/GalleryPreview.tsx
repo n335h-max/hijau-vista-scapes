@@ -5,6 +5,16 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const GalleryPreview = () => {
+  // Gallery images array with a mix of old and new images
+  const galleryImages = [
+    "/lovable-uploads/ce002d00-e396-47a6-8a1c-0890bb70d2aa.png",
+    "/lovable-uploads/e1133523-440f-4ec3-8b9f-a93906fc0272.png",
+    "/lovable-uploads/96f1860e-e387-4f26-81ab-948b14420cbc.png",
+    "/lovable-uploads/f6ca4da8-a7d1-46d5-9638-6cba9b73eb61.png",
+    "https://source.unsplash.com/random/600x400?landscape,garden&sig=5",
+    "https://source.unsplash.com/random/600x400?landscape,garden&sig=6",
+  ];
+
   return (
     <section className="section-padding bg-hijau-light">
       <div className="container-custom">
@@ -16,11 +26,11 @@ const GalleryPreview = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div key={item} className="overflow-hidden rounded-lg shadow-md hover-grow">
+          {galleryImages.map((image, index) => (
+            <div key={index} className="overflow-hidden rounded-lg shadow-md hover-grow">
               <img
-                src={`https://source.unsplash.com/random/600x400?landscape,garden&sig=${item}`}
-                alt={`Landscape project ${item}`}
+                src={image}
+                alt={`Landscape project ${index + 1}`}
                 className="w-full h-64 object-cover"
               />
             </div>

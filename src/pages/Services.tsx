@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import GrassInstallationShowcase from "@/components/services/GrassInstallationShowcase";
 
 // Service types for filtering
 type ServiceCategory = "all" | "residential" | "commercial";
@@ -68,7 +69,8 @@ const Services = () => {
       category: ["residential", "commercial"],
       image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     },
-    {
+    // Replaced with our detailed component
+    /* {
       id: 6,
       name: "Natural & Artificial Grass Installation",
       description: "Professional installation of natural and artificial grass to create beautiful, low-maintenance lawns.",
@@ -76,7 +78,7 @@ const Services = () => {
       discountedPrice: 2700,
       category: ["residential", "commercial"],
       image: "https://images.unsplash.com/photo-1599593681528-a4ed79c7f206?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    },
+    }, */
     {
       id: 7,
       name: "Water Feature",
@@ -216,6 +218,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Grass Installation Showcase Section */}
+      <GrassInstallationShowcase />
 
       {/* Bottom Banner */}
       <section className="py-12 bg-hijau-blue text-white">
