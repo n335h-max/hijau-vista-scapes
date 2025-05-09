@@ -16,7 +16,14 @@ const AboutHero = () => {
 
       <div className="container-custom relative h-full flex items-center">
         <div className="max-w-xl text-white">
-          <h1 className="heading-large mb-4">About Hijau Group</h1>
+          <div className="flex items-center mb-6">
+            <img 
+              src="/lovable-uploads/09459ed9-aef9-43f6-80f7-fa2c86a42871.png" 
+              alt="Hijau Group Logo" 
+              className="h-16 w-auto mr-4"
+            />
+            <h1 className="heading-large">About Hijau Group</h1>
+          </div>
           <p className="text-lg md:text-xl">
             Get to know our story, mission, vision, and the team behind Hijau Group Landscape.
           </p>

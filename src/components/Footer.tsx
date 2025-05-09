@@ -20,11 +20,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <div className="relative inline-block">
-              <h3 className="font-display text-3xl font-bold mb-2">
-                Hijau <span className="text-hijau-yellow">Group</span>
-              </h3>
-              <div className="absolute -bottom-1 left-0 w-16 h-1 bg-hijau-blue rounded-full"></div>
+            <div className="flex items-center">
+              <img 
+                src="/lovable-uploads/09459ed9-aef9-43f6-80f7-fa2c86a42871.png" 
+                alt="Hijau Group Logo" 
+                className="h-16 w-auto mr-3"
+              />
+              <div>
+                <h3 className="font-display text-3xl font-bold mb-2">
+                  Hijau <span className="text-hijau-yellow">Group</span>
+                </h3>
+                <div className="w-16 h-1 bg-hijau-blue rounded-full"></div>
+              </div>
             </div>
             <p className="text-gray-300 leading-relaxed">
               Professional landscaping services to transform your outdoor spaces into breathtaking environments.

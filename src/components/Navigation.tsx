@@ -47,6 +47,11 @@ const Navigation = () => {
       <div className="container-custom flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
+          <img 
+            src="/lovable-uploads/09459ed9-aef9-43f6-80f7-fa2c86a42871.png" 
+            alt="Hijau Group Logo" 
+            className="h-10 w-auto mr-2"
+          />
           <span className="font-display text-2xl font-bold text-hijau-dark relative group">
             Hijau{" "}
             <span className="text-hijau-blue relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300">
