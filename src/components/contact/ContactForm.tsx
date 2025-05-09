@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -55,6 +54,16 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
       message: initialMessage || "",
     },
   });
+
+  // Effect to update package field when initialService prop changes
+  useEffect(() => {
+    if (initialService) {
+      form.setValue("package", initialService);
+    }
+    if (initialMessage) {
+      form.setValue("message", initialMessage);
+    }
+  }, [initialService, initialMessage, form]);
 
   // Form submission handler
   const onSubmit = (values: z.infer<typeof formSchema>) => {

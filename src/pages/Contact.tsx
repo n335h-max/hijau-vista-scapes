@@ -21,8 +21,12 @@ const Contact = () => {
     const packageName = params.get('package');
     const message = params.get('message');
     
+    // Set state with URL parameters
     setPackageParam(packageName);
     setMessageParam(message);
+    
+    console.log("URL Package parameter:", packageName);
+    console.log("URL Message parameter:", message);
   }, [location.search]);
 
   // Admin login handler
@@ -85,7 +89,10 @@ const Contact = () => {
             <ContactInfoSection onAdminLogin={() => setLoginDialogOpen(true)} />
 
             {/* Booking Form */}
-            <ContactForm initialService={packageParam || undefined} initialMessage={messageParam} />
+            <ContactForm 
+              initialService={packageParam || undefined} 
+              initialMessage={messageParam || undefined} 
+            />
           </div>
         </div>
       </section>
