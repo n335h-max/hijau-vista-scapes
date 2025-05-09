@@ -48,13 +48,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
 
   // Form submission handler
   const onSubmit = (values: ContactFormValues) => {
-    console.log(values);
+    console.log("Form submitted with values:", values);
     
     // Navigate to the booking page with the form data
     navigate("/booking", { 
       state: { 
         contactDetails: values 
       } 
+    });
+    
+    toast({
+      title: "Form Submitted Successfully",
+      description: "Now you can select your preferred appointment time.",
     });
   };
 

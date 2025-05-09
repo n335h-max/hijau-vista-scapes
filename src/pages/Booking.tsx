@@ -30,18 +30,39 @@ const Booking = () => {
     const contactDetails = location.state.contactDetails;
     
     const newBookingDetails = {
+      id: Date.now(), // Generate a unique ID based on timestamp
       name: contactDetails.name,
       email: contactDetails.email,
-      service: contactDetails.service,
+      phone: contactDetails.phone,
+      service: contactDetails.package,
       date: date,
       time: time,
+      address: contactDetails.address || "Not provided",
     };
     
     setBookingDetails(newBookingDetails);
     setIsConfirmed(true);
     
-    // Here you would typically make an API call to save the booking
-    console.log("Booking confirmed:", newBookingDetails);
+    // Save the booking to localStorage
+    const existingBookings = localStorage.getItem("hijauBookings");
+    let bookingsArray = [];
+    
+    if (existingBookings) {
+      try {
+        bookingsArray = JSON.parse(existingBookings);
+      } catch (error) {
+        console.error("Error parsing existing bookings:", error);
+        bookingsArray = [];
+      }
+    }
+    
+    // Add the new booking
+    bookingsArray.push(newBookingDetails);
+    
+    // Save back to localStorage
+    localStorage.setItem("hijauBookings", JSON.stringify(bookingsArray));
+    
+    console.log("Booking confirmed and saved:", newBookingDetails);
     
     toast({
       title: "Booking Confirmed!",
