@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Plant, Droplet, List } from "lucide-react";
+import { Leaf, Droplet, List } from "lucide-react";
 
 interface SoftscapeService {
   id: number;
@@ -23,7 +23,7 @@ const SoftscapeShowcase = () => {
       id: 1,
       name: "Tropical Garden Design",
       description: "Lush, vibrant tropical gardens featuring exotic plants, colorful flowers, and natural stone accents.",
-      icon: <Plant className="h-5 w-5" />,
+      icon: <Leaf className="h-5 w-5" />,
       image: "/lovable-uploads/8fc258f6-46b3-4443-b0be-a81c4f0c8085.png",
       features: ["Exotic plants", "Natural stones", "Low maintenance", "Year-round beauty"],
       price: 4800
@@ -54,7 +54,7 @@ const SoftscapeShowcase = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-              <Plant className="h-8 w-8 text-green-700" />
+              <Leaf className="h-8 w-8 text-green-700" />
             </div>
           </div>
           <h2 className="heading-medium text-hijau-dark mb-2">Softscape Solutions</h2>

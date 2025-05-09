@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Plant, Droplet, Construction, Filter, ArrowRight } from "lucide-react";
+import { Check, Leaf, Droplet, Construction, Filter, ArrowRight } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import HardscapeShowcase from "@/components/services/HardscapeShowcase";
 import SoftscapeShowcase from "@/components/services/SoftscapeShowcase";
@@ -46,7 +46,7 @@ const Packages = () => {
       description: "Perfect for small spaces or simple upgrades to enhance your outdoor area.",
       priceRange: "RM2,000 and below",
       minPrice: 2000,
-      icon: <Plant className="h-10 w-10" />,
+      icon: <Leaf className="h-10 w-10" />,
       color: "bg-hijau-blue/10 text-hijau-blue",
       features: [
         "Free Quotation & Consultation",
