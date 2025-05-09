@@ -16,7 +16,7 @@ const SubmitButton: React.FC = () => {
         <ArrowRight className="ml-1 h-5 w-5" />
       </Button>
       <p className="text-gray-500 text-sm text-center mt-3">
-        Select your details to proceed to our booking calendar. Your information will be saved.
+        Select your details and package to proceed to our booking calendar. Your information will be saved.
       </p>
     </div>
   );
