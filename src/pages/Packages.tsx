@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Leaf, Droplet, Construction, Filter, ArrowRight } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import HardscapeShowcase from "@/components/services/HardscapeShowcase";
-import SoftscapeShowcase from "@/components/services/SoftscapeShowcase";
 
 // Package category type for filtering
 type PackageCategory = "residential" | "commercial";
@@ -231,12 +229,6 @@ const Packages = () => {
           </Button>
         </div>
       </section>
-
-      {/* Hardscape Showcase Section */}
-      <HardscapeShowcase />
-
-      {/* Softscape Showcase Section */}
-      <SoftscapeShowcase />
 
       {/* Bottom Banner */}
       <section className="py-12 bg-hijau-blue text-white">
