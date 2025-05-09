@@ -10,9 +10,9 @@ const GalleryPreview = () => {
     "/lovable-uploads/ce002d00-e396-47a6-8a1c-0890bb70d2aa.png",
     "/lovable-uploads/e1133523-440f-4ec3-8b9f-a93906fc0272.png",
     "/lovable-uploads/96f1860e-e387-4f26-81ab-948b14420cbc.png",
-    "/lovable-uploads/f6ca4da8-a7d1-46d5-9638-6cba9b73eb61.png",
-    "https://source.unsplash.com/random/600x400?landscape,garden&sig=5",
-    "https://source.unsplash.com/random/600x400?landscape,garden&sig=6",
+    "/lovable-uploads/5ddcc32d-dfe8-4ac6-b43c-af1bed3a8191.png",
+    "/lovable-uploads/5ab02348-939e-497b-865f-f5d6d14bcc81.png",
+    "/lovable-uploads/0c08177c-abfa-475a-ab4f-26b0d98aa520.png",
   ];
 
   return (

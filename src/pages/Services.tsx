@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import GrassInstallationShowcase from "@/components/services/GrassInstallationShowcase";
+import TinyHouseShowcase from "@/components/services/TinyHouseShowcase";
 
 // Service types for filtering
 type ServiceCategory = "all" | "residential" | "commercial";
@@ -69,16 +70,6 @@ const Services = () => {
       category: ["residential", "commercial"],
       image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     },
-    // Replaced with our detailed component
-    /* {
-      id: 6,
-      name: "Natural & Artificial Grass Installation",
-      description: "Professional installation of natural and artificial grass to create beautiful, low-maintenance lawns.",
-      originalPrice: 3000,
-      discountedPrice: 2700,
-      category: ["residential", "commercial"],
-      image: "https://images.unsplash.com/photo-1599593681528-a4ed79c7f206?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    }, */
     {
       id: 7,
       name: "Water Feature",
@@ -88,15 +79,7 @@ const Services = () => {
       category: ["residential", "commercial"],
       image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
     },
-    {
-      id: 8,
-      name: "Tiny House / Playhouse",
-      description: "Custom-built tiny houses or playhouses to enhance your outdoor living or provide a special space for children.",
-      originalPrice: 15000,
-      discountedPrice: 13500,
-      category: ["residential"],
-      image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1465&q=80",
-    },
+    // Tiny house/playhouse was here but is now showcased in a dedicated section
     {
       id: 9,
       name: "Lawn Maintenance",
@@ -221,6 +204,9 @@ const Services = () => {
 
       {/* Grass Installation Showcase Section */}
       <GrassInstallationShowcase />
+
+      {/* Tiny House Showcase Section */}
+      <TinyHouseShowcase />
 
       {/* Bottom Banner */}
       <section className="py-12 bg-hijau-blue text-white">
