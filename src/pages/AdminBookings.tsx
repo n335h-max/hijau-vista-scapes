@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import AddBookingForm from "@/components/admin/AddBookingForm";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { CalendarClock, Trash2, LogOut, Filter, FileText } from "lucide-react";
@@ -95,6 +96,10 @@ const AdminBookings = () => {
       localStorage.setItem("hijauBookings", JSON.stringify(bookingsToSave));
     }
   }, [bookings, isLoading]);
+
+  const handleAddBooking = (newBooking: any) => {
+    setBookings(prev => [...prev, newBooking]);
+  };
 
   const handleDeleteBooking = (id: number) => {
     // Filter out the deleted booking
@@ -212,6 +217,9 @@ const AdminBookings = () => {
 
             {/* Bookings Table */}
             <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-2 border border-gray-100 hover:shadow-xl transition-all">
+              {/* Add Booking Form */}
+              <AddBookingForm onBookingAdded={handleAddBooking} />
+              
               <h2 className="text-lg font-semibold mb-4 text-hijau-blue flex items-center">
                 <FileText className="mr-2 h-5 w-5" />
                 {selectedDate 
