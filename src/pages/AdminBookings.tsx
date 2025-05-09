@@ -13,8 +13,29 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { format } from "date-fns";
+import { Badge } from "@/components/ui/badge";
+import { CalendarClock, Trash2, LogOut, Filter, FileText } from "lucide-react";
 
-// Mock data for bookings - in a real app, this would come from a database
+// Initialize bookings from localStorage or use default mock data
+const getInitialBookings = () => {
+  const savedBookings = localStorage.getItem("hijauBookings");
+  if (savedBookings) {
+    // Parse and ensure dates are Date objects
+    try {
+      const parsed = JSON.parse(savedBookings);
+      return parsed.map(booking => ({
+        ...booking,
+        date: new Date(booking.date)
+      }));
+    } catch (error) {
+      console.error("Error parsing bookings from localStorage:", error);
+      return MOCK_BOOKINGS;
+    }
+  }
+  return MOCK_BOOKINGS;
+};
+
+// Mock data for bookings - used as fallback if no localStorage data
 const MOCK_BOOKINGS = [
   {
     id: 1,
@@ -42,10 +63,11 @@ const AdminBookings = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [bookings, setBookings] = useState(MOCK_BOOKINGS);
+  const [bookings, setBookings] = useState(getInitialBookings());
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Check if user is admin
+  // Check if user is admin and load bookings
   useEffect(() => {
     // In a real app, this would check a session or localStorage token
     const adminStatus = localStorage.getItem("isHijauAdmin");
@@ -58,8 +80,21 @@ const AdminBookings = () => {
       navigate("/contact");
     } else {
       setIsAdmin(true);
+      setIsLoading(false);
     }
   }, [navigate, toast]);
+
+  // Save bookings to localStorage whenever they change
+  useEffect(() => {
+    if (!isLoading) {
+      // Convert Date objects to strings for JSON storage
+      const bookingsToSave = bookings.map(booking => ({
+        ...booking,
+        date: booking.date.toISOString()
+      }));
+      localStorage.setItem("hijauBookings", JSON.stringify(bookingsToSave));
+    }
+  }, [bookings, isLoading]);
 
   const handleDeleteBooking = (id: number) => {
     // Filter out the deleted booking
@@ -80,6 +115,15 @@ const AdminBookings = () => {
       )
     : bookings;
 
+  const handleLogout = () => {
+    localStorage.removeItem("isHijauAdmin");
+    navigate("/contact");
+    toast({
+      title: "Logged Out",
+      description: "You have been logged out successfully.",
+    });
+  };
+
   if (!isAdmin) {
     return null; // Will redirect in useEffect
   }
@@ -87,27 +131,26 @@ const AdminBookings = () => {
   return (
     <>
       {/* Admin Header */}
-      <section className="relative h-[20vh]">
+      <section className="relative h-[25vh]">
         <div className="bg-hijau-blue absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
         </div>
 
         <div className="container-custom relative h-full flex items-center">
           <div className="max-w-xl text-white">
             <h1 className="heading-medium mb-2">Admin Booking Management</h1>
-            <p className="opacity-90">
+            <p className="opacity-90 flex items-center">
+              <CalendarClock className="mr-2 h-5 w-5" />
               View and manage all customer appointments
             </p>
           </div>
           <div className="ml-auto">
             <Button 
-              onClick={() => {
-                localStorage.removeItem("isHijauAdmin");
-                navigate("/contact");
-              }}
+              onClick={handleLogout}
               variant="outline"
-              className="text-white border-white hover:bg-white hover:text-hijau-blue"
+              className="text-white border-white hover:bg-white hover:text-hijau-blue flex items-center gap-2 transition-all"
             >
+              <LogOut className="h-4 w-4" />
               Logout
             </Button>
           </div>
@@ -119,28 +162,58 @@ const AdminBookings = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Calendar Filter */}
-            <div className="bg-white rounded-xl shadow p-6 lg:col-span-1">
-              <h2 className="text-lg font-semibold mb-4 text-hijau-blue">Filter by Date</h2>
+            <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-1 border border-gray-100 hover:shadow-xl transition-all">
+              <h2 className="text-lg font-semibold mb-4 text-hijau-blue flex items-center">
+                <Filter className="mr-2 h-5 w-5" />
+                Filter by Date
+              </h2>
               <Calendar
                 mode="single"
                 selected={selectedDate}
                 onSelect={setSelectedDate}
                 className="border rounded-md p-3"
+                classNames={{
+                  day_selected: "bg-hijau-blue text-white hover:bg-hijau-blue hover:text-white",
+                  day_today: "bg-hijau-blue/10 text-hijau-blue",
+                }}
               />
-              <div className="mt-4 flex justify-center">
+              <div className="mt-6 flex justify-center">
                 <Button 
                   onClick={() => setSelectedDate(undefined)}
                   variant="outline"
                   size="sm"
+                  className="hover:bg-hijau-blue hover:text-white transition-all"
                 >
                   Show All Bookings
                 </Button>
               </div>
+
+              <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+                <h3 className="font-medium text-hijau-blue mb-2 text-sm">Booking Stats</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center">
+                    <span className="text-gray-500">Total</span>
+                    <span className="text-hijau-blue font-bold text-lg">{bookings.length}</span>
+                  </div>
+                  <div className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center">
+                    <span className="text-gray-500">Today</span>
+                    <span className="text-hijau-blue font-bold text-lg">
+                      {bookings.filter(b => {
+                        const today = new Date();
+                        return b.date.getDate() === today.getDate() &&
+                               b.date.getMonth() === today.getMonth() &&
+                               b.date.getFullYear() === today.getFullYear();
+                      }).length}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Bookings Table */}
-            <div className="bg-white rounded-xl shadow p-6 lg:col-span-2">
-              <h2 className="text-lg font-semibold mb-4 text-hijau-blue">
+            <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-2 border border-gray-100 hover:shadow-xl transition-all">
+              <h2 className="text-lg font-semibold mb-4 text-hijau-blue flex items-center">
+                <FileText className="mr-2 h-5 w-5" />
                 {selectedDate 
                   ? `Bookings for ${format(selectedDate, "MMMM d, yyyy")}`
                   : "All Bookings"
@@ -148,34 +221,46 @@ const AdminBookings = () => {
               </h2>
               
               {filteredBookings.length > 0 ? (
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto animate-fade-in">
                   <Table>
-                    <TableHeader>
+                    <TableHeader className="bg-gray-50">
                       <TableRow>
-                        <TableHead>Client</TableHead>
-                        <TableHead>Service</TableHead>
-                        <TableHead>Date & Time</TableHead>
-                        <TableHead>Actions</TableHead>
+                        <TableHead className="font-semibold text-hijau-blue">Client</TableHead>
+                        <TableHead className="font-semibold text-hijau-blue">Service</TableHead>
+                        <TableHead className="font-semibold text-hijau-blue">Date & Time</TableHead>
+                        <TableHead className="font-semibold text-hijau-blue">Actions</TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {filteredBookings.map((booking) => (
-                        <TableRow key={booking.id}>
+                        <TableRow key={booking.id} className="hover:bg-gray-50/80">
                           <TableCell>
                             <div className="font-medium">{booking.name}</div>
+                            <div className="text-sm text-gray-500">{booking.email}</div>
                             <div className="text-sm text-gray-500">{booking.phone}</div>
                           </TableCell>
-                          <TableCell>{booking.service}</TableCell>
                           <TableCell>
-                            {format(booking.date, "MMM d, yyyy")} 
-                            <span className="text-gray-500"> at {booking.time}</span>
+                            <Badge variant="outline" className="bg-hijau-blue/5 text-hijau-blue border-hijau-blue/20">
+                              {booking.service}
+                            </Badge>
+                            <div className="text-sm text-gray-500 mt-1 truncate max-w-[200px]">
+                              {booking.address}
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="font-medium text-hijau-blue">
+                              {format(booking.date, "MMM d, yyyy")}
+                            </div>
+                            <div className="text-sm text-gray-500">at {booking.time}</div>
                           </TableCell>
                           <TableCell>
                             <Button
                               onClick={() => handleDeleteBooking(booking.id)}
                               variant="destructive"
                               size="sm"
+                              className="flex items-center gap-1"
                             >
+                              <Trash2 className="h-4 w-4" />
                               Delete
                             </Button>
                           </TableCell>
@@ -185,8 +270,10 @@ const AdminBookings = () => {
                   </Table>
                 </div>
               ) : (
-                <div className="text-center py-8 text-gray-500">
-                  No bookings found for the selected date
+                <div className="text-center py-12 text-gray-500 bg-gray-50/50 rounded-lg border border-gray-200">
+                  <CalendarClock className="h-12 w-12 mx-auto text-gray-400 mb-3" />
+                  <p className="font-medium">No bookings found for the selected date</p>
+                  <p className="text-sm mt-1">Try selecting a different date or removing the filter</p>
                 </div>
               )}
             </div>
