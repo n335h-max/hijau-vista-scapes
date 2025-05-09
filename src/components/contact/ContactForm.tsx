@@ -30,7 +30,7 @@ const formSchema = z.object({
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   address: z.string().min(5, { message: "Address must be at least 5 characters" }),
-  service: z.string({ required_error: "Please select a service" }),
+  package: z.string({ required_error: "Please select a package" }),
   message: z.string().optional(),
 });
 
@@ -51,7 +51,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
       phone: "",
       email: "",
       address: "",
-      service: initialService || "",
+      package: initialService || "",
       message: initialMessage || "",
     },
   });
@@ -68,8 +68,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
     });
   };
 
-  // Service options
-  const serviceOptions = [
+  // Package options
+  const packageOptions = [
+    "Smart Package",
+    "Signature Package",
+    "Elite Package",
+    "Custom Package",
     "Landscape Design & Build",
     "Consultation",
     "Landscape 3D & CAD Drawing",
@@ -167,10 +171,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
 
           <FormField
             control={form.control}
-            name="service"
+            name="package"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Type of Service</FormLabel>
+                <FormLabel>Type of Package</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -178,13 +182,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
                 >
                   <FormControl>
                     <SelectTrigger className="border-gray-300 focus:ring-hijau-blue/20">
-                      <SelectValue placeholder="Select a service" />
+                      <SelectValue placeholder="Select a package" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {serviceOptions.map((service) => (
-                      <SelectItem key={service} value={service}>
-                        {service}
+                    {packageOptions.map((packageName) => (
+                      <SelectItem key={packageName} value={packageName}>
+                        {packageName}
                       </SelectItem>
                     ))}
                   </SelectContent>
