@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Clock, Calendar as CalendarIcon, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Time slots available for booking (24-hour format)
+// Time slots available for booking (24-hour format) - Updated to 9am-5:30pm
 const TIME_SLOTS = [
-  "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"
+  "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "17:30"
 ];
 
 // This will be replaced with the actual bookings from localStorage
@@ -134,10 +134,10 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
               className={cn("p-3 pointer-events-auto rounded-md border")}
               disabled={[
                 { before: new Date() },
-                // Disable weekends
+                // Disable Sundays only - updated to allow Saturdays
                 (date) => {
                   const day = date.getDay();
-                  return day === 0 || day === 6;
+                  return day === 0; // 0 is Sunday
                 },
               ]}
               // Highlight days with available slots

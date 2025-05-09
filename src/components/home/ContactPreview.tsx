@@ -46,7 +46,7 @@ const ContactPreview = () => {
                   <circle cx="12" cy="12" r="10"/>
                   <polyline points="12 6 12 12 16 14"/>
                 </svg>
-                <span>Mon-Fri: 9am-6pm | Sat: 9am-2pm | Sun: Closed</span>
+                <span>Mon-Sat: 9am-5:30pm | Sun: Closed</span>
               </li>
             </ul>
           </div>

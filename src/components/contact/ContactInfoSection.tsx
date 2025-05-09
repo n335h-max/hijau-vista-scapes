@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
@@ -83,11 +82,11 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             <div className="text-hijau-dark/70 space-y-1">
               <p className="flex justify-between">
                 <span>Monday - Friday:</span>
-                <span className="font-medium">9:00 AM - 6:00 PM</span>
+                <span className="font-medium">9:00 AM - 5:30 PM</span>
               </p>
               <p className="flex justify-between">
                 <span>Saturday:</span>
-                <span className="font-medium">9:00 AM - 2:00 PM</span>
+                <span className="font-medium">9:00 AM - 5:30 PM</span>
               </p>
               <p className="flex justify-between">
                 <span>Sunday:</span>
