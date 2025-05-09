@@ -1,9 +1,9 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { format, addDays, startOfWeek, addWeeks, isToday, isSameDay } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, Calendar as CalendarIcon, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Time slots available for booking (24-hour format)
@@ -11,7 +11,7 @@ const TIME_SLOTS = [
   "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"
 ];
 
-// Mock data for unavailable slots - in a real app this would come from a database
+// This will be replaced with the actual bookings from localStorage
 const UNAVAILABLE_SLOTS = [
   { date: new Date(2025, 4, 15), time: "09:00" },
   { date: new Date(2025, 4, 15), time: "10:00" },
@@ -36,11 +36,35 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
+  const [bookedSlots, setBookedSlots] = useState<Array<{date: Date, time: string}>>([]);
 
-  // Check if a time slot is available
+  // Load existing bookings from localStorage on component mount
+  useEffect(() => {
+    const storedBookings = localStorage.getItem("hijauBookings");
+    if (storedBookings) {
+      try {
+        const bookings = JSON.parse(storedBookings);
+        // Convert string dates back to Date objects
+        const formattedBookings = bookings.map((booking: any) => ({
+          date: new Date(booking.date),
+          time: booking.time
+        }));
+        setBookedSlots(formattedBookings);
+      } catch (error) {
+        console.error("Error parsing bookings:", error);
+        setBookedSlots(UNAVAILABLE_SLOTS);
+      }
+    } else {
+      setBookedSlots(UNAVAILABLE_SLOTS);
+    }
+  }, []);
+
+  // Check if a time slot is available (not booked)
   const isTimeSlotAvailable = (date: Date, time: string) => {
-    return !UNAVAILABLE_SLOTS.some(
-      (slot) => isSameDay(slot.date, date) && slot.time === time
+    return !bookedSlots.some(
+      (slot) => 
+        isSameDay(new Date(slot.date), date) && 
+        slot.time === time
     );
   };
 
@@ -57,6 +81,11 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
   // Handle final booking submission
   const handleBookingSubmit = () => {
     if (selectedDate && selectedTime) {
+      // Do one final check to make sure the slot is still available
+      if (!isTimeSlotAvailable(selectedDate, selectedTime)) {
+        alert("Sorry, this time slot was just booked by someone else. Please select another time.");
+        return;
+      }
       onBookingComplete(selectedDate, selectedTime);
     }
   };
@@ -96,7 +125,10 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
             <Calendar
               mode="single"
               selected={selectedDate}
-              onSelect={setSelectedDate}
+              onSelect={(date) => {
+                setSelectedDate(date);
+                setSelectedTime(null); // Reset time selection when date changes
+              }}
               month={currentMonth}
               onMonthChange={setCurrentMonth}
               className={cn("p-3 pointer-events-auto rounded-md border")}
@@ -142,12 +174,27 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
                 ))}
               </div>
               {getAvailableTimeSlots(selectedDate).length === 0 && (
-                <p className="text-center py-4 text-gray-500">
-                  No available slots for this date. Please select another date.
-                </p>
+                <div className="text-center py-6 text-gray-500 bg-gray-100 rounded-lg border border-gray-200 mt-2">
+                  <CalendarIcon className="h-10 w-10 mx-auto text-gray-400 mb-2" />
+                  <p className="font-medium">No available slots for this date</p>
+                  <p className="text-sm mt-1">Please select another date</p>
+                </div>
               )}
             </div>
           )}
+          
+          {/* Alert for booked slots */}
+          <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+            <div className="flex items-start">
+              <AlertTriangle className="h-5 w-5 text-amber-500 mr-2 mt-0.5" />
+              <div>
+                <h4 className="font-medium text-amber-800">Booking Information</h4>
+                <p className="text-sm text-amber-700 mt-1">
+                  Time slots that are already booked will not be shown. We only display available time slots to prevent double bookings.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Booking Details Side */}
