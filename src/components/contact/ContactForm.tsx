@@ -68,22 +68,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
     });
   };
 
-  // Package options
+  // Package options - only the 4 specific package types
   const packageOptions = [
     "Smart Package",
     "Signature Package",
     "Elite Package",
-    "Custom Package",
-    "Landscape Design & Build",
-    "Consultation",
-    "Landscape 3D & CAD Drawing",
-    "Landscape Ideas (Hardscape & Softscape)",
-    "Construction",
-    "Natural & Artificial Grass Installation",
-    "Water Feature",
-    "Tiny House / Playhouse",
-    "Lawn Maintenance",
-    "Nursery",
+    "Custom Package"
   ];
 
   return (
