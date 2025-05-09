@@ -6,6 +6,7 @@ import GrassInstallationShowcase from "@/components/services/GrassInstallationSh
 import TinyHouseShowcase from "@/components/services/TinyHouseShowcase";
 import WaterFeatureShowcase from "@/components/services/WaterFeatureShowcase";
 import LawnMaintenanceShowcase from "@/components/services/LawnMaintenanceShowcase";
+import ConstructionShowcase from "@/components/services/ConstructionShowcase";
 
 // Service types for filtering
 type ServiceCategory = "all" | "residential" | "commercial";
@@ -202,6 +203,9 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      {/* Construction Showcase Section */}
+      <ConstructionShowcase />
 
       {/* Lawn Maintenance Showcase Section */}
       <LawnMaintenanceShowcase />
