@@ -13,12 +13,16 @@ const Contact = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [serviceParam, setServiceParam] = useState<string | null>(null);
+  const [packageParam, setPackageParam] = useState<string | null>(null);
 
   // Extract service from URL if available
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const service = params.get('service');
+    const packageName = params.get('package');
+    
     setServiceParam(service);
+    setPackageParam(packageName);
   }, [location.search]);
 
   // Admin login handler
@@ -44,6 +48,11 @@ const Contact = () => {
       });
     }
   };
+
+  // Use package param first, then fall back to service param
+  const initialService = packageParam 
+    ? `Package: ${packageParam}` 
+    : serviceParam || undefined;
 
   return (
     <>
@@ -81,7 +90,7 @@ const Contact = () => {
             <ContactInfoSection onAdminLogin={() => setLoginDialogOpen(true)} />
 
             {/* Booking Form */}
-            <ContactForm initialService={serviceParam || undefined} />
+            <ContactForm initialService={initialService} />
           </div>
         </div>
       </section>

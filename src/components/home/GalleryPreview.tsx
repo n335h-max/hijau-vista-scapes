@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const GalleryPreview = () => {
-  // Gallery images array with updated images including hardscape examples
+  // Gallery images array with updated images including hardscape and softscape examples
   const galleryImages = [
     "/lovable-uploads/ce002d00-e396-47a6-8a1c-0890bb70d2aa.png",
     "/lovable-uploads/e1133523-440f-4ec3-8b9f-a93906fc0272.png",
@@ -13,8 +13,9 @@ const GalleryPreview = () => {
     "/lovable-uploads/5ddcc32d-dfe8-4ac6-b43c-af1bed3a8191.png",
     "/lovable-uploads/5ab02348-939e-497b-865f-f5d6d14bcc81.png",
     "/lovable-uploads/1a73e93c-f297-44cc-ab0d-e55e138cc1c4.png",  // Water feature
-    "/lovable-uploads/02a8e859-1456-4cf5-b47d-d1da981c88fb.png",  // Lawn maintenance
     "/lovable-uploads/4001e500-c4aa-44d2-97ea-c97f0bc4aaa9.png",  // Hardscape example
+    "/lovable-uploads/8fc258f6-46b3-4443-b0be-a81c4f0c8085.png",  // Softscape example
+    "/lovable-uploads/6d48415f-3c31-4f13-bfdb-64c19a36d0f3.png",  // Softscape example
   ];
 
   return (

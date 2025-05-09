@@ -78,7 +78,7 @@ const ServicesPreview = () => {
 
         <div className="text-center mt-10">
           <Button asChild size="lg" className="bg-hijau-blue hover:bg-hijau-blue/90">
-            <Link to="/services">View All Services</Link>
+            <Link to="/packages">View All Packages</Link>
           </Button>
         </div>
       </div>
