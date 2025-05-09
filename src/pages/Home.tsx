@@ -4,7 +4,6 @@ import HeroSection from "@/components/home/HeroSection";
 import AboutPreview from "@/components/home/AboutPreview";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import TopClients from "@/components/home/TopClients";
-import GalleryPreview from "@/components/home/GalleryPreview";
 import ContactPreview from "@/components/home/ContactPreview";
 
 const Home = () => {
@@ -14,7 +13,6 @@ const Home = () => {
       <AboutPreview />
       <ServicesPreview />
       <TopClients />
-      <GalleryPreview />
       <ContactPreview />
     </>
   );
