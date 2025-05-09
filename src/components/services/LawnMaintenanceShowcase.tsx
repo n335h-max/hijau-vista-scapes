@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { LawnMower, Shrub, TreeDeciduous } from "lucide-react";
+import { Scissors, Shrub, TreeDeciduous } from "lucide-react";
 
 interface MaintenanceService {
   id: number;
@@ -23,7 +23,7 @@ const LawnMaintenanceShowcase = () => {
       id: 1,
       name: "Regular Lawn Mowing",
       description: "Professional lawn mowing service on a regular schedule to keep your lawn looking its best year-round.",
-      icon: <LawnMower className="h-5 w-5" />,
+      icon: <Scissors className="h-5 w-5" />,
       image: "/lovable-uploads/02a8e859-1456-4cf5-b47d-d1da981c88fb.png",
       features: ["Weekly/bi-weekly options", "Edge trimming", "Clipping removal", "Path clearing"],
       price: 120
@@ -54,7 +54,7 @@ const LawnMaintenanceShowcase = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 rounded-full bg-hijau-blue/10 flex items-center justify-center">
-              <LawnMower className="h-8 w-8 text-hijau-blue" />
+              <Scissors className="h-8 w-8 text-hijau-blue" />
             </div>
           </div>
           <h2 className="heading-medium text-hijau-dark mb-2">Lawn Maintenance</h2>
