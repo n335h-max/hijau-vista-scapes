@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -132,7 +133,17 @@ const Footer = () => {
                 <div className="bg-hijau-blue/20 p-2 rounded-full mr-3 mt-0.5">
                   <MapPin size={18} className="text-hijau-yellow" />
                 </div>
-                <span>Hijau Group Landscape, Seremban, Negeri Sembilan, Malaysia</span>
+                <span>
+                  Registered Address: No 168-1, Jalan S2 B22, Pusat Dagangan Seremban 2, 70300 Seremban, Negeri Sembilan
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="bg-hijau-blue/20 p-2 rounded-full mr-3 mt-0.5">
+                  <MapPin size={18} className="text-hijau-yellow" />
+                </div>
+                <span>
+                  Site Office: No 324, Jalan S2 A7/2, Green Street Homes, 70300 Seremban, Negeri Sembilan
+                </span>
               </li>
               <li className="flex items-center">
                 <div className="bg-hijau-blue/20 p-2 rounded-full mr-3">

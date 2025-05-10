@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
@@ -20,10 +21,21 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             <MapPin className="h-6 w-6 text-hijau-blue" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold mb-2">Our Location</h3>
-            <p className="text-hijau-dark/70">
-              Hijau Group Landscape, Seremban, Negeri Sembilan, Malaysia
-            </p>
+            <h3 className="text-lg font-semibold mb-2">Our Locations</h3>
+            <div className="text-hijau-dark/70 mb-4">
+              <p className="font-semibold">Registered Address:</p>
+              <p>No 168-1, Jalan S2 B22,</p>
+              <p>Pusat Dagangan Seremban 2,</p>
+              <p>70300 Seremban,</p>
+              <p>Negeri Sembilan</p>
+            </div>
+            <div className="text-hijau-dark/70">
+              <p className="font-semibold">Site Office:</p>
+              <p>No 324, Jalan S2 A7/2,</p>
+              <p>Green Street Homes,</p>
+              <p>70300 Seremban,</p>
+              <p>Negeri Sembilan</p>
+            </div>
             <a 
               href="https://maps.google.com/maps?cid=7425140252329389889" 
               target="_blank" 
