@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/table";
 
 interface Booking {
-  id: number;
+  id: number | string;
   name: string;
   email: string;
   phone: string;
@@ -27,7 +27,7 @@ interface Booking {
 interface BookingsListProps {
   bookings: Booking[];
   selectedDate?: Date;
-  onDeleteBooking: (id: number) => void;
+  onDeleteBooking: (id: number | string) => void;
 }
 
 const BookingsList: React.FC<BookingsListProps> = ({ 

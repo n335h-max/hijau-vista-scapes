@@ -1,19 +1,14 @@
 
 import React, { useState, useEffect } from "react";
 import { isSameDay } from "date-fns";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 import CalendarSelector from "./calendar/CalendarSelector";
 import TimeSlotSelector from "./calendar/TimeSlotSelector";
 import BookingSummary from "./calendar/BookingSummary";
 import ConfirmationPanel from "./calendar/ConfirmationPanel";
 import HelpSection from "./calendar/HelpSection";
 import BookingAlert from "./calendar/BookingAlert";
-
-// This will be replaced with the actual bookings from localStorage
-const UNAVAILABLE_SLOTS = [
-  { date: new Date(2025, 4, 15), time: "10:00" },
-  { date: new Date(2025, 4, 15), time: "11:00" },
-  { date: new Date(2025, 4, 16), time: "14:00" },
-];
 
 interface BookingCalendarProps {
   contactDetails: {
@@ -34,27 +29,40 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [bookedSlots, setBookedSlots] = useState<Array<{date: Date, time: string}>>([]);
+  const { toast } = useToast();
 
-  // Load existing bookings from localStorage on component mount
+  // Load existing bookings from Supabase on component mount
   useEffect(() => {
-    const storedBookings = localStorage.getItem("hijauBookings");
-    if (storedBookings) {
+    const fetchBookings = async () => {
       try {
-        const bookings = JSON.parse(storedBookings);
+        const { data, error } = await supabase
+          .from('bookings')
+          .select('date, time');
+        
+        if (error) {
+          console.error("Error fetching bookings:", error);
+          toast({
+            title: "Error",
+            description: "Could not load existing bookings. Please try again.",
+            variant: "destructive",
+          });
+          return;
+        }
+        
         // Convert string dates back to Date objects
-        const formattedBookings = bookings.map((booking: any) => ({
+        const formattedBookings = data.map((booking) => ({
           date: new Date(booking.date),
           time: booking.time
         }));
+        
         setBookedSlots(formattedBookings);
       } catch (error) {
-        console.error("Error parsing bookings:", error);
-        setBookedSlots(UNAVAILABLE_SLOTS);
+        console.error("Error in fetchBookings:", error);
       }
-    } else {
-      setBookedSlots(UNAVAILABLE_SLOTS);
-    }
-  }, []);
+    };
+
+    fetchBookings();
+  }, [toast]);
 
   // Handle date selection
   const handleDateSelect = (date: Date | undefined) => {
@@ -81,7 +89,11 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
     if (selectedDate && selectedTime) {
       // Do one final check to make sure the slot is still available
       if (!isTimeSlotAvailable(selectedDate, selectedTime)) {
-        alert("Sorry, this time slot was just booked by someone else. Please select another time.");
+        toast({
+          title: "Booking Error",
+          description: "Sorry, this time slot was just booked by someone else. Please select another time.",
+          variant: "destructive",
+        });
         return;
       }
       onBookingComplete(selectedDate, selectedTime);

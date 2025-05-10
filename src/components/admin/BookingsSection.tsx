@@ -4,7 +4,7 @@ import AddBookingForm from "@/components/admin/AddBookingForm";
 import BookingsList from "@/components/admin/BookingsList";
 
 interface Booking {
-  id: number;
+  id: number | string;
   name: string;
   email: string;
   phone: string;
@@ -18,7 +18,7 @@ interface BookingsSectionProps {
   bookings: Booking[];
   selectedDate?: Date;
   onBookingAdded: (booking: Booking) => void;
-  onDeleteBooking: (id: number) => void;
+  onDeleteBooking: (id: number | string) => void;
 }
 
 const BookingsSection: React.FC<BookingsSectionProps> = ({ 

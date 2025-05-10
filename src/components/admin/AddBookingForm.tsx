@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { format } from "date-fns";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
+// Modified schema to match our Supabase table structure
 const bookingSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -26,8 +26,19 @@ const bookingSchema = z.object({
 
 type BookingFormData = z.infer<typeof bookingSchema>;
 
+interface Booking {
+  id?: number | string;
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  date: Date;
+  time: string;
+  address: string;
+}
+
 interface AddBookingFormProps {
-  onBookingAdded: (booking: any) => void;
+  onBookingAdded: (booking: Booking) => void;
 }
 
 const SERVICES = [
@@ -63,10 +74,9 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
   });
 
   const onSubmit = (data: BookingFormData) => {
-    // Create a new booking with an ID
-    const newBooking = {
+    // Create a new booking object
+    const newBooking: Booking = {
       ...data,
-      id: Date.now(), // Simple way to generate a unique ID
     };
 
     // Pass the new booking up to the parent component

@@ -2,59 +2,28 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import AdminHeader from "@/components/admin/AdminHeader";
 import DateFilter from "@/components/admin/DateFilter";
 import BookingsSection from "@/components/admin/BookingsSection";
 import BookingStats from "@/components/admin/BookingStats";
 
-// Initialize bookings from localStorage or use default mock data
-const getInitialBookings = () => {
-  const savedBookings = localStorage.getItem("hijauBookings");
-  if (savedBookings) {
-    // Parse and ensure dates are Date objects
-    try {
-      const parsed = JSON.parse(savedBookings);
-      return parsed.map(booking => ({
-        ...booking,
-        date: new Date(booking.date)
-      }));
-    } catch (error) {
-      console.error("Error parsing bookings from localStorage:", error);
-      return MOCK_BOOKINGS;
-    }
-  }
-  return MOCK_BOOKINGS;
-};
-
-// Mock data for bookings - used as fallback if no localStorage data
-const MOCK_BOOKINGS = [
-  {
-    id: 1,
-    name: "John Smith",
-    email: "john@example.com",
-    phone: "123-456-7890",
-    service: "Landscape Design & Build",
-    date: new Date(2025, 4, 15),
-    time: "09:00",
-    address: "123 Main St, City",
-  },
-  {
-    id: 2,
-    name: "Jane Doe",
-    email: "jane@example.com",
-    phone: "987-654-3210",
-    service: "Lawn Maintenance",
-    date: new Date(2025, 4, 16),
-    time: "14:00",
-    address: "456 Oak Ave, Town",
-  },
-];
+interface Booking {
+  id: number | string;
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  date: Date;
+  time: string;
+  address: string;
+}
 
 const AdminBookings = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [bookings, setBookings] = useState(getInitialBookings());
+  const [bookings, setBookings] = useState<Booking[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [isLoading, setIsLoading] = useState(true);
 
@@ -71,34 +40,109 @@ const AdminBookings = () => {
       navigate("/contact");
     } else {
       setIsAdmin(true);
-      setIsLoading(false);
+      fetchBookings();
     }
   }, [navigate, toast]);
 
-  // Save bookings to localStorage whenever they change
-  useEffect(() => {
-    if (!isLoading) {
-      // Convert Date objects to strings for JSON storage
-      const bookingsToSave = bookings.map(booking => ({
+  // Fetch bookings from Supabase
+  const fetchBookings = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('bookings')
+        .select('*')
+        .order('date', { ascending: true });
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Transform data: convert date strings to Date objects
+      const transformedData = data.map(booking => ({
         ...booking,
-        date: booking.date.toISOString()
+        date: new Date(booking.date)
       }));
-      localStorage.setItem("hijauBookings", JSON.stringify(bookingsToSave));
+      
+      setBookings(transformedData);
+    } catch (error: any) {
+      console.error("Error fetching bookings:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to load bookings",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
     }
-  }, [bookings, isLoading]);
-
-  const handleAddBooking = (newBooking: any) => {
-    setBookings(prev => [...prev, newBooking]);
   };
 
-  const handleDeleteBooking = (id: number) => {
-    // Filter out the deleted booking
-    setBookings(bookings.filter(booking => booking.id !== id));
-    
-    toast({
-      title: "Booking Deleted",
-      description: "The booking has been successfully removed.",
-    });
+  const handleAddBooking = async (newBooking: Booking) => {
+    try {
+      const { data, error } = await supabase
+        .from('bookings')
+        .insert({
+          name: newBooking.name,
+          email: newBooking.email,
+          phone: newBooking.phone,
+          service: newBooking.service,
+          date: newBooking.date.toISOString(),
+          time: newBooking.time,
+          address: newBooking.address
+        })
+        .select();
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Add the newly created booking to the state
+      const addedBooking = {
+        ...data[0],
+        date: new Date(data[0].date)
+      };
+      
+      setBookings(prev => [...prev, addedBooking]);
+      
+      toast({
+        title: "Booking Added",
+        description: "New booking has been successfully added.",
+      });
+    } catch (error: any) {
+      console.error("Error adding booking:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to add booking",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDeleteBooking = async (id: number | string) => {
+    try {
+      const { error } = await supabase
+        .from('bookings')
+        .delete()
+        .eq('id', id);
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Remove the deleted booking from state
+      setBookings(bookings.filter(booking => booking.id !== id));
+      
+      toast({
+        title: "Booking Deleted",
+        description: "The booking has been successfully removed.",
+      });
+    } catch (error: any) {
+      console.error("Error deleting booking:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to delete booking",
+        variant: "destructive",
+      });
+    }
   };
 
   // Filter bookings by selected date
@@ -146,12 +190,16 @@ const AdminBookings = () => {
 
             {/* Right column: Bookings Table */}
             <div className="lg:col-span-2">
-              <BookingsSection 
-                bookings={filteredBookings}
-                selectedDate={selectedDate}
-                onBookingAdded={handleAddBooking}
-                onDeleteBooking={handleDeleteBooking}
-              />
+              {isLoading ? (
+                <div className="text-center py-12">Loading bookings...</div>
+              ) : (
+                <BookingsSection 
+                  bookings={filteredBookings}
+                  selectedDate={selectedDate}
+                  onBookingAdded={handleAddBooking}
+                  onDeleteBooking={handleDeleteBooking}
+                />
+              )}
             </div>
           </div>
         </div>

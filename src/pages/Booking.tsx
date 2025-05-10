@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import BookingCalendar from "@/components/booking/BookingCalendar";
 import BookingConfirmation from "@/components/booking/BookingConfirmation";
 
@@ -11,6 +12,7 @@ const Booking = () => {
   const { toast } = useToast();
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<any>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Get contact details from location state or redirect back to contact page
   useEffect(() => {
@@ -25,12 +27,15 @@ const Booking = () => {
     }
   }, [location.state, navigate, toast]);
 
-  const handleBookingComplete = (date: Date, time: string) => {
-    // In a real app, this would send data to a database
+  const handleBookingComplete = async (date: Date, time: string) => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    
+    // Get contact details from location state
     const contactDetails = location.state.contactDetails;
     
+    // Create booking object
     const newBookingDetails = {
-      id: Date.now(), // Generate a unique ID based on timestamp
       name: contactDetails.name,
       email: contactDetails.email,
       phone: contactDetails.phone,
@@ -40,34 +45,41 @@ const Booking = () => {
       address: contactDetails.address || "Not provided",
     };
     
-    setBookingDetails(newBookingDetails);
-    setIsConfirmed(true);
-    
-    // Save the booking to localStorage
-    const existingBookings = localStorage.getItem("hijauBookings");
-    let bookingsArray = [];
-    
-    if (existingBookings) {
-      try {
-        bookingsArray = JSON.parse(existingBookings);
-      } catch (error) {
-        console.error("Error parsing existing bookings:", error);
-        bookingsArray = [];
+    try {
+      // Save booking to Supabase
+      const { data, error } = await supabase
+        .from('bookings')
+        .insert(newBookingDetails)
+        .select();
+      
+      if (error) {
+        throw error;
       }
+      
+      // Update booking details with the returned data from Supabase
+      setBookingDetails({
+        ...newBookingDetails,
+        id: data[0].id
+      });
+      
+      setIsConfirmed(true);
+      
+      toast({
+        title: "Booking Confirmed!",
+        description: "Your appointment has been successfully scheduled.",
+      });
+      
+      console.log("Booking confirmed and saved to Supabase:", data[0]);
+    } catch (error: any) {
+      console.error("Error saving booking:", error);
+      toast({
+        title: "Booking Error",
+        description: error.message || "Failed to save your booking. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
-    
-    // Add the new booking
-    bookingsArray.push(newBookingDetails);
-    
-    // Save back to localStorage
-    localStorage.setItem("hijauBookings", JSON.stringify(bookingsArray));
-    
-    console.log("Booking confirmed and saved:", newBookingDetails);
-    
-    toast({
-      title: "Booking Confirmed!",
-      description: "Your appointment has been successfully scheduled.",
-    });
   };
 
   if (!location.state || !location.state.contactDetails) {
