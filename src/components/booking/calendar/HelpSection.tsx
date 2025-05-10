@@ -6,7 +6,7 @@ const HelpSection: React.FC = () => {
     <div className="bg-gray-50 p-4 rounded-lg">
       <h3 className="font-medium text-hijau-blue mb-2">Need help?</h3>
       <p className="text-sm text-gray-600 mb-2">
-        Call us at <span className="font-medium">+60 3-2142-1234</span> if you 
+        Call us at <span className="font-medium">+60 11-1062 9990</span> if you 
         need assistance with your booking.
       </p>
       <p className="text-sm text-gray-600">

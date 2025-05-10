@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 import { 
   Facebook, 
   Instagram, 
-  Twitter, 
-  Linkedin, 
-  Mail, 
   Phone, 
   MapPin 
 } from "lucide-react";
@@ -38,7 +35,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/p/Hijau-Group-Landscape-100063573459541/"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-hijau-blue p-3 rounded-full transition-colors duration-300 transform hover:-translate-y-1"
@@ -47,7 +44,7 @@ const Footer = () => {
                 <Facebook size={18} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/hijaugroup.landscape/"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-hijau-blue p-3 rounded-full transition-colors duration-300 transform hover:-translate-y-1"
@@ -56,22 +53,33 @@ const Footer = () => {
                 <Instagram size={18} />
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://www.tiktok.com/@hijaugrouplandscape"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-hijau-blue p-3 rounded-full transition-colors duration-300 transform hover:-translate-y-1"
-                aria-label="Twitter"
+                aria-label="TikTok"
               >
-                <Twitter size={18} />
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                  <path d="M15 8h.01"/>
+                  <path d="M20 12a8 8 0 1 0-8 8"/>
+                  <path d="M9 15a1 1 0 0 0 1 1"/>
+                  <path d="M12 16c1.5 0 3-1.5 3-3"/>
+                  <path d="M3 16L23 7"/>
+                </svg>
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://wa.me/601110629990"
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="bg-white/10 hover:bg-hijau-blue p-3 rounded-full transition-colors duration-300 transform hover:-translate-y-1"
-                aria-label="LinkedIn"
+                aria-label="WhatsApp"
               >
-                <Linkedin size={18} />
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 11a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7Z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                  <path d="M7.5 4.2c-.3-.5-.9-.7-1.4-.4C4.3 4.9 4 6.4 4 7.9 4 16 10.1 19 12 20c1.9-1 8-4 8-12.1 0-1.5-.3-3-2.1-4.1-.5-.3-1.1-.1-1.4.4"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -149,16 +157,20 @@ const Footer = () => {
                 <div className="bg-hijau-blue/20 p-2 rounded-full mr-3">
                   <Phone size={18} className="text-hijau-yellow" />
                 </div>
-                <a href="tel:+60123456789" className="hover:text-hijau-yellow transition-colors">
-                  +60 12-345 6789
+                <a href="tel:+601110629990" className="hover:text-hijau-yellow transition-colors">
+                  +60 11-1062 9990
                 </a>
               </li>
               <li className="flex items-center">
                 <div className="bg-hijau-blue/20 p-2 rounded-full mr-3">
-                  <Mail size={18} className="text-hijau-yellow" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hijau-yellow">
+                    <path d="M4 11a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7Z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                    <path d="M7.5 4.2c-.3-.5-.9-.7-1.4-.4C4.3 4.9 4 6.4 4 7.9 4 16 10.1 19 12 20c1.9-1 8-4 8-12.1 0-1.5-.3-3-2.1-4.1-.5-.3-1.1-.1-1.4.4"/>
+                  </svg>
                 </div>
-                <a href="mailto:info@hijaugroup.com" className="hover:text-hijau-yellow transition-colors">
-                  info@hijaugroup.com
+                <a href="https://wa.me/601110629990" className="hover:text-hijau-yellow transition-colors">
+                  +60 11-1062 9990 (WhatsApp)
                 </a>
               </li>
             </ul>
