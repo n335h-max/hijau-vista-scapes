@@ -35,12 +35,18 @@ const ServicesList: React.FC<ServicesListProps> = ({
     show: { opacity: 1, y: 0, transition: { duration: 0.3 } }
   };
 
-  // Find the nursery service and update its image
+  // Find and update specific services' images
   const updatedServices = services.map(service => {
     if (service.name === "Nursery") {
       return {
         ...service,
         image: "/lovable-uploads/980b9789-354d-4730-9095-827baeb82535.png"
+      };
+    }
+    if (service.name === "Landscape Ideas (Hardscape & Softscape)") {
+      return {
+        ...service,
+        image: "/lovable-uploads/3246ee22-2aa0-41e7-80dd-fbd2edb15701.png"
       };
     }
     return service;

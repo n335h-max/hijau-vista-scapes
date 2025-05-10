@@ -44,7 +44,7 @@ export const servicesData: Service[] = [
     id: 4,
     name: "Landscape Ideas (Hardscape & Softscape)",
     description: "Creative landscape solutions combining hardscape elements (patios, walkways) with softscape features (plants, trees).",
-    image: "https://images.unsplash.com/photo-1501084291732-13b1ba8f0ebc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "/lovable-uploads/3246ee22-2aa0-41e7-80dd-fbd2edb15701.png",
   },
   {
     id: 5,
