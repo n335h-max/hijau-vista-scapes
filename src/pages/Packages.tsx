@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -77,7 +76,7 @@ const services: Service[] = [
     id: 2,
     name: "Consultation",
     description: "Expert advice and guidance for your landscaping project from our experienced professionals.",
-    image: "https://images.unsplash.com/photo-1542744173-8659b8e39c0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80",
+    image: "/lovable-uploads/6cc5f3a6-d327-48af-840c-92a0cff8f5fb.png",
   },
   {
     id: 3,
