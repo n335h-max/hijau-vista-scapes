@@ -16,7 +16,7 @@ interface BookingCalendarProps {
     phone: string;
     email: string;
     address: string;
-    package: string;  // Changed from service to match the existing code
+    package: string;  // This is named package in the form data
   };
   onBookingComplete: (date: Date, time: string) => void;
 }
@@ -100,6 +100,15 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
     }
   };
 
+  // Create a modified version of contactDetails with service property for BookingSummary
+  const bookingSummaryDetails = {
+    name: contactDetails.name,
+    phone: contactDetails.phone,
+    email: contactDetails.email,
+    address: contactDetails.address,
+    service: contactDetails.package // Map package to service for BookingSummary
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
       <h2 className="heading-medium text-hijau-blue mb-8 relative inline-block">
@@ -131,7 +140,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
 
         {/* Booking Details Side */}
         <div className="space-y-6">
-          <BookingSummary contactDetails={contactDetails} />
+          <BookingSummary contactDetails={bookingSummaryDetails} />
 
           {selectedDate && selectedTime && (
             <ConfirmationPanel
