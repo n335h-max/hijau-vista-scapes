@@ -6,15 +6,15 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Clock, Calendar as CalendarIcon, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Time slots available for booking (24-hour format) - Updated to 9am-5:30pm
+// Time slots available for booking (24-hour format) - Updated to requested times only
 const TIME_SLOTS = [
-  "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "17:30"
+  "10:00", "11:00", "12:00", "14:00", "15:00", "16:00"
 ];
 
 // This will be replaced with the actual bookings from localStorage
 const UNAVAILABLE_SLOTS = [
-  { date: new Date(2025, 4, 15), time: "09:00" },
   { date: new Date(2025, 4, 15), time: "10:00" },
+  { date: new Date(2025, 4, 15), time: "11:00" },
   { date: new Date(2025, 4, 16), time: "14:00" },
 ];
 
