@@ -1,4 +1,5 @@
 
+
 export interface Service {
   id: number;
   name: string;
@@ -26,7 +27,7 @@ export const servicesData: Service[] = [
     id: 1,
     name: "Landscape Design & Build",
     description: "Comprehensive landscape design and implementation services tailored to your property and preferences.",
-    image: "https://images.unsplash.com/photo-1600240644455-3edc55c375fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "/lovable-uploads/623d5a6b-1bd9-4306-8db8-811a530b5524.png",
   },
   {
     id: 2,
@@ -83,3 +84,4 @@ export const servicesData: Service[] = [
     image: "/lovable-uploads/980b9789-354d-4730-9095-827baeb82535.png",
   },
 ];
+

@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -36,6 +37,12 @@ const ServicesList: React.FC<ServicesListProps> = ({
 
   // Find and update specific services' images
   const updatedServices = services.map(service => {
+    if (service.name === "Landscape Design & Build") {
+      return {
+        ...service,
+        image: "/lovable-uploads/623d5a6b-1bd9-4306-8db8-811a530b5524.png"
+      };
+    }
     if (service.name === "Nursery") {
       return {
         ...service,
