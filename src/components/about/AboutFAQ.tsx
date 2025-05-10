@@ -30,11 +30,6 @@ const AboutFAQ = () => {
         "Yes, we offer ongoing maintenance services to keep your landscape looking its best. We can create a customized maintenance schedule based on your landscape's specific needs.",
     },
     {
-      question: "What areas do you serve?",
-      answer:
-        "We primarily serve Kuala Lumpur and surrounding areas in Malaysia. For projects outside of our primary service area, please contact us to discuss possibilities.",
-    },
-    {
       question: "How do I get started with my landscaping project?",
       answer:
         "Simply contact us through our website, phone, or email to schedule a free consultation. During this consultation, we'll discuss your ideas, preferences, and budget to create a customized plan for your project.",
