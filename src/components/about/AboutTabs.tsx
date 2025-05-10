@@ -89,8 +89,8 @@ const AboutTabs = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <img
-                    src="https://images.unsplash.com/photo-1624397640148-949b1732bb0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
-                    alt="Modern landscape design"
+                    src="/lovable-uploads/e620cbd8-f83b-442d-9e8e-82f3b7dadc22.png"
+                    alt="Tiny house with child and landscaper"
                     className="rounded-lg shadow-lg"
                   />
                 </div>
