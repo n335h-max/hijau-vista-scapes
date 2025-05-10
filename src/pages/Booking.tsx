@@ -59,19 +59,47 @@ const Booking = () => {
       
       // Update booking details with the returned data from Supabase
       // Convert date string back to Date object for the UI
-      setBookingDetails({
+      const savedBooking = {
         ...data[0],
         date: new Date(data[0].date)
-      });
+      };
+      
+      setBookingDetails(savedBooking);
+      
+      // Send confirmation email
+      try {
+        const emailResponse = await supabase.functions.invoke('send-booking-confirmation', {
+          body: {
+            name: savedBooking.name,
+            email: savedBooking.email,
+            service: savedBooking.service,
+            date: savedBooking.date.toISOString(),
+            time: savedBooking.time,
+            address: savedBooking.address
+          },
+        });
+        
+        if (emailResponse.error) {
+          console.error("Email sending failed:", emailResponse.error);
+          toast({
+            title: "Email Notification",
+            description: "Your booking was confirmed, but we couldn't send the confirmation email.",
+            variant: "default",
+          });
+        }
+      } catch (emailError) {
+        // If email fails, log error but continue with booking confirmation
+        console.error("Error sending confirmation email:", emailError);
+      }
       
       setIsConfirmed(true);
       
       toast({
         title: "Booking Confirmed!",
-        description: "Your appointment has been successfully scheduled.",
+        description: "Your appointment has been successfully scheduled. A confirmation email has been sent to your email address.",
       });
       
-      console.log("Booking confirmed and saved to Supabase:", data[0]);
+      console.log("Booking confirmed and saved to Supabase:", savedBooking);
     } catch (error: any) {
       console.error("Error saving booking:", error);
       toast({
