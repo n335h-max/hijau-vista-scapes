@@ -76,7 +76,7 @@ const services: Service[] = [
     id: 2,
     name: "Consultation",
     description: "Expert advice and guidance for your landscaping project from our experienced professionals.",
-    image: "/lovable-uploads/6cc5f3a6-d327-48af-840c-92a0cff8f5fb.png",
+    image: "/lovable-uploads/ecc2acb1-bde1-4ebe-8468-a4d9a3f3c167.png",
   },
   {
     id: 3,
