@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Leaf } from "lucide-react";
 
 const AboutFAQ = () => {
   const faqs = [
@@ -37,23 +38,33 @@ const AboutFAQ = () => {
   ];
 
   return (
-    <section className="section-padding bg-hijau-light">
+    <section className="section-padding bg-eco-gradient">
       <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="heading-medium text-hijau-dark mb-4">Frequently Asked Questions</h2>
+        <div className="text-center mb-12 animate-fade-in">
+          <div className="flex items-center justify-center mb-4">
+            <Leaf className="h-6 w-6 text-hijau-leaf mr-2" />
+            <h2 className="heading-medium text-hijau-dark">Frequently Asked Questions</h2>
+          </div>
           <p className="max-w-2xl mx-auto text-hijau-dark/80">
             Find answers to common questions about our landscaping services.
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">
+              <AccordionItem 
+                key={index} 
+                value={`item-${index}`}
+                className="bg-white rounded-xl shadow-soft border border-hijau-light/50 overflow-hidden animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <AccordionTrigger className="text-left px-6 py-4 text-hijau-dark hover:text-hijau-leaf focus:text-hijau-forest">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent>{faq.answer}</AccordionContent>
+                <AccordionContent className="px-6 pb-4 text-hijau-dark/90">
+                  {faq.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

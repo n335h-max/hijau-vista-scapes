@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 199 84% 55%; /* Hijau blue */
+    --primary: 142 76% 36%; /* Nature green */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 54 96% 77%; /* Hijau yellow */
@@ -23,7 +23,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 120 60% 97%; /* Soft green accent */
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -31,9 +31,9 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 142 76% 36%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -55,7 +55,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 199 84% 55%; /* Hijau blue */
+    --primary: 142 76% 36%; /* Nature green */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 54 96% 77%; /* Hijau yellow */
@@ -64,7 +64,7 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 120 24% 16%; /* Dark green accent */
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -72,7 +72,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 142 76% 36%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -92,12 +92,17 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+  
+  html {
+    @apply scroll-smooth;
   }
 }
 
 @layer components {
   .container-custom {
-    @apply container mx-auto px-4 md:px-6;
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
   }
   
   .section-padding {
@@ -109,18 +114,34 @@
   }
   
   .btn-book-now {
-    @apply bg-hijau-blue text-white font-medium py-2 px-6 rounded-md shadow-md hover:bg-opacity-90 transition-all;
+    @apply bg-hijau-leaf text-white font-medium py-2 px-6 rounded-lg shadow-nature hover:bg-hijau-forest transition-all;
   }
   
   .heading-large {
-    @apply text-3xl md:text-5xl font-display font-bold;
+    @apply text-3xl md:text-5xl font-display font-bold leading-tight;
   }
   
   .heading-medium {
-    @apply text-2xl md:text-3xl font-display font-bold;
+    @apply text-2xl md:text-3xl font-display font-bold leading-tight;
   }
   
   .heading-small {
-    @apply text-xl md:text-2xl font-display font-semibold;
+    @apply text-xl md:text-2xl font-display font-semibold leading-tight;
+  }
+  
+  .eco-card {
+    @apply bg-hijau-light rounded-xl shadow-nature p-6 hover:shadow-lg transition-all duration-300;
+  }
+  
+  .eco-button {
+    @apply bg-hijau-leaf text-white rounded-lg shadow-nature hover:bg-hijau-forest transition-all duration-300;
+  }
+  
+  .nature-gradient {
+    @apply bg-nature-gradient;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 border border-white/20 rounded-xl shadow-soft;
   }
 }

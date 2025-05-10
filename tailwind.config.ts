@@ -63,12 +63,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Hijau brand colors
+				// Hijau brand colors - enhanced nature palette
 				hijau: {
 					blue: '#0EA5E9', // Primary blue
 					yellow: '#FEF08A', // Soft yellow
-					light: '#F1F0FB', // Light background
+					light: '#F2FCE2', // Softer light green background
 					dark: '#1E293B', // Dark text
+					moss: '#6B8E23', // Natural moss green
+					sage: '#9CAF88', // Soft sage green
+					earth: '#8B7355', // Earthy brown
+					clay: '#D6C4B8', // Soft clay accent
+					leaf: '#4CAF50', // Fresh leaf green
+					forest: '#2E7D32', // Deep forest green
 				}
 			},
 			borderRadius: {
@@ -128,6 +134,24 @@ export default {
 					'50%': {
 						opacity: '0.7'
 					}
+				},
+				'slide-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'grow': {
+					'0%': {
+						transform: 'scale(1)'
+					},
+					'100%': {
+						transform: 'scale(1.05)'
+					}
 				}
 			},
 			animation: {
@@ -136,20 +160,26 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out forwards',
 				'zoom-in': 'zoom-in 0.3s ease-out forwards',
 				'float': 'float 3s ease-in-out infinite',
-				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite'
+				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite',
+				'slide-up': 'slide-up 0.7s ease-out forwards',
+				'grow': 'grow 0.3s ease-out forwards'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				display: ['Playfair Display', 'serif'],
+				nature: ['Montserrat', 'sans-serif']
 			},
 			boxShadow: {
 				'soft': '0 2px 10px rgba(0, 0, 0, 0.05)',
 				'card': '0 5px 15px rgba(0, 0, 0, 0.08)',
-				'button': '0 4px 6px rgba(14, 165, 233, 0.25)'
+				'button': '0 4px 6px rgba(14, 165, 233, 0.25)',
+				'nature': '0 6px 12px rgba(76, 175, 80, 0.15)'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-overlay': 'linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3))'
+				'gradient-overlay': 'linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3))',
+				'eco-gradient': 'linear-gradient(135deg, #F2FCE2 0%, #E8F5E9 100%)',
+				'nature-gradient': 'linear-gradient(120deg, rgba(76, 175, 80, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%)'
 			}
 		}
 	},
