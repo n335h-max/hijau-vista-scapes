@@ -75,8 +75,8 @@ const AboutTabs = () => {
                 </div>
                 <div>
                   <img
-                    src="https://images.unsplash.com/photo-1617850687395-620757c8e5c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
-                    alt="Landscapers working on a garden"
+                    src="/lovable-uploads/29524c64-19b4-4efb-8123-8238e80aa031.png"
+                    alt="Landscaper trimming hedge"
                     className="rounded-lg shadow-lg"
                   />
                 </div>
