@@ -55,7 +55,7 @@ const Services = () => {
       originalPrice: 2000,
       discountedPrice: 1800,
       category: ["residential", "commercial"],
-      image: "https://images.unsplash.com/photo-1524511751214-b0a384dd9eba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+      image: "/lovable-uploads/f1bc354a-8f35-45c7-a51c-090f855be36a.png",
     },
     {
       id: 4,

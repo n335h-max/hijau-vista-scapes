@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -47,6 +46,12 @@ const ServicesList: React.FC<ServicesListProps> = ({
       return {
         ...service,
         image: "/lovable-uploads/3246ee22-2aa0-41e7-80dd-fbd2edb15701.png"
+      };
+    }
+    if (service.name === "Landscape 3D & CAD Drawing") {
+      return {
+        ...service,
+        image: "/lovable-uploads/f1bc354a-8f35-45c7-a51c-090f855be36a.png"
       };
     }
     return service;
