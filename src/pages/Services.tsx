@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -77,12 +76,21 @@ const Services = () => {
     },
     {
       id: 7,
+      name: "Natural & Artificial Grass Installation",
+      description: "Professional installation of natural or artificial grass for a perfect lawn all year round.",
+      originalPrice: 4000,
+      discountedPrice: 3600,
+      category: ["residential", "commercial"],
+      image: "/lovable-uploads/58779427-850f-4b04-9e07-3840a10a14b4.png",
+    },
+    {
+      id: 8,
       name: "Water Feature",
       description: "Custom water features including ponds, fountains, and waterfalls to add tranquility and visual interest.",
       originalPrice: 4000,
       discountedPrice: 3600,
       category: ["residential", "commercial"],
-      image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+      image: "/lovable-uploads/a4f968e6-4116-4c2b-ba91-d14a74c66f42.png",
     },
     // Tiny house/playhouse was here but is now showcased in a dedicated section
     {

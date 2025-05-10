@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -46,7 +45,7 @@ const GrassInstallationShowcase = () => {
       name: "Premium Artificial Turf",
       type: "artificial",
       description: "High-quality synthetic grass with realistic appearance and feel, perfect for low-maintenance landscapes.",
-      image: "/lovable-uploads/96f1860e-e387-4f26-81ab-948b14420cbc.png"
+      image: "/lovable-uploads/58779427-850f-4b04-9e07-3840a10a14b4.png"
     },
     {
       id: 5,

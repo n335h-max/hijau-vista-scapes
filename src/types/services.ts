@@ -56,7 +56,7 @@ export const servicesData: Service[] = [
     id: 6,
     name: "Natural & Artificial Grass Installation",
     description: "Professional installation of natural or artificial grass for a perfect lawn all year round.",
-    image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+    image: "/lovable-uploads/58779427-850f-4b04-9e07-3840a10a14b4.png",
   },
   {
     id: 7,
