@@ -83,7 +83,7 @@ const Footer = () => {
               <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-hijau-yellow rounded-full"></div>
             </div>
             <ul className="space-y-3">
-              {["Home", "About", "Services", "Gallery", "Contact"].map((item) => (
+              {["Home", "About", "Packages", "Gallery", "Contact"].map((item) => (
                 <li key={item}>
                   <Link 
                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`} 
@@ -96,26 +96,26 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Packages */}
           <div className="space-y-6">
             <div className="relative inline-block">
-              <h4 className="font-bold text-xl mb-2">Our Services</h4>
+              <h4 className="font-bold text-xl mb-2">Our Packages</h4>
               <div className="absolute -bottom-1 left-0 w-12 h-0.5 bg-hijau-yellow rounded-full"></div>
             </div>
             <ul className="space-y-3">
               {[
-                "Landscape Design",
-                "Construction",
-                "Maintenance",
-                "Consultation",
-                "3D Design"
-              ].map((service) => (
-                <li key={service}>
+                "Smart Package",
+                "Signature Package",
+                "Elite Package",
+                "Custom Package",
+                "Consultation"
+              ].map((item) => (
+                <li key={item}>
                   <Link 
-                    to="/services" 
+                    to="/packages" 
                     className="text-gray-300 hover:text-hijau-yellow flex items-center transition-all duration-200 hover:translate-x-1"
                   >
-                    <span className="text-hijau-yellow mr-2">›</span> {service}
+                    <span className="text-hijau-yellow mr-2">›</span> {item}
                   </Link>
                 </li>
               ))}
