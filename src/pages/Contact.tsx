@@ -101,14 +101,14 @@ const Contact = () => {
       <section className="h-[400px] bg-white relative">
         <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-gray-50 to-transparent z-10"></div>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127482.68268982928!2d101.6169382582031!3d3.139004500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362abd26e2b1%3A0x400eafc3e154890!2sKuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2sus!4v1673596030467!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.380721971802!2d101.90666587405372!3d2.7025598972748957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cde79d9afd2ab1%3A0x66aa939ab7b95641!2sHijau%20Group%20Landscape!5e0!3m2!1sen!2smy!4v1746852130703!5m2!1sen!2smy"
           width="100%"
           height="100%"
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Hijau Group Location"
+          title="Hijau Group Landscape Location"
         ></iframe>
       </section>
 

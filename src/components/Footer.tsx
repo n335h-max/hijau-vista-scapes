@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { 
@@ -133,7 +132,7 @@ const Footer = () => {
                 <div className="bg-hijau-blue/20 p-2 rounded-full mr-3 mt-0.5">
                   <MapPin size={18} className="text-hijau-yellow" />
                 </div>
-                <span>123 Green Street, Kuala Lumpur, Malaysia</span>
+                <span>Hijau Group Landscape, Seremban, Negeri Sembilan, Malaysia</span>
               </li>
               <li className="flex items-center">
                 <div className="bg-hijau-blue/20 p-2 rounded-full mr-3">

@@ -22,10 +22,10 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
           <div>
             <h3 className="text-lg font-semibold mb-2">Our Location</h3>
             <p className="text-hijau-dark/70">
-              123 Green Street, Kuala Lumpur, Malaysia
+              Hijau Group Landscape, Seremban, Negeri Sembilan, Malaysia
             </p>
             <a 
-              href="https://maps.google.com" 
+              href="https://maps.google.com/maps?cid=7425140252329389889" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-hijau-blue hover:text-hijau-blue/80 mt-2 inline-block border-b border-transparent hover:border-hijau-blue transition-colors"
