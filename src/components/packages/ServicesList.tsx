@@ -35,6 +35,17 @@ const ServicesList: React.FC<ServicesListProps> = ({
     show: { opacity: 1, y: 0, transition: { duration: 0.3 } }
   };
 
+  // Find the nursery service and update its image
+  const updatedServices = services.map(service => {
+    if (service.name === "Nursery") {
+      return {
+        ...service,
+        image: "/lovable-uploads/980b9789-354d-4730-9095-827baeb82535.png"
+      };
+    }
+    return service;
+  });
+
   return (
     <motion.section 
       id="services-section" 
@@ -69,7 +80,7 @@ const ServicesList: React.FC<ServicesListProps> = ({
           initial="hidden"
           animate="show"
         >
-          {services.map((service) => (
+          {updatedServices.map((service) => (
             <motion.div key={service.id} variants={itemVariants}>
               <ServiceCard
                 name={service.name}
