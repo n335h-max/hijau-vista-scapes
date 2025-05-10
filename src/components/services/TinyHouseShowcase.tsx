@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -32,10 +31,10 @@ const TinyHouseShowcase = () => {
     },
     {
       id: 3,
-      name: "Compact Garden Office",
-      description: "Modern gray tiny house perfect for a home office or studio space with sleek design and large glass doors for natural light.",
-      image: "/lovable-uploads/0c08177c-abfa-475a-ab4f-26b0d98aa520.png",
-      features: ["Full-size doors", "Insulated walls", "Modern aesthetic", "Compact design"]
+      name: "Minimalist Tiny Home",
+      description: "Modern gray and white tiny house with covered porch areas, perfect for a backyard retreat, home office, or guest accommodation.",
+      image: "/lovable-uploads/c7dbe7b8-ca6f-4692-a3ab-5405385314e2.png",
+      features: ["Covered porches", "Modern design", "Black accents", "Wood decking"]
     },
     {
       id: 4,

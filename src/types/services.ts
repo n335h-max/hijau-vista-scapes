@@ -1,4 +1,3 @@
-
 export interface Service {
   id: number;
   name: string;
@@ -68,7 +67,7 @@ export const servicesData: Service[] = [
     id: 8,
     name: "Tiny House / Playhouse",
     description: "Custom built tiny houses and playhouses to add charm and functionality to your landscape.",
-    image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+    image: "/lovable-uploads/c7dbe7b8-ca6f-4692-a3ab-5405385314e2.png",
   },
   {
     id: 9,
