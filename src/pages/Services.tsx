@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -72,7 +73,7 @@ const Services = () => {
       originalPrice: 10000,
       discountedPrice: 9000,
       category: ["residential", "commercial"],
-      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      image: "/lovable-uploads/2ea8d5b1-53a9-46ed-86ca-d77ddd731cbc.png",
     },
     {
       id: 7,
