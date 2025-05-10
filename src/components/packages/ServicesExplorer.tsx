@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ServicesExplorerProps {
   showServices: boolean;
@@ -21,27 +22,34 @@ const ServicesExplorer: React.FC<ServicesExplorerProps> = ({
           Want to build your dream landscape? See our services first!
         </h2>
         
-        {!showServices ? (
-          <Button 
-            onClick={scrollToServices}
-            size="lg" 
-            className="bg-hijau-blue hover:bg-hijau-blue/90"
-          >
-            Explore Services
-            <ArrowDown className="ml-2 h-4 w-4" />
-          </Button>
-        ) : (
-          <div className="mb-8 flex justify-center">
+        <motion.div
+          initial={false}
+          animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.2 }}
+        >
+          {!showServices ? (
             <Button 
-              onClick={() => setShowServices(false)} 
-              variant="outline" 
-              className="bg-white"
+              onClick={scrollToServices}
+              size="lg" 
+              className="bg-hijau-blue hover:bg-hijau-blue/90"
             >
-              Hide Services
-              <ArrowUp className="ml-2 h-4 w-4" />
+              Explore Services
+              <ArrowDown className="ml-2 h-4 w-4" />
             </Button>
-          </div>
-        )}
+          ) : (
+            <div className="mb-8 flex justify-center">
+              <Button 
+                onClick={() => setShowServices(false)} 
+                variant="outline" 
+                className="bg-white"
+              >
+                Hide Services
+                <ArrowUp className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          )}
+        </motion.div>
       </div>
     </section>
   );
