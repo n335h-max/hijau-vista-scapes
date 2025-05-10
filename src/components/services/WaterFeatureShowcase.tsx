@@ -36,11 +36,11 @@ const WaterFeatureShowcase = () => {
     },
     {
       id: 3,
-      name: "Lily Pond Feature",
-      description: "Contemporary water feature with lily pads and tropical plants. Creates a serene atmosphere in side gardens and pathways.",
-      image: "/lovable-uploads/5257138f-1fee-4821-8102-c17c89b6b7c4.png",
-      features: ["Aquatic plants", "Flat design", "Modern aesthetic", "Easy maintenance"],
-      price: 1800
+      name: "Tiered Ceramic Fountain",
+      description: "Beautiful three-tiered ceramic fountain with river stones and underwater lighting. Creates a soothing atmosphere with gentle flowing water sounds.",
+      image: "/lovable-uploads/a4f968e6-4116-4c2b-ba91-d14a74c66f42.png",
+      features: ["Ceramic construction", "LED lighting", "River stones", "Compact design"],
+      price: 1600
     }
   ];
 

@@ -62,7 +62,7 @@ export const servicesData: Service[] = [
     id: 7,
     name: "Water Feature",
     description: "Custom water features including ponds, fountains, and waterfalls to add tranquility and visual interest.",
-    image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+    image: "/lovable-uploads/a4f968e6-4116-4c2b-ba91-d14a74c66f42.png",
   },
   {
     id: 8,
