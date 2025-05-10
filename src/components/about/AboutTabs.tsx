@@ -46,20 +46,32 @@ const AboutTabs = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                   <h2 className="heading-medium text-hijau-blue mb-4">Our Mission</h2>
-                  <p className="mb-4 text-hijau-dark/80">
-                    At Hijau Group Landscape, our mission is to create sustainable, beautiful, and functional outdoor spaces 
-                    that enhance the quality of life for our clients and contribute positively to the environment.
-                  </p>
-                  <p className="mb-4 text-hijau-dark/80">
-                    We are committed to:
-                  </p>
-                  <ul className="list-disc pl-6 mb-6 space-y-2 text-hijau-dark/80">
-                    <li>Delivering exceptional landscape designs tailored to each client's unique needs and preferences</li>
-                    <li>Using sustainable practices and environmentally friendly materials in all our projects</li>
-                    <li>Providing superior craftsmanship and attention to detail in every aspect of our work</li>
-                    <li>Maintaining clear communication and transparency throughout the entire project process</li>
-                    <li>Offering ongoing support and maintenance to ensure the longevity of our landscapes</li>
-                  </ul>
+                  <ol className="space-y-6 text-hijau-dark/80">
+                    <li>
+                      <div className="flex gap-3">
+                        <span className="font-bold text-hijau-blue">01.</span>
+                        <p>To deliver creative landscape designs that balance aesthetic beauty, functionality, and environmental harmony.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex gap-3">
+                        <span className="font-bold text-hijau-blue">02.</span>
+                        <p>To provide professional, high-quality services tailored to the specific needs of each client.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex gap-3">
+                        <span className="font-bold text-hijau-blue">03.</span>
+                        <p>To offer exceptional landscaping solutions and comprehensive consultancy for a seamless, fulfilling experience.</p>
+                      </div>
+                    </li>
+                    <li>
+                      <div className="flex gap-3">
+                        <span className="font-bold text-hijau-blue">04.</span>
+                        <p>To build lasting relationships rooted in trust, reliability, and professionalism.</p>
+                      </div>
+                    </li>
+                  </ol>
                 </div>
                 <div>
                   <img
@@ -84,20 +96,9 @@ const AboutTabs = () => {
                 </div>
                 <div>
                   <h2 className="heading-medium text-hijau-blue mb-4">Our Vision</h2>
-                  <p className="mb-4 text-hijau-dark/80">
-                    Our vision at Hijau Group Landscape is to be the leading landscaping company in Malaysia, 
-                    recognized for our innovative designs, sustainable practices, and exceptional customer service.
+                  <p className="text-hijau-dark/80">
+                    To become a leading force in the landscaping industry by creating beautiful, sustainable, and functional outdoor spaces that enhance aesthetic appeal and improve quality of life for communities.
                   </p>
-                  <p className="mb-4 text-hijau-dark/80">
-                    We aspire to:
-                  </p>
-                  <ul className="list-disc pl-6 mb-6 space-y-2 text-hijau-dark/80">
-                    <li>Set new standards for landscape design and implementation in the region</li>
-                    <li>Pioneer eco-friendly landscaping solutions that combine beauty with sustainability</li>
-                    <li>Build lasting relationships with our clients based on trust and satisfaction</li>
-                    <li>Inspire a greater appreciation for well-designed outdoor spaces</li>
-                    <li>Contribute to greener, more sustainable communities through our work</li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -109,22 +110,10 @@ const AboutTabs = () => {
                 <div>
                   <h2 className="heading-medium text-hijau-blue mb-4">Our Story</h2>
                   <p className="mb-4 text-hijau-dark/80">
-                    Hijau Group Landscape was founded in 2010 by Ahmad Ibrahim, a passionate landscape architect with a 
-                    vision to transform outdoor spaces across Malaysia.
-                  </p>
-                  <p className="mb-4 text-hijau-dark/80">
-                    What began as a small operation with just three employees has now grown into a comprehensive landscaping 
-                    company with over 30 skilled professionals, including designers, horticulturists, construction specialists, 
-                    and maintenance experts.
-                  </p>
-                  <p className="mb-4 text-hijau-dark/80">
-                    Over the years, we have completed hundreds of projects ranging from small residential gardens to large 
-                    commercial landscapes. Our commitment to quality and client satisfaction has earned us a reputation as 
-                    one of the most trusted landscaping companies in the region.
+                    Founded on January 29, 2013, Hijau Group has been dedicated to transforming outdoor spaces into harmonious works of art. With over 12 years of experience and more than 500 successful projects — including residential, commercial, and government contracts — we specialize in eco-friendly landscaping and construction.
                   </p>
                   <p className="text-hijau-dark/80">
-                    Today, Hijau Group continues to grow and evolve, embracing new technologies and sustainable practices 
-                    while staying true to our core values of excellence, integrity, and environmental responsibility.
+                    Hijau Group is setting new benchmarks for sustainability, quality, and innovation in the landscape industry.
                   </p>
                 </div>
                 <div>
