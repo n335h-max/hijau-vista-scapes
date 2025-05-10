@@ -16,10 +16,6 @@ import ConsultationBanner from "@/components/packages/ConsultationBanner";
 import BottomBanner from "@/components/packages/BottomBanner";
 import CustomPackageDialog from "@/components/packages/CustomPackageDialog";
 
-// Import hardscape and softscape components
-import HardscapeShowcase from "@/components/services/HardscapeShowcase";
-import SoftscapeShowcase from "@/components/services/SoftscapeShowcase";
-
 const Packages = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState<PackageCategory>("residential");
@@ -176,25 +172,6 @@ const Packages = () => {
           handleCreateCustomPackage={handleCreateCustomPackage}
         />
       )}
-
-      {/* Landscape Ideas Showcase */}
-      <section className="py-16 bg-hijau-light">
-        <div className="container-custom">
-          <div className="text-center mb-10">
-            <h2 className="heading-medium text-hijau-dark mb-4">Landscape Ideas</h2>
-            <p className="max-w-2xl mx-auto text-hijau-dark/80 mb-6">
-              Explore our hardscape and softscape solutions to inspire your perfect outdoor space.
-              We combine both elements to create balanced, beautiful, and functional landscapes.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Hardscape Showcase */}
-      <HardscapeShowcase />
-
-      {/* Softscape Showcase */}
-      <SoftscapeShowcase />
 
       {/* Filter Section */}
       <PackageFilter 
