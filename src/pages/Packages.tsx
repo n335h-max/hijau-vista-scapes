@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Leaf, Droplet, Construction, Filter, ArrowRight } from "lucide-react";
+import { Check, Leaf, Droplet, Construction, Filter, ArrowRight, ArrowDown, ArrowUp } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   Dialog,
@@ -23,9 +23,20 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { ServiceCard } from "@/components/packages/ServiceCard";
+import { PackageCard } from "@/components/packages/PackageCard";
+import { toast } from "@/hooks/use-toast";
 
 // Package category type for filtering
 type PackageCategory = "residential" | "commercial";
+
+// Service interface
+interface Service {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+}
 
 // Package interface
 interface Package {
@@ -54,6 +65,70 @@ const serviceOptions = [
   "Nursery",
 ];
 
+// Services list
+const services: Service[] = [
+  {
+    id: 1,
+    name: "Landscape Design & Build",
+    description: "Comprehensive landscape design and implementation services tailored to your property and preferences.",
+    image: "https://images.unsplash.com/photo-1600240644455-3edc55c375fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    id: 2,
+    name: "Consultation",
+    description: "Expert advice and guidance for your landscaping project from our experienced professionals.",
+    image: "https://images.unsplash.com/photo-1542744173-8659b8e39c0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80",
+  },
+  {
+    id: 3,
+    name: "Landscape 3D & CAD Drawing",
+    description: "Detailed 3D visualizations and CAD drawings to help you envision your perfect landscape before construction begins.",
+    image: "https://images.unsplash.com/photo-1524511751214-b0a384dd9eba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80",
+  },
+  {
+    id: 4,
+    name: "Landscape Ideas (Hardscape & Softscape)",
+    description: "Creative landscape solutions combining hardscape elements (patios, walkways) with softscape features (plants, trees).",
+    image: "https://images.unsplash.com/photo-1501084291732-13b1ba8f0ebc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    id: 5,
+    name: "Construction",
+    description: "Expert implementation of landscape designs with quality materials and craftsmanship.",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    id: 6,
+    name: "Natural & Artificial Grass Installation",
+    description: "Professional installation of natural or artificial grass for a perfect lawn all year round.",
+    image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+  },
+  {
+    id: 7,
+    name: "Water Feature",
+    description: "Custom water features including ponds, fountains, and waterfalls to add tranquility and visual interest.",
+    image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+  },
+  {
+    id: 8,
+    name: "Tiny House / Playhouse",
+    description: "Custom built tiny houses and playhouses to add charm and functionality to your landscape.",
+    image: "https://images.unsplash.com/photo-1588072303330-bfbcc1b94f54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80",
+  },
+  {
+    id: 9,
+    name: "Lawn Maintenance",
+    description: "Regular maintenance services to keep your landscape looking its best year-round.",
+    image: "https://images.unsplash.com/photo-1589923188900-85dae523342b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    id: 10,
+    name: "Nursery",
+    description: "Quality plants, trees, and shrubs selected for your specific landscape needs and local climate.",
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+  },
+];
+
 // Form schema
 const customPackageSchema = z.object({
   services: z.array(z.string()).min(1, {
@@ -67,6 +142,8 @@ const Packages = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState<PackageCategory>("residential");
   const [customPackageDialogOpen, setCustomPackageDialogOpen] = useState(false);
+  const [showServices, setShowServices] = useState(false);
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   // Form for custom package
   const form = useForm<CustomPackageFormValues>({
@@ -81,9 +158,36 @@ const Packages = () => {
     navigate(`/contact?package=${encodeURIComponent(packageName)}`);
   };
 
+  // Toggle service selection
+  const toggleServiceSelection = (serviceName: string) => {
+    setSelectedServices(prev => {
+      if (prev.includes(serviceName)) {
+        return prev.filter(name => name !== serviceName);
+      } else {
+        return [...prev, serviceName];
+      }
+    });
+  };
+
   // Create custom package - opens dialog
   const handleCreateCustomPackage = () => {
+    if (selectedServices.length === 0) {
+      toast({
+        title: "No services selected",
+        description: "Please select at least one service for your custom package",
+        variant: "destructive",
+      });
+      // Scroll to services section if not visible
+      if (!showServices) {
+        setShowServices(true);
+        setTimeout(() => {
+          document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+      return;
+    }
     setCustomPackageDialogOpen(true);
+    form.setValue("services", selectedServices);
   };
 
   // Submit custom package form
@@ -96,6 +200,14 @@ const Packages = () => {
     
     // Close the dialog
     setCustomPackageDialogOpen(false);
+  };
+
+  // Scroll to services section
+  const scrollToServices = () => {
+    setShowServices(true);
+    setTimeout(() => {
+      document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   // List of packages
@@ -195,11 +307,79 @@ const Packages = () => {
         </div>
       </section>
 
+      {/* Services Explorer Section */}
+      <section className="section-padding bg-hijau-light">
+        <div className="container-custom text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-hijau-dark">
+            Want to build your dream landscape? See our services first!
+          </h2>
+          
+          {!showServices ? (
+            <Button 
+              onClick={scrollToServices}
+              size="lg" 
+              className="bg-hijau-blue hover:bg-hijau-blue/90"
+            >
+              Explore Services
+              <ArrowDown className="ml-2 h-4 w-4" />
+            </Button>
+          ) : (
+            <div className="mb-8 flex justify-center">
+              <Button 
+                onClick={() => setShowServices(false)} 
+                variant="outline" 
+                className="bg-white"
+              >
+                Hide Services
+                <ArrowUp className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Services List */}
+      {showServices && (
+        <section id="services-section" className="section-padding bg-white">
+          <div className="container-custom">
+            <h2 className="text-2xl font-semibold mb-6 text-center">Our Services</h2>
+            <p className="text-center text-hijau-dark/70 mb-10 max-w-2xl mx-auto">
+              Select one or more services you're interested in to create your custom package, 
+              or explore our pre-designed packages below.
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {services.map((service) => (
+                <ServiceCard
+                  key={service.id}
+                  name={service.name}
+                  description={service.description}
+                  image={service.image}
+                  isSelected={selectedServices.includes(service.name)}
+                  onSelect={() => toggleServiceSelection(service.name)}
+                />
+              ))}
+            </div>
+            
+            <div className="mt-10 text-center">
+              <Button 
+                onClick={handleCreateCustomPackage}
+                size="lg"
+                className="bg-hijau-blue hover:bg-hijau-blue/90"
+              >
+                Create My Custom Package
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Filter Section */}
       <section className="py-8 bg-hijau-light">
         <div className="container-custom">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <h2 className="text-xl font-medium text-hijau-dark">Choose Your Package</h2>
+            <h2 className="text-xl font-medium text-hijau-dark">Our Packages</h2>
             <div className="flex items-center gap-3">
               <span className="text-sm font-medium text-hijau-dark/70">Filter by:</span>
               <ToggleGroup type="single" value={category} onValueChange={(value) => value && setCategory(value as PackageCategory)}>
@@ -222,51 +402,12 @@ const Packages = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {filteredPackages.map((pkg) => (
-              <Card key={pkg.id} className="overflow-hidden border-2 hover:border-hijau-blue hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-0">
-                  <div className="p-6 border-b">
-                    <div className={`w-16 h-16 rounded-full ${pkg.color} flex items-center justify-center mb-4 mx-auto`}>
-                      {pkg.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-center mb-2">{pkg.name}</h3>
-                    <p className="text-center font-bold text-lg text-hijau-blue mb-2">
-                      {pkg.priceRange}
-                    </p>
-                    <p className="text-hijau-dark/70 text-center text-sm">
-                      {pkg.description}
-                    </p>
-                  </div>
-                  
-                  <div className="p-6">
-                    <ul className="space-y-3">
-                      {pkg.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="p-6 pt-0">
-                    {pkg.name === "Custom Package" ? (
-                      <Button 
-                        onClick={handleCreateCustomPackage}
-                        className="w-full bg-hijau-blue hover:bg-hijau-blue/90"
-                      >
-                        Create My Package
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={() => handleSelectPackage(pkg.name)}
-                        className="w-full bg-hijau-blue hover:bg-hijau-blue/90"
-                      >
-                        Select Package
-                      </Button>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
+              <PackageCard 
+                key={pkg.id}
+                package={pkg}
+                onSelect={() => handleSelectPackage(pkg.name)}
+                onCustomize={pkg.name === "Custom Package" ? scrollToServices : undefined}
+              />
             ))}
           </div>
         </div>
@@ -307,12 +448,12 @@ const Packages = () => {
               <Link to="/contact">Contact Us Now</Link>
             </Button>
             <Button
-              onClick={handleCreateCustomPackage}
+              onClick={scrollToServices}
               size="lg"
               className="bg-hijau-dark/20 text-white border border-white hover:bg-white hover:text-hijau-blue"
             >
               Create Custom Package
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </div>
         </div>
@@ -324,8 +465,8 @@ const Packages = () => {
           <DialogHeader>
             <DialogTitle className="text-2xl text-hijau-blue">Create Your Custom Package</DialogTitle>
             <DialogDescription>
-              Select the services you're interested in for your custom landscape package. 
-              You can choose multiple options.
+              You've selected {selectedServices.length} service(s) for your custom landscape package.
+              You can review and confirm your selections below.
             </DialogDescription>
           </DialogHeader>
 
@@ -337,7 +478,7 @@ const Packages = () => {
                 render={() => (
                   <FormItem>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                      {serviceOptions.map((service) => (
+                      {selectedServices.map((service) => (
                         <FormField
                           key={service}
                           control={form.control}
