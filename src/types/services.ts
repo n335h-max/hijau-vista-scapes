@@ -74,12 +74,12 @@ export const servicesData: Service[] = [
     id: 9,
     name: "Lawn Maintenance",
     description: "Regular maintenance services to keep your landscape looking its best year-round.",
-    image: "https://images.unsplash.com/photo-1589923188900-85dae523342b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    image: "/lovable-uploads/62324110-9625-4f23-8d77-1de29328b202.png",
   },
   {
     id: 10,
     name: "Nursery",
     description: "Quality plants, trees, and shrubs selected for your specific landscape needs and local climate.",
-    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "/lovable-uploads/980b9789-354d-4730-9095-827baeb82535.png",
   },
 ];
