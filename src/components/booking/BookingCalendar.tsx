@@ -16,7 +16,7 @@ interface BookingCalendarProps {
     phone: string;
     email: string;
     address: string;
-    service: string;
+    package: string;  // Changed from service to match the existing code
   };
   onBookingComplete: (date: Date, time: string) => void;
 }

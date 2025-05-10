@@ -119,10 +119,11 @@ const AdminBookings = () => {
 
   const handleDeleteBooking = async (id: number | string) => {
     try {
+      // Convert id to string for Supabase
       const { error } = await supabase
         .from('bookings')
         .delete()
-        .eq('id', id);
+        .eq('id', String(id));
       
       if (error) {
         throw error;

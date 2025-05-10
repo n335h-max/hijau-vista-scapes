@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { format } from "date-fns";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -74,9 +75,15 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
   });
 
   const onSubmit = (data: BookingFormData) => {
-    // Create a new booking object
+    // Create a new booking object (ensure all properties are non-optional)
     const newBooking: Booking = {
-      ...data,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      service: data.service,
+      date: data.date,
+      time: data.time,
+      address: data.address
     };
 
     // Pass the new booking up to the parent component

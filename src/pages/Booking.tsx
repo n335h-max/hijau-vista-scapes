@@ -40,7 +40,8 @@ const Booking = () => {
       email: contactDetails.email,
       phone: contactDetails.phone,
       service: contactDetails.package,
-      date: date,
+      // Convert Date to ISO string for Supabase
+      date: date.toISOString(),
       time: time,
       address: contactDetails.address || "Not provided",
     };
@@ -57,9 +58,10 @@ const Booking = () => {
       }
       
       // Update booking details with the returned data from Supabase
+      // Convert date string back to Date object for the UI
       setBookingDetails({
-        ...newBookingDetails,
-        id: data[0].id
+        ...data[0],
+        date: new Date(data[0].date)
       });
       
       setIsConfirmed(true);
