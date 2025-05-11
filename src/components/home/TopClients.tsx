@@ -3,13 +3,6 @@ import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -20,14 +13,14 @@ interface ClientLogo {
 
 const TopClients = () => {
   const clientLogos: ClientLogo[] = [
-    { name: "Samsung SDI Energy Sdn Bhd", logoUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Samsung_SDI_logo.svg/1200px-Samsung_SDI_logo.svg.png" },
-    { name: "KPJ Hospital", logoUrl: "https://kpj.com/wp-content/uploads/2021/11/KPJ-Healthcare-Logo-Feature-Image.png" },
-    { name: "Mofaz Sdn Bhd", logoUrl: "https://www.ctoscredit.com.my/xml_public_compliance_check/images/product-logo/Mofaz.jpg" },
-    { name: "Koperasi Kuatmaju Berhad", logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU2-ZN5WqiQBvjmTbBLXQB0gXcQrXtjm4FGrhk4oHJew&s" },
-    { name: "Kismet Engineering Technologies Sdn Bhd", logoUrl: "https://cdn-c-design.azureedge.net/media/stories/thumbnail/UploadObject/37795_1.jpg" },
-    { name: "UCSI International College", logoUrl: "https://ares.ucsi.edu.my/wp-content/uploads/2016/08/UCSI-01.png" },
-    { name: "Yayasan Negeri Sembilan", logoUrl: "https://static.wixstatic.com/media/1a23d3_b84f3cc12b5d46fab0fdd3a3d2eefb97~mv2.jpg/v1/fill/w_147,h_125,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/yns%20logo.jpg" },
-    { name: "Columbia Asia", logoUrl: "https://www.hospitalmanagement.net/wp-content/uploads/sites/9/2020/04/Columbia-Asia-hospitals-logo.jpg" },
+    { name: "KPJ Healthcare", logoUrl: "/lovable-uploads/40c7647e-26d4-420d-b6d5-976a239fc567.png" },
+    { name: "Mofaz Sdn Bhd", logoUrl: "/lovable-uploads/bfb571a4-dbfc-49cc-b9fe-9fdd58e83869.png" },
+    { name: "Koperasi Kuatmaju Berhad", logoUrl: "/lovable-uploads/8610685f-0863-4494-b8b8-e4641f952ad9.png" },
+    { name: "Kismet Engineering Technologies Sdn Bhd", logoUrl: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png" },
+    { name: "UCSI International School", logoUrl: "/lovable-uploads/172a3b65-a471-497c-bde9-5f7346466f50.png" },
+    { name: "Columbia Asia", logoUrl: "/lovable-uploads/c140ffde-3793-4b0b-8329-75263a95c0aa.png" },
+    { name: "Samsung SDI", logoUrl: "/lovable-uploads/4915ef0a-86a2-44a2-ab7c-eea5fbe0f42d.png" },
+    { name: "Yayasan Negeri Sembilan", logoUrl: "/lovable-uploads/bd98451f-46d8-4870-8ce3-d8980d4216f9.png" },
   ];
 
   const carouselRef = useRef<HTMLDivElement>(null);
