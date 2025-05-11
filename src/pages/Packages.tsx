@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Leaf, Construction, Droplet } from "lucide-react";
@@ -15,6 +14,8 @@ import PackagesList from "@/components/packages/PackagesList";
 import ConsultationBanner from "@/components/packages/ConsultationBanner";
 import BottomBanner from "@/components/packages/BottomBanner";
 import CustomPackageDialog from "@/components/packages/CustomPackageDialog";
+import { usePackageNavigation } from "@/components/packages/usePackageNavigation";
+import CustomPackageManager from "@/components/packages/CustomPackageManager";
 
 const Packages = () => {
   const navigate = useNavigate();
@@ -22,6 +23,28 @@ const Packages = () => {
   const [customPackageDialogOpen, setCustomPackageDialogOpen] = useState(false);
   const [showServices, setShowServices] = useState(false);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+  // Use our custom navigation hook
+  const { handleSelectPackage, scrollToServices, onSubmitCustomPackage } = usePackageNavigation();
+
+  // Use our custom package manager
+  const { handleCreateCustomPackage } = CustomPackageManager({ 
+    selectedServices, 
+    showServices, 
+    setShowServices, 
+    setCustomPackageDialogOpen 
+  });
+
+  // Toggle service selection
+  const toggleServiceSelection = (serviceName: string) => {
+    setSelectedServices(prev => {
+      if (prev.includes(serviceName)) {
+        return prev.filter(name => name !== serviceName);
+      } else {
+        return [...prev, serviceName];
+      }
+    });
+  };
 
   // List of packages
   const packages: Package[] = [
@@ -92,60 +115,10 @@ const Packages = () => {
     }
   ];
 
-  // Handle package selection
-  const handleSelectPackage = (packageName: string) => {
-    navigate(`/contact?package=${encodeURIComponent(packageName)}`);
-  };
-
-  // Toggle service selection
-  const toggleServiceSelection = (serviceName: string) => {
-    setSelectedServices(prev => {
-      if (prev.includes(serviceName)) {
-        return prev.filter(name => name !== serviceName);
-      } else {
-        return [...prev, serviceName];
-      }
-    });
-  };
-
-  // Create custom package - opens dialog
-  const handleCreateCustomPackage = () => {
-    if (selectedServices.length === 0) {
-      toast({
-        title: "No services selected",
-        description: "Please select at least one service for your custom package",
-        variant: "destructive",
-      });
-      // Scroll to services section if not visible
-      if (!showServices) {
-        setShowServices(true);
-        setTimeout(() => {
-          document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-      return;
-    }
-    setCustomPackageDialogOpen(true);
-  };
-
-  // Submit custom package form
-  const onSubmitCustomPackage = (data: { services: string[] }) => {
-    // Create a message from selected services
-    const servicesMessage = `Selected services:\n${data.services.join("\n")}`;
-    
-    // Navigate to contact page with the selected services
-    navigate(`/contact?package=Custom Package&message=${encodeURIComponent(servicesMessage)}`);
-    
-    // Close the dialog
-    setCustomPackageDialogOpen(false);
-  };
-
-  // Scroll to services section
-  const scrollToServices = () => {
+  // Handler for showing services
+  const handleShowServices = () => {
     setShowServices(true);
-    setTimeout(() => {
-      document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    return scrollToServices();
   };
 
   // Filter packages based on category
@@ -160,7 +133,7 @@ const Packages = () => {
       <ServicesExplorer 
         showServices={showServices}
         setShowServices={setShowServices}
-        scrollToServices={scrollToServices}
+        scrollToServices={handleShowServices}
       />
 
       {/* Services List */}
@@ -183,7 +156,7 @@ const Packages = () => {
       <PackagesList 
         packages={filteredPackages}
         handleSelectPackage={handleSelectPackage}
-        scrollToServices={scrollToServices}
+        scrollToServices={handleShowServices}
       />
 
       {/* Consultation Banner */}
@@ -191,7 +164,7 @@ const Packages = () => {
 
       {/* Bottom Banner */}
       <BottomBanner 
-        scrollToServices={scrollToServices}
+        scrollToServices={handleShowServices}
       />
 
       {/* Custom Package Dialog */}
