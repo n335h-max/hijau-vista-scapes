@@ -3,19 +3,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { galleryItems } from "@/components/gallery/galleryItems.data";
 
 const GalleryPreview = () => {
-  // Gallery images array with updated images including hardscape and softscape examples
-  const galleryImages = [
-    "/lovable-uploads/ce002d00-e396-47a6-8a1c-0890bb70d2aa.png",
-    "/lovable-uploads/e1133523-440f-4ec3-8b9f-a93906fc0272.png",
-    "/lovable-uploads/96f1860e-e387-4f26-81ab-948b14420cbc.png",
-    "/lovable-uploads/5ddcc32d-dfe8-4ac6-b43c-af1bed3a8191.png",
-    "/lovable-uploads/5ab02348-939e-497b-865f-f5d6d14bcc81.png",
-    "/lovable-uploads/1a73e93c-f297-44cc-ab0d-e55e138cc1c4.png",  // Water feature
-    "/lovable-uploads/4001e500-c4aa-44d2-97ea-c97f0bc4aaa9.png",  // Hardscape example
-    "/lovable-uploads/8fc258f6-46b3-4443-b0be-a81c4f0c8085.png",  // Softscape example
-    "/lovable-uploads/6d48415f-3c31-4f13-bfdb-64c19a36d0f3.png",  // Softscape example
+  // Select a mix of original and new images to showcase (limited to 9 for the grid)
+  const selectedImages = [
+    galleryItems[0].image,
+    galleryItems[1].image,
+    galleryItems[2].image,
+    galleryItems[10].image, // Nursery
+    galleryItems[12].image, // Poolside
+    galleryItems[13].image, // Modern yard
+    galleryItems[14].image, // Commercial entrance
+    galleryItems[15].image, // Artificial turf
+    galleryItems[16].image, // Modern garden pathway
   ];
 
   return (
@@ -29,7 +30,7 @@ const GalleryPreview = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image, index) => (
+          {selectedImages.map((image, index) => (
             <div key={index} className="overflow-hidden rounded-lg shadow-md hover-grow">
               <img
                 src={image}
