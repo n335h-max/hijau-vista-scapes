@@ -10,13 +10,13 @@ const GalleryPreview = () => {
   const selectedImages = [
     galleryItems[0].image,  // Zen Garden
     galleryItems[1].image,  // Modern Backyard
-    galleryItems[18].image, // New: Paved Garden Walkway
+    galleryItems[22].image, // Curved Garden Path (replacing Paved Garden Walkway)
     galleryItems[12].image, // Poolside
-    galleryItems[19].image, // New: Outdoor Living Space
-    galleryItems[21].image, // New: Urban Garden Design
+    galleryItems[20].image, // Courtyard Design (replacing Outdoor Living Space)
+    galleryItems[21].image, // Urban Garden Design
     galleryItems[15].image, // Artificial turf
-    galleryItems[23].image, // New: Modern Deck
-    galleryItems[24].image, // New: Mediterranean Garden
+    galleryItems[23].image, // Modern Deck
+    galleryItems[24].image, // Garden Water Feature
   ];
 
   return (

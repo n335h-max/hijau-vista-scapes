@@ -129,14 +129,14 @@ export const galleryItems: GalleryItem[] = [
     title: "Paved Garden Walkway",
     description: "Elegant stone walkway with bordered plants creating a formal garden path.",
     type: "Residential",
-    image: "/lovable-uploads/bfb571a4-dbfc-49cc-b9fe-9fdd58e83869.png"
+    image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png" // Updated to correct image
   },
   {
     id: 19,
     title: "Outdoor Living Space",
     description: "Custom outdoor seating area surrounded by lush landscaping.",
     type: "Residential",
-    image: "/lovable-uploads/c140ffde-3793-4b0b-8329-75263a95c0aa.png"
+    image: "/lovable-uploads/c140ffde-3793-4b0b-8329-75263a95c0aa.png" // This should be checked if it's correct
   },
   {
     id: 20,
