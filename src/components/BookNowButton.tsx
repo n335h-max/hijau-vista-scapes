@@ -11,7 +11,7 @@ const BookNowButton = () => {
         asChild
         className="rounded-full px-6 py-6 bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl text-white transition-all duration-300 hover:scale-105"
       >
-        <Link to="/contact" className="flex items-center gap-2">
+        <Link to="/contact?package=Consultation" className="flex items-center gap-2">
           <Calendar className="size-5" />
           <span className="font-medium">Book Now</span>
         </Link>

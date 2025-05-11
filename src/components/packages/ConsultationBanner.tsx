@@ -19,7 +19,7 @@ const ConsultationBanner: React.FC = () => {
           size="lg"
           className="bg-hijau-blue hover:bg-hijau-blue/90"
         >
-          <Link to="/contact">Contact Us For Free Consultation</Link>
+          <Link to="/contact?package=Consultation">Contact Us For Free Consultation</Link>
         </Button>
       </div>
     </section>
