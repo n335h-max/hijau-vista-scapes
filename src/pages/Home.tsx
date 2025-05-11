@@ -5,6 +5,7 @@ import AboutPreview from "@/components/home/AboutPreview";
 import ServicesPreview from "@/components/home/ServicesPreview";
 import TopClients from "@/components/home/TopClients";
 import ContactPreview from "@/components/home/ContactPreview";
+import GalleryPreview from "@/components/home/GalleryPreview";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <AboutPreview />
       <ServicesPreview />
       <TopClients />
+      <GalleryPreview />
       <ContactPreview />
     </>
   );
