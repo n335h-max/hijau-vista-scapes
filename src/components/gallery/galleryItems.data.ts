@@ -124,20 +124,13 @@ export const galleryItems: GalleryItem[] = [
     type: "Commercial",
     image: "/lovable-uploads/5061f982-c72d-40e7-a16c-92a0f18b40b9.png"
   },
-  // Additional 8 recently uploaded images
+  // Additional images (replacing the removed ones)
   {
     id: 18,
     title: "Paved Garden Walkway",
     description: "Elegant stone walkway with bordered plants creating a formal garden path.",
     type: "Residential",
     image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
-  },
-  {
-    id: 19,
-    title: "Outdoor Living Space",
-    description: "Custom outdoor seating area surrounded by lush landscaping.",
-    type: "Residential",
-    image: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png"
   },
   {
     id: 20,
@@ -174,11 +167,19 @@ export const galleryItems: GalleryItem[] = [
     type: "Residential",
     image: "/lovable-uploads/dbeeaf61-797b-40df-a7e9-a7b0a93204ae.png"
   },
+  // Replacement images - NEW
+  {
+    id: 19,
+    title: "Minimalist Japanese Garden",
+    description: "Clean, elegant Japanese-inspired garden design with careful attention to balance and harmony.",
+    type: "Residential",
+    image: "/lovable-uploads/ecc2acb1-bde1-4ebe-8468-a4d9a3f3c167.png"
+  },
   {
     id: 25,
-    title: "Mediterranean Garden Design",
-    description: "Drought-resistant Mediterranean style garden with gravel and succulents.",
-    type: "Residential",
-    image: "/lovable-uploads/e620cbd8-f83b-442d-9e8e-82f3b7dadc22.png"
+    title: "Vertical Garden Installation",
+    description: "Space-efficient vertical garden design perfect for urban environments and small spaces.",
+    type: "Commercial",
+    image: "/lovable-uploads/f72f0489-a7b3-4018-96e5-9aa112b0763f.png"
   }
 ];
