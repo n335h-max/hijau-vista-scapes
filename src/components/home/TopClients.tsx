@@ -1,10 +1,9 @@
-
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useMobile } from "@/hooks/use-mobile";
 
 interface ClientLogo {
   name: string;
@@ -24,7 +23,7 @@ const TopClients = () => {
   ];
 
   const carouselRef = useRef<HTMLDivElement>(null);
-  const isMobile = useIsMobile();
+  const isMobile = useMobile();
   
   useEffect(() => {
     let scrollInterval: ReturnType<typeof setInterval>;
