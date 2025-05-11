@@ -16,7 +16,8 @@ export const packageOptions = [
   "Smart Package",
   "Signature Package",
   "Elite Package",
-  "Custom Package"
+  "Custom Package",
+  "Consultation"
 ];
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
