@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Leaf, Construction, Droplet } from "lucide-react";
@@ -15,7 +16,7 @@ import ConsultationBanner from "@/components/packages/ConsultationBanner";
 import BottomBanner from "@/components/packages/BottomBanner";
 import CustomPackageDialog from "@/components/packages/CustomPackageDialog";
 import { usePackageNavigation } from "@/components/packages/usePackageNavigation";
-import CustomPackageManager from "@/components/packages/CustomPackageManager";
+import { useCustomPackageManager } from "@/components/packages/CustomPackageManager";
 
 const Packages = () => {
   const navigate = useNavigate();
@@ -27,8 +28,8 @@ const Packages = () => {
   // Use our custom navigation hook
   const { handleSelectPackage, scrollToServices, onSubmitCustomPackage } = usePackageNavigation();
 
-  // Use our custom package manager
-  const { handleCreateCustomPackage } = CustomPackageManager({ 
+  // Use our custom package manager hook
+  const { handleCreateCustomPackage } = useCustomPackageManager({ 
     selectedServices, 
     showServices, 
     setShowServices, 
