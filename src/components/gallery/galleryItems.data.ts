@@ -136,7 +136,7 @@ export const galleryItems: GalleryItem[] = [
     title: "Outdoor Living Space",
     description: "Custom outdoor seating area surrounded by lush landscaping.",
     type: "Residential",
-    image: "/lovable-uploads/c140ffde-3793-4b0b-8329-75263a95c0aa.png" // This should be checked if it's correct
+    image: "/lovable-uploads/19a246a6-f378-467d-ac01-df7aea7e4b19.png" // Updated from Columbia Asia logo to correct outdoor living space image
   },
   {
     id: 20,
