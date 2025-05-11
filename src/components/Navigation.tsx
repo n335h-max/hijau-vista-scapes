@@ -87,6 +87,7 @@ const Navigation = () => {
         <button
           className="md:hidden text-hijau-dark p-2 rounded-full bg-gray-100/80 hover:bg-gray-200/80 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
