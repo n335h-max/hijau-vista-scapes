@@ -1,3 +1,4 @@
+
 import { GalleryItem } from "./GalleryItem.interface";
 
 // Gallery items data - including all the uploaded images
@@ -129,14 +130,14 @@ export const galleryItems: GalleryItem[] = [
     title: "Paved Garden Walkway",
     description: "Elegant stone walkway with bordered plants creating a formal garden path.",
     type: "Residential",
-    image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png" // Updated to correct image
+    image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
   },
   {
     id: 19,
     title: "Outdoor Living Space",
     description: "Custom outdoor seating area surrounded by lush landscaping.",
     type: "Residential",
-    image: "/lovable-uploads/19a246a6-f378-467d-ac01-df7aea7e4b19.png" // Updated from Columbia Asia logo to correct outdoor living space image
+    image: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png"
   },
   {
     id: 20,
