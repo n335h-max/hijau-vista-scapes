@@ -8,15 +8,15 @@ import { galleryItems } from "@/components/gallery/galleryItems.data";
 const GalleryPreview = () => {
   // Select a mix of original and new images to showcase (limited to 9 for the grid)
   const selectedImages = [
-    galleryItems[0].image,
-    galleryItems[1].image,
-    galleryItems[2].image,
-    galleryItems[10].image, // Nursery
+    galleryItems[0].image,  // Zen Garden
+    galleryItems[1].image,  // Modern Backyard
+    galleryItems[18].image, // New: Paved Garden Walkway
     galleryItems[12].image, // Poolside
-    galleryItems[13].image, // Modern yard
-    galleryItems[14].image, // Commercial entrance
+    galleryItems[19].image, // New: Outdoor Living Space
+    galleryItems[21].image, // New: Urban Garden Design
     galleryItems[15].image, // Artificial turf
-    galleryItems[16].image, // Modern garden pathway
+    galleryItems[23].image, // New: Modern Deck
+    galleryItems[24].image, // New: Mediterranean Garden
   ];
 
   return (

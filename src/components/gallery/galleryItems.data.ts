@@ -1,4 +1,3 @@
-
 import { GalleryItem } from "./GalleryItem.interface";
 
 // Gallery items data - including all the uploaded images
@@ -123,5 +122,62 @@ export const galleryItems: GalleryItem[] = [
     description: "Interior landscaping design for natural transitions between indoor and outdoor spaces.",
     type: "Commercial",
     image: "/lovable-uploads/5061f982-c72d-40e7-a16c-92a0f18b40b9.png"
+  },
+  // Additional 8 recently uploaded images
+  {
+    id: 18,
+    title: "Paved Garden Walkway",
+    description: "Elegant stone walkway with bordered plants creating a formal garden path.",
+    type: "Residential",
+    image: "/lovable-uploads/bfb571a4-dbfc-49cc-b9fe-9fdd58e83869.png"
+  },
+  {
+    id: 19,
+    title: "Outdoor Living Space",
+    description: "Custom outdoor seating area surrounded by lush landscaping.",
+    type: "Residential",
+    image: "/lovable-uploads/c140ffde-3793-4b0b-8329-75263a95c0aa.png"
+  },
+  {
+    id: 20,
+    title: "Courtyard Design",
+    description: "Private courtyard with decorative paving and strategic plantings.",
+    type: "Residential",
+    image: "/lovable-uploads/c7dbe7b8-ca6f-4692-a3ab-5405385314e2.png"
+  },
+  {
+    id: 21,
+    title: "Urban Garden Design",
+    description: "Maximizing small spaces with vertical gardens and container plantings.",
+    type: "Commercial",
+    image: "/lovable-uploads/cc5e13a5-09f0-4f8b-952c-4f3950f9e918.png"
+  },
+  {
+    id: 22,
+    title: "Curved Garden Path",
+    description: "Natural stone walkway with curved design through native plantings.",
+    type: "Residential",
+    image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
+  },
+  {
+    id: 23,
+    title: "Modern Deck Installation",
+    description: "Contemporary wooden deck with integrated planters and lighting.",
+    type: "Residential",
+    image: "/lovable-uploads/d96d9c3e-98ae-4314-93b5-11957619afaf.png"
+  },
+  {
+    id: 24,
+    title: "Garden Water Feature",
+    description: "Custom water feature installation creating a focal point in garden design.",
+    type: "Residential",
+    image: "/lovable-uploads/dbeeaf61-797b-40df-a7e9-a7b0a93204ae.png"
+  },
+  {
+    id: 25,
+    title: "Mediterranean Garden Design",
+    description: "Drought-resistant Mediterranean style garden with gravel and succulents.",
+    type: "Residential",
+    image: "/lovable-uploads/e620cbd8-f83b-442d-9e8e-82f3b7dadc22.png"
   }
 ];
