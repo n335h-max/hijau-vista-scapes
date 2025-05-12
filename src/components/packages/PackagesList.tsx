@@ -3,6 +3,7 @@ import React from "react";
 import { PackageCard } from "@/components/packages/PackageCard";
 import { Package } from "@/types/packages";
 import { AnimatePresence, motion } from "framer-motion";
+import { useMobile } from "@/hooks/use-mobile";
 
 interface PackagesListProps {
   packages: Package[];
@@ -15,12 +16,14 @@ const PackagesList: React.FC<PackagesListProps> = ({
   handleSelectPackage,
   scrollToServices
 }) => {
+  const isMobile = useMobile();
+  
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-white" id="packages-list">
       <div className="container-custom">
-        <h2 className="text-2xl font-semibold mb-10 text-center">Our Packages</h2>
+        <h2 className="text-2xl font-semibold mb-6 md:mb-10 text-center" id="packages-heading">Our Packages</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
           <AnimatePresence mode="wait">
             {packages.map((pkg) => (
               <motion.div
@@ -36,6 +39,7 @@ const PackagesList: React.FC<PackagesListProps> = ({
                   package={pkg}
                   onSelect={() => handleSelectPackage(pkg.name)}
                   onCustomize={pkg.name === "Custom Package" ? scrollToServices : undefined}
+                  isMobile={isMobile}
                 />
               </motion.div>
             ))}
