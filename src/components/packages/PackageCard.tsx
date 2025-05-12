@@ -1,8 +1,7 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, CashbackIcon } from "lucide-react";
+import { Check, Leaf } from "lucide-react";
 
 interface PackageCardProps {
   package: {
