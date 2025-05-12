@@ -15,6 +15,7 @@ export interface Package {
   category: PackageCategory[];
   icon: ReactNode;
   color: string;
+  cashback?: string;
 }
 
 // List of packages

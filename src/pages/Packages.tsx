@@ -17,6 +17,7 @@ import BottomBanner from "@/components/packages/BottomBanner";
 import CustomPackageDialog from "@/components/packages/CustomPackageDialog";
 import { usePackageNavigation } from "@/components/packages/usePackageNavigation";
 import { useCustomPackageManager } from "@/components/packages/CustomPackageManager";
+import TermsAndConditions from "@/components/packages/TermsAndConditions";
 
 const Packages = () => {
   const navigate = useNavigate();
@@ -47,13 +48,13 @@ const Packages = () => {
     });
   };
 
-  // List of packages
+  // List of packages with updated information
   const packages: Package[] = [
     {
       id: 1,
       name: "Smart Package",
-      description: "Perfect for small spaces or simple upgrades to enhance your outdoor area.",
-      priceRange: "RM2,000 and below",
+      description: "Refresh Your Space, Revive Your Mood",
+      priceRange: "RM2,000 & below",
       minPrice: 2000,
       icon: <Leaf className="h-10 w-10" />,
       color: "bg-hijau-blue/10 text-hijau-blue",
@@ -64,12 +65,13 @@ const Packages = () => {
         "Chipping Stones",
         "Pebbles Stones"
       ],
+      cashback: "",
       category: ["residential", "commercial"]
     },
     {
       id: 2,
       name: "Signature Package",
-      description: "Our most popular option for a complete landscape transformation with premium elements.",
+      description: "Refresh Your Space, Revive Your Mood",
       priceRange: "RM2,001 - RM9,999",
       minPrice: 2001,
       icon: <Construction className="h-10 w-10" />,
@@ -77,17 +79,18 @@ const Packages = () => {
       features: [
         "Free Quotation & Consultation",
         "Plants",
-        "Artificial or Natural Grass",
+        "Artificial Grass / Natural Grass",
         "Stepping Slab",
         "Planter Box",
         "Mixed Pebbles Stones"
       ],
+      cashback: "Cashback: 5%",
       category: ["residential", "commercial"]
     },
     {
       id: 3,
       name: "Elite Package",
-      description: "The ultimate luxury landscape package with premium features for discerning clients.",
+      description: "Refresh Your Space, Revive Your Mood",
       priceRange: "RM10,000 - RM40,000",
       minPrice: 10000,
       icon: <Droplet className="h-10 w-10" />,
@@ -95,12 +98,14 @@ const Packages = () => {
       features: [
         "Free Quotation & Consultation",
         "Plants",
+        "Plants with pot",
         "Stepping Slab",
-        "Water Feature / Fountain",
-        "Artificial or Natural Grass",
-        "Planter Box",
+        "Fountain / Water Feature",
+        "Artificial Grass / Natural Grass",
+        "Planter Box + Mixed Herbs plants",
         "Garden Lighting"
       ],
+      cashback: "Cashback: RM2,000",
       category: ["residential", "commercial"]
     },
     {
@@ -112,6 +117,7 @@ const Packages = () => {
       icon: <Construction className="h-10 w-10" />,
       color: "bg-amber-100 text-amber-700",
       features: ["Fully customizable", "You dream it, we build it"],
+      cashback: "",
       category: ["residential", "commercial"]
     }
   ];
@@ -159,6 +165,9 @@ const Packages = () => {
         handleSelectPackage={handleSelectPackage}
         scrollToServices={handleShowServices}
       />
+
+      {/* Terms and Conditions */}
+      <TermsAndConditions />
 
       {/* Consultation Banner */}
       <ConsultationBanner />

@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Check, CashbackIcon } from "lucide-react";
 
 interface PackageCardProps {
   package: {
@@ -15,6 +15,7 @@ interface PackageCardProps {
     category: string[];
     icon: React.ReactNode;
     color: string;
+    cashback?: string;
   };
   onSelect: () => void;
   onCustomize?: () => void;
@@ -36,6 +37,11 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           <p className="text-center font-bold text-lg text-hijau-blue mb-2">
             {pkg.priceRange}
           </p>
+          {pkg.cashback && (
+            <p className="text-center font-semibold text-green-600 mb-2">
+              {pkg.cashback}
+            </p>
+          )}
           <p className="text-hijau-dark/70 text-center text-sm">
             {pkg.description}
           </p>
