@@ -5,11 +5,11 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const TermsAndConditions: React.FC = () => {
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding bg-nature-gradient">
       <div className="container-custom">
         <h2 className="text-2xl font-semibold mb-6 text-center">Terms & Conditions</h2>
         
-        <Card className="border-2 border-hijau-blue/20">
+        <Card className="border-2 border-hijau-blue/20 shadow-nature">
           <CardContent className="p-6">
             <ul className="space-y-4">
               <li className="flex items-start gap-2">

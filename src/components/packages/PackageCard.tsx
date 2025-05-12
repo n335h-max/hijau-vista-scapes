@@ -1,7 +1,9 @@
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Leaf } from "lucide-react";
+import { Check, Leaf, Construction, Droplet, Square } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface PackageCardProps {
   package: {
@@ -26,10 +28,10 @@ export const PackageCard: React.FC<PackageCardProps> = ({
   onCustomize,
 }) => {
   return (
-    <Card className="overflow-hidden border-2 hover:border-hijau-blue hover:shadow-lg transition-all duration-300">
-      <CardContent className="p-0">
-        <div className="p-6 border-b">
-          <div className={`w-16 h-16 rounded-full ${pkg.color} flex items-center justify-center mb-4 mx-auto`}>
+    <Card className="h-full overflow-hidden border-2 hover:border-hijau-blue hover:shadow-lg transition-all duration-300 flex flex-col">
+      <CardContent className="p-0 flex flex-col h-full">
+        <div className="p-6 border-b bg-gradient-to-b from-white to-gray-50">
+          <div className={`w-16 h-16 rounded-full ${pkg.color} flex items-center justify-center mb-4 mx-auto shadow-soft`}>
             {pkg.icon}
           </div>
           <h3 className="text-xl font-semibold text-center mb-2">{pkg.name}</h3>
@@ -37,16 +39,18 @@ export const PackageCard: React.FC<PackageCardProps> = ({
             {pkg.priceRange}
           </p>
           {pkg.cashback && (
-            <p className="text-center font-semibold text-green-600 mb-2">
-              {pkg.cashback}
-            </p>
+            <div className="flex justify-center">
+              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 font-medium px-3 py-1">
+                {pkg.cashback}
+              </Badge>
+            </div>
           )}
-          <p className="text-hijau-dark/70 text-center text-sm">
+          <p className="text-hijau-dark/70 text-center text-sm mt-3">
             {pkg.description}
           </p>
         </div>
         
-        <div className="p-6">
+        <div className="p-6 flex-grow">
           <ul className="space-y-3">
             {pkg.features.map((feature, index) => (
               <li key={index} className="flex items-start gap-2">
@@ -57,18 +61,18 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           </ul>
         </div>
         
-        <div className="p-6 pt-0">
+        <div className="p-6 pt-0 mt-auto">
           {pkg.name === "Custom Package" ? (
             <Button 
               onClick={onCustomize}
-              className="w-full bg-hijau-blue hover:bg-hijau-blue/90"
+              className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-button"
             >
               Create My Package
             </Button>
           ) : (
             <Button
               onClick={onSelect}
-              className="w-full bg-hijau-blue hover:bg-hijau-blue/90"
+              className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-button"
             >
               Select Package
             </Button>

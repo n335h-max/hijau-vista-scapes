@@ -18,6 +18,8 @@ const PackagesList: React.FC<PackagesListProps> = ({
   return (
     <section className="section-padding bg-white">
       <div className="container-custom">
+        <h2 className="text-2xl font-semibold mb-10 text-center">Our Packages</h2>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <AnimatePresence mode="wait">
             {packages.map((pkg) => (
@@ -28,6 +30,7 @@ const PackagesList: React.FC<PackagesListProps> = ({
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
                 layout
+                className="h-full"
               >
                 <PackageCard 
                   package={pkg}

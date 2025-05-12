@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Leaf, Construction, Droplet } from "lucide-react";
+import { Leaf, Construction, Droplet, Square } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { servicesData } from "@/types/services";
 import { Package, PackageCategory } from "@/types/packages";
@@ -56,8 +56,8 @@ const Packages = () => {
       description: "Refresh Your Space, Revive Your Mood",
       priceRange: "RM2,000 & below",
       minPrice: 2000,
-      icon: <Leaf className="h-10 w-10" />,
-      color: "bg-hijau-blue/10 text-hijau-blue",
+      icon: <Leaf className="h-8 w-8 text-white" />,
+      color: "bg-hijau-leaf text-white",
       features: [
         "Free Quotation & Consultation",
         "Plant",
@@ -74,8 +74,8 @@ const Packages = () => {
       description: "Refresh Your Space, Revive Your Mood",
       priceRange: "RM2,001 - RM9,999",
       minPrice: 2001,
-      icon: <Construction className="h-10 w-10" />,
-      color: "bg-green-100 text-green-700",
+      icon: <Construction className="h-8 w-8 text-white" />,
+      color: "bg-hijau-forest text-white",
       features: [
         "Free Quotation & Consultation",
         "Plants",
@@ -93,8 +93,8 @@ const Packages = () => {
       description: "Refresh Your Space, Revive Your Mood",
       priceRange: "RM10,000 - RM40,000",
       minPrice: 10000,
-      icon: <Droplet className="h-10 w-10" />,
-      color: "bg-purple-100 text-purple-700",
+      icon: <Droplet className="h-8 w-8 text-white" />,
+      color: "bg-hijau-blue text-white",
       features: [
         "Free Quotation & Consultation",
         "Plants",
@@ -114,9 +114,15 @@ const Packages = () => {
       description: "You dream it, we build it. A fully customizable package tailored to your specific needs.",
       priceRange: "Fully customizable",
       minPrice: 0,
-      icon: <Construction className="h-10 w-10" />,
-      color: "bg-amber-100 text-amber-700",
-      features: ["Fully customizable", "You dream it, we build it"],
+      icon: <Square className="h-8 w-8 text-white" />,
+      color: "bg-amber-600 text-white",
+      features: [
+        "Fully customizable", 
+        "You dream it, we build it",
+        "Mix and match services",
+        "Tailored to your needs",
+        "Personalized consultation"
+      ],
       cashback: "",
       category: ["residential", "commercial"]
     }
