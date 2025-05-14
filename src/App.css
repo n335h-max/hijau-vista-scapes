@@ -50,7 +50,12 @@
   display: inline-block;
 }
 
-/* Hover underline effect */
+/* Blue-yellow gradient background */
+.bg-blue-yellow-gradient {
+  background: linear-gradient(135deg, rgba(25, 94, 140, 0.1), rgba(238, 215, 96, 0.1));
+}
+
+/* Hover underline effect with yellow color */
 .hover-underline {
   position: relative;
 }
@@ -73,7 +78,7 @@
   transform-origin: bottom left;
 }
 
-/* Shimmer effect */
+/* Shimmer effect with blue-yellow gradient */
 .shimmer {
   position: relative;
   overflow: hidden;
@@ -89,7 +94,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(25, 94, 140, 0.2),
+    rgba(238, 215, 96, 0.2),
     transparent
   );
   animation: shimmer 2s infinite;
@@ -99,4 +105,52 @@
   100% {
     left: 150%;
   }
+}
+
+/* Blue and yellow highlight box */
+.highlight-box {
+  position: relative;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.highlight-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #195E8C, #EED760);
+}
+
+/* Card with blue-yellow gradient border */
+.card-gradient-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.card-gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #195E8C, #EED760);
+  z-index: -1;
+}
+
+/* Animated gradient button */
+.btn-gradient {
+  background-size: 200% auto;
+  transition: all 0.3s ease;
+  background-image: linear-gradient(to right, #195E8C 0%, #EED760 51%, #195E8C 100%);
+}
+
+.btn-gradient:hover {
+  background-position: right center;
 }

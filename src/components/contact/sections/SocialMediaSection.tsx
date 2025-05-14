@@ -3,14 +3,14 @@ import React from "react";
 
 const SocialMediaSection: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-hijau-blue/5 to-transparent p-6 rounded-lg border border-hijau-blue/10">
+    <div className="bg-gradient-to-r from-hijau-blue/5 to-hijau-yellow/5 p-6 rounded-lg border border-hijau-blue/10">
       <h3 className="text-lg font-semibold mb-4 text-hijau-blue">Follow Us</h3>
       <div className="flex flex-wrap gap-4">
         <a
           href="https://www.facebook.com/p/Hijau-Group-Landscape-100063573459541/"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-hijau-blue/10 hover:bg-hijau-blue text-hijau-blue hover:text-white p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
+          className="bg-gradient-to-r from-hijau-blue/10 to-hijau-blue/20 hover:bg-hijau-blue text-hijau-blue hover:text-white p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
           aria-label="Facebook"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -19,7 +19,7 @@ const SocialMediaSection: React.FC = () => {
           href="https://www.instagram.com/hijaugroup.landscape/"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-hijau-blue/10 hover:bg-hijau-blue text-hijau-blue hover:text-white p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
+          className="bg-gradient-to-r from-hijau-blue/10 to-hijau-blue/20 hover:bg-hijau-blue text-hijau-blue hover:text-white p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
           aria-label="Instagram"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
@@ -28,7 +28,7 @@ const SocialMediaSection: React.FC = () => {
           href="https://www.tiktok.com/@hijaugrouplandscape"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-hijau-blue/10 hover:bg-hijau-blue text-hijau-blue hover:text-white p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
+          className="bg-gradient-to-r from-hijau-yellow/10 to-hijau-yellow/20 hover:bg-hijau-yellow text-hijau-blue hover:text-hijau-dark p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
           aria-label="TikTok"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -44,7 +44,7 @@ const SocialMediaSection: React.FC = () => {
           href="https://wa.me/601110629990"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-hijau-blue/10 hover:bg-hijau-blue text-hijau-blue hover:text-white p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
+          className="bg-gradient-to-r from-hijau-yellow/10 to-hijau-yellow/20 hover:bg-hijau-yellow text-hijau-blue hover:text-hijau-dark p-3 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-md"
           aria-label="WhatsApp"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

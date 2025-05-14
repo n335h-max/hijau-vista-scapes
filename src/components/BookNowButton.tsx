@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -31,11 +30,11 @@ const BookNowButton = () => {
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
         >
           <div className="relative">
-            {/* Animated glow effect */}
-            <div className="absolute inset-0 rounded-full bg-hijau-yellow/20 blur-md animate-pulse-gentle" />
+            {/* Animated glow effect with blue-yellow gradient */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-hijau-blue/30 to-hijau-yellow/30 blur-md animate-pulse-gentle" />
             <Button
               asChild
-              className="relative rounded-full px-5 py-5 md:px-6 md:py-6 bg-hijau-blue hover:bg-hijau-blue-light shadow-lg hover:shadow-xl text-white transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-hijau-yellow/50 focus:outline-none"
+              className="relative rounded-full px-5 py-5 md:px-6 md:py-6 bg-gradient-to-r from-hijau-blue to-hijau-blue-dark hover:from-hijau-blue-dark hover:to-hijau-blue shadow-lg hover:shadow-xl text-white transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-hijau-yellow focus:outline-none"
               aria-label="Book a consultation now"
             >
               <Link to="/contact?package=Consultation" className="flex items-center gap-2">
@@ -52,4 +51,3 @@ const BookNowButton = () => {
 };
 
 export default BookNowButton;
-

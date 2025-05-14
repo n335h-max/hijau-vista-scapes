@@ -4,14 +4,14 @@ import { Clock } from "lucide-react";
 
 const BusinessHoursSection: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-transparent to-hijau-yellow/5 p-6 rounded-lg border border-hijau-yellow/10">
+    <div className="bg-gradient-to-r from-hijau-blue/5 to-hijau-yellow/5 p-6 rounded-lg border border-hijau-yellow/10">
       <div className="flex items-start gap-4">
         <div className="mt-1 bg-hijau-blue/10 p-3 rounded-full text-hijau-blue">
           <Clock className="h-6 w-6" />
         </div>
         <div>
           <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Business Hours</h3>
-          <div className="bg-gray-50 rounded-lg p-4 shadow-sm">
+          <div className="bg-gradient-to-br from-white to-hijau-yellow/5 rounded-lg p-4 shadow-sm border-l-2 border-hijau-yellow">
             <div className="grid grid-cols-2 gap-2">
               <div className="py-1.5 px-3 rounded bg-hijau-blue/5">
                 <span className="font-medium text-hijau-dark">Monday - Friday:</span>

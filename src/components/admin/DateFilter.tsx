@@ -11,7 +11,7 @@ interface DateFilterProps {
 
 const DateFilter: React.FC<DateFilterProps> = ({ selectedDate, onSelectDate }) => {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-1 border border-gray-100 hover:shadow-xl transition-all">
+    <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-1 border border-hijau-blue/10 hover:shadow-xl transition-all">
       <h2 className="text-lg font-semibold mb-4 text-hijau-blue flex items-center">
         <Filter className="mr-2 h-5 w-5" />
         Filter by Date
@@ -20,10 +20,11 @@ const DateFilter: React.FC<DateFilterProps> = ({ selectedDate, onSelectDate }) =
         mode="single"
         selected={selectedDate}
         onSelect={onSelectDate}
-        className="border rounded-md p-3"
+        className="border-hijau-blue/10 rounded-md p-3"
         classNames={{
           day_selected: "bg-hijau-blue text-white hover:bg-hijau-blue hover:text-white",
-          day_today: "bg-hijau-blue/10 text-hijau-blue",
+          day_today: "bg-hijau-yellow/20 text-hijau-dark font-bold",
+          day_range_middle: "bg-hijau-blue/10",
         }}
       />
       <div className="mt-6 flex justify-center">
@@ -31,7 +32,7 @@ const DateFilter: React.FC<DateFilterProps> = ({ selectedDate, onSelectDate }) =
           onClick={() => onSelectDate(undefined)}
           variant="outline"
           size="sm"
-          className="hover:bg-hijau-blue hover:text-white transition-all"
+          className="border-hijau-blue text-hijau-blue hover:bg-hijau-blue hover:text-white transition-all"
         >
           Show All Bookings
         </Button>

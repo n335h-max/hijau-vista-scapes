@@ -12,7 +12,7 @@ const AdminLoginSection: React.FC<AdminLoginSectionProps> = ({ onAdminLogin }) =
       <Button 
         variant="outline" 
         onClick={onAdminLogin}
-        className="text-hijau-blue border-hijau-blue hover:bg-hijau-blue hover:text-white transition-colors"
+        className="text-hijau-blue border-hijau-blue hover:bg-gradient-to-r hover:from-hijau-blue hover:to-hijau-blue-dark hover:text-white transition-colors"
       >
         Admin Login
       </Button>
