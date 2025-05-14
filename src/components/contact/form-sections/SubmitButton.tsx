@@ -11,6 +11,7 @@ const SubmitButton: React.FC = () => {
     <div className="pt-6">
       <Button 
         type="submit" 
+        onClick={() => form.handleSubmit(() => {})()} 
         className="w-full bg-gradient-to-r from-hijau-blue to-hijau-blue-dark hover:from-hijau-blue-dark hover:to-hijau-blue shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 rounded-md text-white font-medium border border-hijau-blue/20"
         size="lg"
       >
