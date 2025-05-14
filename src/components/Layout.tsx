@@ -60,7 +60,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-hijau-blue/5">
       <Navigation />
       <main className="flex-grow pt-16 md:pt-20">
         <div

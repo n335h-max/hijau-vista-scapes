@@ -1,12 +1,11 @@
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -92,7 +91,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-hijau-blue/5 text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
   
@@ -161,5 +160,8 @@
   .accent-border {
     @apply border-2 border-hijau-yellow;
   }
+  
+  .bg-eco-gradient {
+    @apply bg-gradient-to-b from-white to-hijau-blue/5;
+  }
 }
-
