@@ -14,16 +14,16 @@ const EmailSection: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <a 
-              href="mailto:info@hijaugroup.com" 
+              href="mailto:admin@hijaugrouplandscape.com.my" 
               className="bg-gradient-to-r from-white to-hijau-blue/5 rounded-lg p-3 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300 text-hijau-dark hover:text-hijau-blue"
             >
-              info@hijaugroup.com
+              admin@hijaugrouplandscape.com.my
             </a>
             <a 
-              href="mailto:support@hijaugroup.com" 
+              href="mailto:contactus@hijaugrouplandscape.com.my" 
               className="bg-gradient-to-r from-white to-hijau-yellow/5 rounded-lg p-3 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300 text-hijau-dark hover:text-hijau-blue"
             >
-              support@hijaugroup.com
+              contactus@hijaugrouplandscape.com.my
             </a>
           </div>
         </div>

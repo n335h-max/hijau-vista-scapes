@@ -30,7 +30,6 @@ const ContactSection: React.FC = () => {
             <h3 className="text-lg font-semibold mb-2 text-hijau-blue">WhatsApp</h3>
             <a href="https://wa.me/601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
               +60 11-1062 9990
-              <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Chat Now</span>
             </a>
           </div>
         </div>
