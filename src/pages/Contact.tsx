@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -31,8 +32,8 @@ const Contact = () => {
 
   // Admin login handler
   const handleAdminLogin = () => {
-    // Simple password check - in a real app, use proper authentication
-    if (adminPassword === "admin123") {
+    // Updated password check with new secure password
+    if (adminPassword === "hijaugrouplandscape@9990") {
       // Set admin status in localStorage (in a real app, use secure tokens/cookies)
       localStorage.setItem("isHijauAdmin", "true");
       setLoginDialogOpen(false);

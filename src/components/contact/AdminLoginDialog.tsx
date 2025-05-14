@@ -38,9 +38,6 @@ const AdminLoginDialog: React.FC<AdminLoginDialogProps> = ({
           <DialogTitle className="text-hijau-blue text-xl">Admin Login</DialogTitle>
           <DialogDescription>
             Enter your password to access the admin area.
-            <div className="mt-2 p-2 bg-blue-50 text-blue-700 text-sm rounded-md">
-              <span className="font-medium">Note:</span> The default admin password is "admin123"
-            </div>
           </DialogDescription>
         </DialogHeader>
         <div className="space-y-4 py-4">
