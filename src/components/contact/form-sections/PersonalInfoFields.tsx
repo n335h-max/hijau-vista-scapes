@@ -1,12 +1,15 @@
+
 import React from "react";
 import { Control } from "react-hook-form";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ContactFormValues } from "@/utils/contactFormValidation";
 import { User, Mail, Phone } from "lucide-react";
+
 interface PersonalInfoFieldsProps {
   control: Control<ContactFormValues>;
 }
+
 const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({
   control
 }) => {
@@ -46,11 +49,12 @@ const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({
                 Email Address
               </FormLabel>
               <FormControl>
-                <Input placeholder="Your email" className="border-gray-200 focus:border-hijau-blue focus:ring-hijau-blue/20 transition-all rounded-md" />
+                <Input placeholder="Your email" {...field} className="border-gray-200 focus:border-hijau-blue focus:ring-hijau-blue/20 transition-all rounded-md" />
               </FormControl>
               <FormMessage className="text-red-500" />
             </FormItem>} />
       </div>
     </>;
 };
+
 export default PersonalInfoFields;
