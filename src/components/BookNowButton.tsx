@@ -29,17 +29,21 @@ const BookNowButton = () => {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
         >
-          <Button
-            asChild
-            className="rounded-full px-5 py-5 md:px-6 md:py-6 bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl text-white transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-hijau-blue/50 focus:outline-none"
-            aria-label="Book a consultation now"
-          >
-            <Link to="/contact?package=Consultation" className="flex items-center gap-2">
-              <Calendar className="size-4 md:size-5" aria-hidden="true" />
-              <span className="font-medium hidden md:inline">Book Now</span>
-              <span className="font-medium md:hidden">Book</span>
-            </Link>
-          </Button>
+          <div className="relative">
+            {/* Animated glow effect */}
+            <div className="absolute inset-0 rounded-full bg-hijau-yellow/20 blur-md animate-pulse-gentle" />
+            <Button
+              asChild
+              className="relative rounded-full px-5 py-5 md:px-6 md:py-6 bg-hijau-blue hover:bg-hijau-blue-light shadow-lg hover:shadow-xl text-white transition-all duration-300 hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-hijau-yellow/50 focus:outline-none"
+              aria-label="Book a consultation now"
+            >
+              <Link to="/contact?package=Consultation" className="flex items-center gap-2">
+                <Calendar className="size-4 md:size-5" aria-hidden="true" />
+                <span className="font-medium hidden md:inline">Book Now</span>
+                <span className="font-medium md:hidden">Book</span>
+              </Link>
+            </Button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

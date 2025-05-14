@@ -1,16 +1,26 @@
 
-import { useToast, toast } from "@/hooks/use-toast";
+import { useToast as useHookToast, toast as hookToast } from "@/hooks/use-toast";
+import { ToasterToast } from "@/hooks/use-toast";
 
-// Customizing toast defaults to use our new colors
-toast.custom = (message, options) => {
-  return toast(message, {
+export const useToast = useHookToast;
+
+// Regular toast
+export const toast = hookToast;
+
+// Custom styled toast with blue background
+export const customToast = (message: string, options?: Partial<ToasterToast>) => {
+  return toast({
+    title: message,
     ...options,
-    style: {
-      backgroundColor: '#195E8C', // Using our blue color
-      color: 'white',
-      ...options?.style,
-    },
+    className: "bg-hijau-blue text-white border-hijau-blue-light",
   });
 };
 
-export { useToast, toast };
+// Success toast with yellow accent
+export const successToast = (message: string, options?: Partial<ToasterToast>) => {
+  return toast({
+    title: message,
+    ...options,
+    className: "bg-white border-l-4 border-hijau-yellow text-hijau-dark",
+  });
+};

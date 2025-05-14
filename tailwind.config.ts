@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,18 +63,22 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Hijau brand colors updated to match the image
+				// Enhanced Hijau brand colors with emphasis on blue and yellow
 				hijau: {
-					blue: '#195E8C', // Updated to match image blue
-					yellow: '#EED760', // Updated to match image yellow
-					light: '#F2FCE2', // Kept light green background
-					dark: '#1E293B', // Kept dark text
-					moss: '#6B8E23', // Kept natural moss green
-					sage: '#9CAF88', // Kept soft sage green
-					earth: '#8B7355', // Kept earthy brown
-					clay: '#D6C4B8', // Kept soft clay accent
-					leaf: '#4CAF50', // Kept fresh leaf green
-					forest: '#2E7D32', // Kept deep forest green
+					blue: '#195E8C', // Primary blue
+					'blue-light': '#3D7EAC', // Lighter blue for hover states
+					'blue-dark': '#0E4C76', // Darker blue for shadows/accents
+					yellow: '#EED760', // Primary yellow
+					'yellow-light': '#F5E690', // Lighter yellow for hover states
+					'yellow-dark': '#DBBA2D', // Darker yellow for shadows/accents
+					light: '#F2FCE2',
+					dark: '#1E293B',
+					moss: '#6B8E23',
+					sage: '#9CAF88',
+					earth: '#8B7355',
+					clay: '#D6C4B8',
+					leaf: '#4CAF50',
+					forest: '#2E7D32',
 				}
 			},
 			borderRadius: {
@@ -151,6 +156,14 @@ export default {
 					'100%': {
 						transform: 'scale(1.05)'
 					}
+				},
+				'shimmer': {
+					'0%': {
+						backgroundPosition: '-200% 0'
+					},
+					'100%': {
+						backgroundPosition: '200% 0'
+					}
 				}
 			},
 			animation: {
@@ -161,7 +174,8 @@ export default {
 				'float': 'float 3s ease-in-out infinite',
 				'pulse-gentle': 'pulse-gentle 2s ease-in-out infinite',
 				'slide-up': 'slide-up 0.7s ease-out forwards',
-				'grow': 'grow 0.3s ease-out forwards'
+				'grow': 'grow 0.3s ease-out forwards',
+				'shimmer': 'shimmer 2s linear infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
@@ -171,14 +185,18 @@ export default {
 			boxShadow: {
 				'soft': '0 2px 10px rgba(0, 0, 0, 0.05)',
 				'card': '0 5px 15px rgba(0, 0, 0, 0.08)',
-				'button': '0 4px 6px rgba(14, 165, 233, 0.25)',
-				'nature': '0 6px 12px rgba(76, 175, 80, 0.15)'
+				'button': '0 4px 6px rgba(25, 94, 140, 0.25)', // Using our blue color
+				'nature': '0 6px 12px rgba(25, 94, 140, 0.15)', // Using our blue color
+				'highlight': '0 0 15px rgba(238, 215, 96, 0.5)' // Yellow glow
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-overlay': 'linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3))',
-				'eco-gradient': 'linear-gradient(135deg, #F2FCE2 0%, #E8F5E9 100%)',
-				'nature-gradient': 'linear-gradient(120deg, rgba(76, 175, 80, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%)'
+				'blue-yellow-gradient': 'linear-gradient(135deg, #195E8C 0%, #EED760 100%)',
+				'blue-gradient': 'linear-gradient(120deg, #195E8C 0%, #3D7EAC 100%)',
+				'yellow-gradient': 'linear-gradient(120deg, #EED760 0%, #F5E690 100%)',
+				'shimmer-gradient': 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent)',
+				'nature-gradient': 'linear-gradient(120deg, rgba(25, 94, 140, 0.1) 0%, rgba(238, 215, 96, 0.1) 100%)'
 			}
 		}
 	},

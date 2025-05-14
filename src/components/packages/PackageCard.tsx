@@ -31,31 +31,39 @@ export const PackageCard: React.FC<PackageCardProps> = ({
   isMobile = false,
 }) => {
   return (
-    <Card className="h-full overflow-hidden border-2 hover:border-hijau-blue hover:shadow-lg transition-all duration-300 flex flex-col focus-within:ring-2 focus-within:ring-hijau-blue focus-within:ring-offset-2" role="group" aria-labelledby={`package-${pkg.id}-title`}>
+    <Card className="h-full overflow-hidden border-2 hover:border-hijau-blue hover:shadow-lg transition-all duration-300 flex flex-col focus-within:ring-2 focus-within:ring-hijau-blue/50 focus-within:ring-offset-2 group" role="group" aria-labelledby={`package-${pkg.id}-title`}>
       <CardContent className="p-0 flex flex-col h-full">
-        <div className="p-4 md:p-6 border-b bg-gradient-to-b from-white to-gray-50">
-          <div 
-            className={`w-14 h-14 md:w-16 md:h-16 rounded-full ${pkg.color} flex items-center justify-center mb-4 mx-auto shadow-soft`}
+        <div className="p-4 md:p-6 border-b bg-gradient-to-b from-white to-hijau-light/30 relative overflow-hidden">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#195E8C_1px,transparent_1px)] [background-size:16px_16px] -z-10"></div>
+          
+          <motion.div 
+            className={`w-14 h-14 md:w-16 md:h-16 rounded-full ${pkg.color} flex items-center justify-center mb-4 mx-auto shadow-soft relative group-hover:shadow-highlight transition-all duration-300`}
+            whileHover={{ scale: 1.05, rotate: 5 }}
             aria-hidden="true"
           >
             {pkg.icon}
-          </div>
+          </motion.div>
+          
           <h3 
-            className="text-lg md:text-xl font-semibold text-center mb-2" 
+            className="text-lg md:text-xl font-semibold text-center mb-2 group-hover:gradient-text transition-all duration-300" 
             id={`package-${pkg.id}-title`}
           >
             {pkg.name}
           </h3>
+          
           <p className="text-center font-bold text-md md:text-lg text-hijau-blue mb-2" aria-label={`Price: ${pkg.priceRange}`}>
             {pkg.priceRange}
           </p>
+          
           {pkg.cashback && (
             <div className="flex justify-center" aria-live="polite">
-              <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 font-medium px-3 py-1">
+              <Badge variant="outline" className="bg-hijau-yellow/20 text-hijau-dark border-hijau-yellow font-medium px-3 py-1">
                 {pkg.cashback}
               </Badge>
             </div>
           )}
+          
           <p className="text-hijau-dark/70 text-center text-sm mt-3">
             {pkg.description}
           </p>
@@ -64,10 +72,19 @@ export const PackageCard: React.FC<PackageCardProps> = ({
         <div className="p-4 md:p-6 flex-grow">
           <ul className="space-y-3" aria-label="Package features">
             {pkg.features.map((feature, index) => (
-              <li key={index} className="flex items-start gap-2">
-                <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
+              <motion.li 
+                key={index} 
+                className="flex items-start gap-2"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <div className="bg-hijau-blue/10 rounded-full p-1 mt-0.5">
+                  <Check className="h-3 w-3 text-hijau-blue flex-shrink-0" aria-hidden="true" />
+                </div>
                 <span className="text-sm">{feature}</span>
-              </li>
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -76,7 +93,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           {pkg.name === "Custom Package" ? (
             <Button 
               onClick={onCustomize}
-              className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-button flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-hijau-blue to-hijau-blue-light hover:from-hijau-blue-light hover:to-hijau-blue shadow-button flex items-center justify-center gap-2 transition-all duration-300"
               aria-label="Create custom package"
             >
               {isMobile ? "Customize" : "Create My Package"}
@@ -85,7 +102,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({
           ) : (
             <Button
               onClick={onSelect}
-              className="w-full bg-hijau-blue hover:bg-hijau-blue/90 shadow-button flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-hijau-blue to-hijau-blue-light hover:from-hijau-blue-light hover:to-hijau-blue shadow-button flex items-center justify-center gap-2 transition-all duration-300"
               aria-label={`Select ${pkg.name}`}
             >
               {isMobile ? "Select" : "Select Package"}

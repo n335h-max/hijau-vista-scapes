@@ -14,16 +14,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 206 80% 30%; /* Updated blue from image */
+    --primary: 206 80% 32%; /* Enhanced blue */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 46 90% 70%; /* Updated yellow from image */
+    --secondary: 46 100% 65%; /* Enhanced yellow */
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 120 60% 97%; /* Soft green accent */
+    --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -31,7 +31,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 206 80% 30%;
+    --ring: 206 80% 32%;
 
     --radius: 0.75rem;
 
@@ -55,16 +55,16 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 206 80% 30%; /* Updated blue from image */
+    --primary: 206 80% 32%; /* Enhanced blue */
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 46 90% 70%; /* Updated yellow from image */
+    --secondary: 46 100% 65%; /* Enhanced yellow */
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 120 24% 16%; /* Dark green accent */
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -72,7 +72,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 206 80% 30%;
+    --ring: 206 80% 32%;
     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -113,8 +113,16 @@
     @apply transition-transform duration-300 hover:scale-105;
   }
   
-  .btn-book-now {
-    @apply bg-hijau-leaf text-white font-medium py-2 px-6 rounded-lg shadow-nature hover:bg-hijau-forest transition-all;
+  .btn-primary {
+    @apply bg-hijau-blue text-white font-medium py-2 px-6 rounded-lg shadow-lg hover:bg-hijau-blue/90 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply bg-hijau-yellow text-hijau-dark font-medium py-2 px-6 rounded-lg shadow-lg hover:bg-hijau-yellow/90 transition-all;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-hijau-blue text-hijau-blue font-medium py-2 px-6 rounded-lg shadow-md hover:bg-hijau-blue hover:text-white transition-all;
   }
   
   .heading-large {
@@ -129,19 +137,28 @@
     @apply text-xl md:text-2xl font-display font-semibold leading-tight;
   }
   
-  .eco-card {
-    @apply bg-hijau-light rounded-xl shadow-nature p-6 hover:shadow-lg transition-all duration-300;
-  }
-  
-  .eco-button {
-    @apply bg-hijau-leaf text-white rounded-lg shadow-nature hover:bg-hijau-forest transition-all duration-300;
-  }
-  
-  .nature-gradient {
-    @apply bg-nature-gradient;
+  .card-shadow {
+    @apply shadow-lg hover:shadow-xl transition-shadow duration-300;
   }
   
   .glass-card {
-    @apply backdrop-blur-md bg-white/80 border border-white/20 rounded-xl shadow-soft;
+    @apply backdrop-blur-md bg-white/80 border border-white/20 rounded-xl shadow-lg;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-hijau-blue to-hijau-blue/70;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-hijau-blue to-hijau-yellow bg-clip-text text-transparent;
+  }
+  
+  .highlight-box {
+    @apply border-l-4 border-hijau-yellow pl-4 py-2;
+  }
+  
+  .accent-border {
+    @apply border-2 border-hijau-yellow;
   }
 }
+
