@@ -27,10 +27,6 @@ const AdminHeader: React.FC<AdminHeaderProps> = ({
     toast({
       title: "Logged Out",
       description: "You have been logged out successfully.",
-      style: {
-        backgroundColor: '#195E8C', // Using our blue color
-        color: 'white',
-      }
     });
     if (onLogout) onLogout();
   };
