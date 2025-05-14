@@ -1,12 +1,12 @@
-
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import BookingCalendar from "@/components/booking/BookingCalendar";
 import BookingConfirmation from "@/components/booking/BookingConfirmation";
+import BookingProcess from "@/components/booking/BookingProcess";
 
-const Booking = () => {
+const BookingPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -116,15 +116,15 @@ const Booking = () => {
     return null; // Will redirect in useEffect
   }
 
+  // Main render
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative h-[30vh] md:h-[40vh]">
+      <section className="relative h-[40vh] md:h-[50vh]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80')",
+              "url('https://images.unsplash.com/photo-1631892896784-cec78594f266?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')",
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
@@ -133,17 +133,19 @@ const Booking = () => {
         <div className="container-custom relative h-full flex items-center">
           <div className="max-w-xl text-white">
             <h1 className="heading-large mb-4 relative">
-              Book Your Appointment
+              Book Your Consultation
               <span className="absolute -bottom-4 left-0 w-24 h-1 bg-hijau-yellow"></span>
             </h1>
             <p className="text-lg md:text-xl mt-6 opacity-90">
-              Select your preferred date and time for your landscaping consultation
+              Schedule your landscaping consultation to begin the journey
+              to your perfect outdoor space.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Booking Content */}
+      <BookingProcess />
+
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           {!isConfirmed ? (
@@ -160,4 +162,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default BookingPage;

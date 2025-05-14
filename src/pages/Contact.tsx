@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import ContactInfoSection from "@/components/contact/ContactInfoSection";
 import ContactForm from "@/components/contact/ContactForm";
 import AdminLoginDialog from "@/components/contact/AdminLoginDialog";
+import BookingProcessPreview from "@/components/contact/BookingProcessPreview";
 
 const Contact = () => {
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
@@ -84,6 +84,7 @@ const Contact = () => {
       {/* Contact Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
+          <BookingProcessPreview />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Information */}
             <ContactInfoSection onAdminLogin={() => setLoginDialogOpen(true)} />
