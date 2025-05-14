@@ -1,3 +1,4 @@
+
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
@@ -38,12 +39,9 @@ const handler = async (req: Request): Promise<Response> => {
       day: "numeric",
     });
 
-    // When using Resend free tier/testing:
-    // 1. You can only send to the email address you registered with (n33sh07@gmail.com)
-    // 2. You must verify a domain at resend.com/domains for production use
-    // Keep the "Hijau Landscape <onboarding@resend.dev>" format but replace with your domain when verified
+    // Updated from address to use the new domain
     const emailResponse = await resend.emails.send({
-      from: "Hijau Landscape <onboarding@resend.dev>", 
+      from: "Hijau Landscape <admin@hijaugrouplandscape.com.my>", 
       to: [email],
       subject: "Your Landscaping Appointment is Confirmed!",
       html: `
@@ -77,7 +75,7 @@ const handler = async (req: Request): Promise<Response> => {
         return new Response(
           JSON.stringify({
             error: "Domain verification required",
-            message: "You need to verify a domain at resend.com/domains and update the 'from' email address",
+            message: "You need to verify the domain hijaugrouplandscape.com.my at resend.com/domains and update the 'from' email address",
             details: emailResponse.error
           }),
           {
