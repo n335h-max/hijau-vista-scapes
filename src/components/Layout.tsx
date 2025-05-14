@@ -60,12 +60,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-hijau-blue/5">
+    <div className="flex flex-col min-h-screen w-full bg-hijau-blue/5">
       <Navigation />
-      <main className="flex-grow pt-16 md:pt-20">
+      <main className="flex-grow w-full pt-16 md:pt-20">
         <div
           style={{ opacity: isPageLoaded ? 1 : 0, transition: "opacity 0.3s ease-in-out" }}
-          className="h-full"
+          className="h-full w-full"
         >
           {children}
         </div>

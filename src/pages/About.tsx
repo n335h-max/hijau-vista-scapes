@@ -8,13 +8,13 @@ import AboutCTA from "@/components/about/AboutCTA";
 
 const About = () => {
   return (
-    <>
+    <div className="w-full">
       <AboutHero />
       <AboutTabs />
       <AboutTestimonials />
       <AboutFAQ />
       <AboutCTA />
-    </>
+    </div>
   );
 };
 
