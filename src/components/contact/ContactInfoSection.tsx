@@ -2,7 +2,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface ContactInfoSectionProps {
   onAdminLogin: () => void;
@@ -10,83 +9,82 @@ interface ContactInfoSectionProps {
 
 const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin }) => {
   return (
-    <div className="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl border border-gray-100">
-      {/* Decorative header with enhanced background image and overlay */}
-      <div className="relative h-32 bg-hijau-blue">
-        <div className="absolute inset-0 bg-gradient-to-r from-hijau-blue to-hijau-blue-light opacity-90"></div>
-        <AspectRatio ratio={16/4}>
-          <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1576234699886-7eb7f11aeceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80')] bg-cover bg-center opacity-30"></div>
-        </AspectRatio>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h2 className="heading-medium text-white mb-0 relative inline-block z-10 font-display">
-            Get In Touch
-            <span className="absolute -bottom-2 left-0 right-0 mx-auto w-24 h-1 bg-hijau-yellow/80"></span>
-          </h2>
-        </div>
+    <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
+      {/* Simplified header with decorative elements */}
+      <div className="relative mb-8">
+        <h2 className="heading-medium text-hijau-blue relative inline-block">
+          Get In Touch
+          <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-hijau-yellow rounded-full"></span>
+        </h2>
+        <div className="absolute -top-4 -right-4 w-24 h-24 bg-hijau-blue/5 rounded-full -z-10"></div>
+        <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-hijau-yellow/5 rounded-full -z-10"></div>
       </div>
       
-      <div className="p-8">
-        <div className="space-y-8">
-          <div className="flex items-start group transition-all duration-300 transform hover:-translate-y-1">
-            <div className="mt-1 mr-6 bg-hijau-blue/10 p-3 rounded-full group-hover:bg-hijau-blue group-hover:text-white transition-colors duration-300">
-              <MapPin className="h-6 w-6 text-hijau-blue group-hover:text-white transition-colors duration-300" />
+      {/* Contact information with simplified card style */}
+      <div className="space-y-6 relative">
+        {/* Decorative elements */}
+        <div className="absolute -z-10 top-1/4 right-0 w-32 h-32 bg-hijau-blue/3 rounded-full blur-3xl"></div>
+        <div className="absolute -z-10 bottom-1/4 left-0 w-40 h-40 bg-hijau-yellow/3 rounded-full blur-3xl"></div>
+        
+        {/* Address Section */}
+        <div className="bg-gradient-to-r from-hijau-blue/5 to-transparent p-6 rounded-lg border border-hijau-blue/10">
+          <div className="flex items-start gap-4">
+            <div className="mt-1 bg-hijau-blue/10 p-3 rounded-full text-hijau-blue">
+              <MapPin className="h-6 w-6" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Our Locations</h3>
+              <h3 className="text-lg font-semibold mb-3 text-hijau-blue">Our Locations</h3>
               
-              <div className="bg-gray-50 rounded-lg p-4 mb-4 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
-                <p className="font-semibold text-hijau-dark">Registered Address:</p>
-                <p className="text-hijau-dark/70">No 168-1, Jalan S2 B22,</p>
-                <p className="text-hijau-dark/70">Pusat Dagangan Seremban 2,</p>
-                <p className="text-hijau-dark/70">70300 Seremban,</p>
-                <p className="text-hijau-dark/70">Negeri Sembilan</p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
-                <p className="font-semibold text-hijau-dark">Site Office:</p>
-                <p className="text-hijau-dark/70">No 324, Jalan S2 A7/2,</p>
-                <p className="text-hijau-dark/70">Green Street Homes,</p>
-                <p className="text-hijau-dark/70">70300 Seremban,</p>
-                <p className="text-hijau-dark/70">Negeri Sembilan</p>
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
+                  <p className="font-semibold text-hijau-dark">Registered Address:</p>
+                  <p className="text-hijau-dark/70">No 168-1, Jalan S2 B22, Pusat Dagangan Seremban 2, 70300 Seremban, Negeri Sembilan</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
+                  <p className="font-semibold text-hijau-dark">Site Office:</p>
+                  <p className="text-hijau-dark/70">No 324, Jalan S2 A7/2, Green Street Homes, 70300 Seremban, Negeri Sembilan</p>
+                </div>
               </div>
               
               <a 
                 href="https://maps.google.com/maps?cid=7425140252329389889" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-4 text-hijau-blue hover:text-hijau-dark transition-colors font-medium border-b border-dashed border-hijau-blue/50 hover:border-hijau-blue"
+                className="inline-flex items-center gap-1.5 mt-4 text-hijau-blue hover:text-hijau-dark transition-colors font-medium"
               >
                 View on Map
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
-
-          <div className="flex items-start group transition-all duration-300 transform hover:-translate-y-1">
-            <div className="mt-1 mr-6 bg-hijau-blue/10 p-3 rounded-full group-hover:bg-hijau-blue group-hover:text-white transition-colors duration-300">
-              <Phone className="h-6 w-6 text-hijau-blue group-hover:text-white transition-colors duration-300" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Phone Number</h3>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
+        </div>
+        
+        {/* Phone & WhatsApp Section */}
+        <div className="bg-gradient-to-r from-transparent to-hijau-yellow/5 p-6 rounded-lg border border-hijau-yellow/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex items-start gap-4">
+              <div className="mt-1 bg-hijau-blue/10 p-3 rounded-full text-hijau-blue">
+                <Phone className="h-6 w-6" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Phone Number</h3>
                 <a href="tel:+601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
                   +60 11-1062 9990
                 </a>
               </div>
             </div>
-          </div>
-
-          <div className="flex items-start group transition-all duration-300 transform hover:-translate-y-1">
-            <div className="mt-1 mr-6 bg-hijau-blue/10 p-3 rounded-full group-hover:bg-hijau-blue group-hover:text-white transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-hijau-blue group-hover:text-white transition-colors duration-300">
-                <path d="M4 11a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7Z"/>
-                <path d="m9 12 2 2 4-4"/>
-                <path d="M7.5 4.2c-.3-.5-.9-.7-1.4-.4C4.3 4.9 4 6.4 4 7.9 4 16 10.1 19 12 20c1.9-1 8-4 8-12.1 0-1.5-.3-3-2.1-4.1-.5-.3-1.1-.1-1.4.4"/>
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-hijau-blue">WhatsApp</h3>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
+            
+            <div className="flex items-start gap-4">
+              <div className="mt-1 bg-hijau-blue/10 p-3 rounded-full text-hijau-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+                  <path d="M4 11a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7Z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                  <path d="M7.5 4.2c-.3-.5-.9-.7-1.4-.4C4.3 4.9 4 6.4 4 7.9 4 16 10.1 19 12 20c1.9-1 8-4 8-12.1 0-1.5-.3-3-2.1-4.1-.5-.3-1.1-.1-1.4.4"/>
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-2 text-hijau-blue">WhatsApp</h3>
                 <a href="https://wa.me/601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
                   +60 11-1062 9990
                   <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Chat Now</span>
@@ -94,53 +92,67 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
               </div>
             </div>
           </div>
-
-          <div className="flex items-start group transition-all duration-300 transform hover:-translate-y-1">
-            <div className="mt-1 mr-6 bg-hijau-blue/10 p-3 rounded-full group-hover:bg-hijau-blue group-hover:text-white transition-colors duration-300">
-              <Mail className="h-6 w-6 text-hijau-blue group-hover:text-white transition-colors duration-300" />
+        </div>
+        
+        {/* Email Section */}
+        <div className="bg-gradient-to-r from-hijau-blue/5 to-transparent p-6 rounded-lg border border-hijau-blue/10">
+          <div className="flex items-start gap-4">
+            <div className="mt-1 bg-hijau-blue/10 p-3 rounded-full text-hijau-blue">
+              <Mail className="h-6 w-6" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Email Address</h3>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue mb-2 shadow-sm hover:shadow transition-shadow duration-300">
-                <a href="mailto:info@hijaugroup.com" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+              <h3 className="text-lg font-semibold mb-3 text-hijau-blue">Email Address</h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="mailto:info@hijaugroup.com" className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300 text-hijau-dark hover:text-hijau-blue">
                   info@hijaugroup.com
                 </a>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
-                <a href="mailto:support@hijaugroup.com" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+                <a href="mailto:support@hijaugroup.com" className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300 text-hijau-dark hover:text-hijau-blue">
                   support@hijaugroup.com
                 </a>
               </div>
             </div>
           </div>
-
-          <div className="flex items-start group transition-all duration-300 transform hover:-translate-y-1">
-            <div className="mt-1 mr-6 bg-hijau-blue/10 p-3 rounded-full group-hover:bg-hijau-blue group-hover:text-white transition-colors duration-300">
-              <Clock className="h-6 w-6 text-hijau-blue group-hover:text-white transition-colors duration-300" />
+        </div>
+        
+        {/* Business Hours Section */}
+        <div className="bg-gradient-to-r from-transparent to-hijau-yellow/5 p-6 rounded-lg border border-hijau-yellow/10">
+          <div className="flex items-start gap-4">
+            <div className="mt-1 bg-hijau-blue/10 p-3 rounded-full text-hijau-blue">
+              <Clock className="h-6 w-6" />
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Business Hours</h3>
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
-                <div className="text-hijau-dark space-y-1.5">
-                  <div className="flex justify-between items-center py-1 border-b border-dashed border-gray-200">
-                    <span className="font-medium">Monday - Friday:</span>
-                    <span className="font-semibold bg-hijau-blue/10 px-2 py-0.5 rounded text-hijau-blue">9:00 AM - 5:30 PM</span>
+              <div className="bg-gray-50 rounded-lg p-4 shadow-sm">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="py-1.5 px-3 rounded bg-hijau-blue/5">
+                    <span className="font-medium text-hijau-dark">Monday - Friday:</span>
                   </div>
-                  <div className="flex justify-between items-center py-1 border-b border-dashed border-gray-200">
-                    <span className="font-medium">Saturday:</span>
-                    <span className="font-semibold bg-hijau-blue/10 px-2 py-0.5 rounded text-hijau-blue">9:00 AM - 5:30 PM</span>
+                  <div className="py-1.5 px-3 rounded bg-hijau-blue/10 text-center">
+                    <span className="font-semibold text-hijau-blue">9:00 AM - 5:30 PM</span>
                   </div>
-                  <div className="flex justify-between items-center py-1">
-                    <span className="font-medium">Sunday:</span>
-                    <span className="font-semibold bg-hijau-yellow/10 px-2 py-0.5 rounded text-hijau-dark">Closed</span>
+                  
+                  <div className="py-1.5 px-3 rounded bg-hijau-blue/5">
+                    <span className="font-medium text-hijau-dark">Saturday:</span>
+                  </div>
+                  <div className="py-1.5 px-3 rounded bg-hijau-blue/10 text-center">
+                    <span className="font-semibold text-hijau-blue">9:00 AM - 5:30 PM</span>
+                  </div>
+                  
+                  <div className="py-1.5 px-3 rounded bg-hijau-yellow/5">
+                    <span className="font-medium text-hijau-dark">Sunday:</span>
+                  </div>
+                  <div className="py-1.5 px-3 rounded bg-hijau-yellow/10 text-center">
+                    <span className="font-semibold text-hijau-dark">Closed</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="mt-12 pb-4">
+        
+        {/* Social Media Section */}
+        <div className="bg-gradient-to-r from-hijau-blue/5 to-transparent p-6 rounded-lg border border-hijau-blue/10">
           <h3 className="text-lg font-semibold mb-4 text-hijau-blue">Follow Us</h3>
           <div className="flex flex-wrap gap-4">
             <a
@@ -192,8 +204,9 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             </a>
           </div>
         </div>
-
-        <div className="mt-10 pt-8 border-t border-gray-200">
+        
+        {/* Admin Login Button */}
+        <div className="pt-6 border-t border-gray-100 flex justify-end">
           <Button 
             variant="outline" 
             onClick={onAdminLogin}
