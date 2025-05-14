@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,18 +62,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Hijau brand colors - enhanced nature palette
+				// Hijau brand colors updated to match the image
 				hijau: {
-					blue: '#0EA5E9', // Primary blue
-					yellow: '#FEF08A', // Soft yellow
-					light: '#F2FCE2', // Softer light green background
-					dark: '#1E293B', // Dark text
-					moss: '#6B8E23', // Natural moss green
-					sage: '#9CAF88', // Soft sage green
-					earth: '#8B7355', // Earthy brown
-					clay: '#D6C4B8', // Soft clay accent
-					leaf: '#4CAF50', // Fresh leaf green
-					forest: '#2E7D32', // Deep forest green
+					blue: '#195E8C', // Updated to match image blue
+					yellow: '#EED760', // Updated to match image yellow
+					light: '#F2FCE2', // Kept light green background
+					dark: '#1E293B', // Kept dark text
+					moss: '#6B8E23', // Kept natural moss green
+					sage: '#9CAF88', // Kept soft sage green
+					earth: '#8B7355', // Kept earthy brown
+					clay: '#D6C4B8', // Kept soft clay accent
+					leaf: '#4CAF50', // Kept fresh leaf green
+					forest: '#2E7D32', // Kept deep forest green
 				}
 			},
 			borderRadius: {

@@ -28,10 +28,10 @@ const HeroSection = () => {
             We create beautiful, sustainable landscapes that enhance your property value.
           </p>
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <Button asChild size="lg" className="bg-hijau-blue hover:bg-hijau-blue/90">
+            <Button asChild size="lg" className="bg-hijau-blue hover:bg-hijau-blue/90 text-white">
               <Link to="/services">Our Packages</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent text-white hover:text-black hover:bg-white border-white">
+            <Button asChild size="lg" variant="outline" className="bg-transparent text-white hover:text-hijau-blue hover:bg-white border-white">
               <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
