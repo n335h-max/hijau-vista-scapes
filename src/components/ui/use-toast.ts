@@ -1,16 +1,16 @@
 
 import { useToast, toast } from "@/hooks/use-toast";
 
-// Customizing toast defaults to use our new colors
-toast.custom = (message, options) => {
-  return toast(message, {
-    ...options,
+// Creating a wrapper function that applies our custom styles
+const customToast = (props) => {
+  return toast({
+    ...props,
     style: {
       backgroundColor: '#195E8C', // Using our blue color
       color: 'white',
-      ...options?.style,
+      ...props?.style,
     },
   });
 };
 
-export { useToast, toast };
+export { useToast, toast, customToast };
