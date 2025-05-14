@@ -1,81 +1,66 @@
 
 import React from "react";
-import { Phone, MapPin, FilePen, Check, X, Lock, Package } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { MapPin, Calendar, Phone, Check } from "lucide-react";
 
 const BookingFlowProcess = () => {
   const steps = [
     {
-      icon: <Phone className="h-10 w-10 text-hijau-blue" />,
-      number: "01",
-      title: "Initial Contact",
-      description: "Client reaches out to Hijau Group Landscape for landscape services."
+      icon: <Phone className="h-8 w-8 text-white" />,
+      title: "Contact Us",
+      description: "Fill out our contact form with your details and service requirements.",
+      color: "bg-hijau-blue",
     },
     {
-      icon: <MapPin className="h-10 w-10 text-hijau-blue" />,
-      number: "02",
-      title: "Site Visit & Consultation",
-      description: "Our team visits the site for consultation, measurements, and discussion with client."
+      icon: <Calendar className="h-8 w-8 text-white" />,
+      title: "Schedule Consultation",
+      description: "Select your preferred date and time for the consultation.",
+      color: "bg-hijau-blue-light",
     },
     {
-      icon: <FilePen className="h-10 w-10 text-hijau-blue" />,
-      number: "03",
-      title: "Design & Quotation",
-      description: "Gathered detailed requirements. Draft design concept and cost are prepared for review."
+      icon: <MapPin className="h-8 w-8 text-white" />,
+      title: "On-Site Visit",
+      description: "Our experts will visit your location to assess and discuss your needs.",
+      color: "bg-hijau-yellow-dark",
     },
     {
-      icon: <div className="flex space-x-2">
-              <Check className="h-10 w-10 text-green-500" />
-              <X className="h-10 w-10 text-red-500" />
-            </div>,
-      number: "04",
-      title: "Decision",
-      description: "Yes – move on to design confirmation stage. No – No further action unless client re-engages."
+      icon: <Check className="h-8 w-8 text-white" />,
+      title: "Project Commencement",
+      description: "After approval, we begin transforming your space according to the plan.",
+      color: "bg-hijau-yellow",
     },
-    {
-      icon: <Lock className="h-10 w-10 text-hijau-blue" />,
-      number: "05",
-      title: "Design Confirmation & Deposit",
-      description: "Design ideas are presented. Deposit is made to secure the project."
-    },
-    {
-      icon: <Package className="h-10 w-10 text-hijau-blue" />,
-      number: "06",
-      title: "Project Kick Off",
-      description: "Team & logistics are arranged. On site work begins."
-    }
   ];
 
   return (
-    <section className="section-padding bg-white">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="heading-medium text-hijau-dark mb-4">STEPS TO YOUR DREAM GARDEN</h2>
-          <p className="max-w-2xl mx-auto text-hijau-dark/80">
-            Our streamlined process ensures a smooth journey from concept to completion.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {steps.map((step, index) => (
-            <Card key={index} className="border border-gray-100 hover:shadow-lg transition-all duration-300 h-full">
-              <CardContent className="p-6">
-                <div className="flex items-start mb-4">
-                  <div className="mr-4 p-2 bg-hijau-light rounded-full flex items-center justify-center">
-                    {step.icon}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-5xl font-bold text-hijau-yellow opacity-30">{step.number}</span>
-                    <h3 className="text-xl font-semibold text-hijau-blue mt-1">{step.title}</h3>
-                  </div>
-                </div>
-                <p className="text-gray-600">{step.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <div className="mb-12">
+      <div className="text-center mb-10">
+        <h2 className="heading-medium text-hijau-blue mb-3">How Our Booking Process Works</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Our streamlined process makes it easy to get your landscaping project started. 
+          Follow these simple steps to begin your journey with Hijau Group Landscape.
+        </p>
       </div>
-    </section>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((step, index) => (
+          <Card key={index} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+            <div className="relative">
+              <div className={`${step.color} absolute top-0 h-3 w-full`}></div>
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gray-100/30 z-0"></div>
+              <div className={`${step.color} h-16 w-16 rounded-full flex items-center justify-center text-white text-2xl font-bold absolute -top-8 left-6 shadow-lg transform -translate-y-1/4 z-10 border-4 border-white`}>
+                {step.icon}
+              </div>
+              <CardContent className="pt-10 pb-6 px-6 mt-3">
+                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
+                <div className="absolute bottom-0 right-0 w-16 h-16 bg-gray-100/20 rounded-tl-full"></div>
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 rounded-full bg-gray-100/30 z-0"></div>
+              </CardContent>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 };
 

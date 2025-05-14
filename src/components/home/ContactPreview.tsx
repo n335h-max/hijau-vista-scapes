@@ -19,7 +19,7 @@ const ContactPreview = () => {
               <Link to="/contact">Contact Us</Link>
             </Button>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-white/20 animate-fade-in">
+          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-white/20 animate-fade-in hover:bg-white/15 transition-colors duration-300 hover:shadow-xl">
             <h3 className="text-xl font-semibold mb-6 text-hijau-yellow">Contact Information</h3>
             <ul className="space-y-5">
               <li className="flex items-center transform transition-transform duration-300 hover:translate-x-1">

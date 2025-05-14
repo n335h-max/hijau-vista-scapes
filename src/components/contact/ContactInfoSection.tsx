@@ -11,15 +11,16 @@ interface ContactInfoSectionProps {
 const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin }) => {
   return (
     <div className="bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl border border-gray-100">
-      {/* Decorative header with background image */}
+      {/* Decorative header with enhanced background image and overlay */}
       <div className="relative h-32 bg-hijau-blue">
         <div className="absolute inset-0 bg-gradient-to-r from-hijau-blue to-hijau-blue-light opacity-90"></div>
         <AspectRatio ratio={16/4}>
-          <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1576234699886-7eb7f11aeceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80')] bg-cover bg-center opacity-20"></div>
+          <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1576234699886-7eb7f11aeceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80')] bg-cover bg-center opacity-30"></div>
         </AspectRatio>
         <div className="absolute inset-0 flex items-center justify-center">
           <h2 className="heading-medium text-white mb-0 relative inline-block z-10 font-display">
             Get In Touch
+            <span className="absolute -bottom-2 left-0 right-0 mx-auto w-24 h-1 bg-hijau-yellow/80"></span>
           </h2>
         </div>
       </div>
@@ -33,7 +34,7 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             <div>
               <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Our Locations</h3>
               
-              <div className="bg-gray-50 rounded-lg p-4 mb-4 border-l-4 border-hijau-blue">
+              <div className="bg-gray-50 rounded-lg p-4 mb-4 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
                 <p className="font-semibold text-hijau-dark">Registered Address:</p>
                 <p className="text-hijau-dark/70">No 168-1, Jalan S2 B22,</p>
                 <p className="text-hijau-dark/70">Pusat Dagangan Seremban 2,</p>
@@ -41,7 +42,7 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
                 <p className="text-hijau-dark/70">Negeri Sembilan</p>
               </div>
               
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-yellow">
+              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
                 <p className="font-semibold text-hijau-dark">Site Office:</p>
                 <p className="text-hijau-dark/70">No 324, Jalan S2 A7/2,</p>
                 <p className="text-hijau-dark/70">Green Street Homes,</p>
@@ -53,7 +54,7 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
                 href="https://maps.google.com/maps?cid=7425140252329389889" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 mt-4 text-hijau-blue hover:text-hijau-blue/80 transition-colors font-medium border-b border-dashed border-hijau-blue/50 hover:border-hijau-blue"
+                className="inline-flex items-center gap-1.5 mt-4 text-hijau-blue hover:text-hijau-dark transition-colors font-medium border-b border-dashed border-hijau-blue/50 hover:border-hijau-blue"
               >
                 View on Map
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -67,7 +68,7 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Phone Number</h3>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue">
+              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
                 <a href="tel:+601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
                   +60 11-1062 9990
                 </a>
@@ -85,9 +86,10 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2 text-hijau-blue">WhatsApp</h3>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow">
+              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
                 <a href="https://wa.me/601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
                   +60 11-1062 9990
+                  <span className="ml-2 text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded-full">Chat Now</span>
                 </a>
               </div>
             </div>
@@ -99,12 +101,12 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Email Address</h3>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue mb-2">
+              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-blue mb-2 shadow-sm hover:shadow transition-shadow duration-300">
                 <a href="mailto:info@hijaugroup.com" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
                   info@hijaugroup.com
                 </a>
               </div>
-              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow">
+              <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-hijau-yellow shadow-sm hover:shadow transition-shadow duration-300">
                 <a href="mailto:support@hijaugroup.com" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
                   support@hijaugroup.com
                 </a>
@@ -118,7 +120,7 @@ const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin })
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Business Hours</h3>
-              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-blue">
+              <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-hijau-blue shadow-sm hover:shadow transition-shadow duration-300">
                 <div className="text-hijau-dark space-y-1.5">
                   <div className="flex justify-between items-center py-1 border-b border-dashed border-gray-200">
                     <span className="font-medium">Monday - Friday:</span>
