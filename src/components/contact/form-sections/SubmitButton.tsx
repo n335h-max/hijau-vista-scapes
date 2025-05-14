@@ -2,8 +2,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
+import { useFormContext } from "react-hook-form";
 
 const SubmitButton: React.FC = () => {
+  const form = useFormContext();
+  
   return (
     <div className="pt-6">
       <Button 
