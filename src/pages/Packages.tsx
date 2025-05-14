@@ -102,7 +102,7 @@ const Packages = () => {
         "Stepping Slab",
         "Fountain / Water Feature",
         "Artificial Grass / Natural Grass",
-        "Planter Box + Mixed Herbs plants",
+        " Planter Box + Mixed Herbs plants",
         "Garden Lighting"
       ],
       cashback: "Cashback: RM2,000",
