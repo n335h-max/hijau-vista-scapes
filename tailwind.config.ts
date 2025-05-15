@@ -62,25 +62,25 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Refined Hijau brand colors - Earth & Sky palette
+				// Updated hijau brand colors to Navy Blue & Bright Yellow
 				hijau: {
-					blue: '#2A5E7B', // Primary blue - deeper, more trustworthy
-					'blue-light': '#4A7999', // Lighter blue for hover states
-					'blue-dark': '#1F4A63', // Darker blue for shadows/accents
-					yellow: '#D9B44A', // Warmer, less vibrant yellow
-					'yellow-light': '#E8CC7A', // Lighter yellow for hover states
-					'yellow-dark': '#B89937', // Darker yellow for shadows/accents
-					green: '#4A7C59', // Secondary green - natural foliage
-					'green-light': '#6A9277', // Lighter green for hover states
-					'green-dark': '#3A614A', // Darker green for shadows/accents
-					light: '#F5F7F4', // Off-white with slight green undertone
-					dark: '#2D3B40', // Rich charcoal
-					moss: '#586B4C', // Muted moss green
-					sage: '#AAC0AA', // Light sage green
-					earth: '#6D5C4D', // Earth brown
-					clay: '#BEA99A', // Clay beige
-					leaf: '#3F6844', // Deep leaf green
-					forest: '#2A4631', // Forest green
+					blue: '#004A8F', // Navy Blue primary
+					'blue-light': '#2667A5', // Lighter navy blue
+					'blue-dark': '#003A72', // Darker navy blue
+					yellow: '#F5D443', // Bright Yellow
+					'yellow-light': '#F7DE6F', // Lighter yellow
+					'yellow-dark': '#EDBD21', // Darker yellow
+					green: '#004A8F', // Using navy blue instead of green
+					'green-light': '#2667A5', // Using lighter navy blue
+					'green-dark': '#003A72', // Using darker navy blue
+					light: '#F5F7F4', // Keeping light background
+					dark: '#2D3B40', // Keeping dark text
+					moss: '#004A8F', // Using navy blue
+					sage: '#2667A5', // Using lighter navy blue
+					earth: '#003A72', // Using darker navy blue
+					clay: '#F5D443', // Using bright yellow
+					leaf: '#004A8F', // Using navy blue
+					forest: '#003A72', // Using darker navy blue
 				}
 			},
 			borderRadius: {
@@ -194,11 +194,11 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-overlay': 'linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3))',
-				'blue-yellow-gradient': 'linear-gradient(135deg, #195E8C 0%, #EED760 100%)',
-				'blue-gradient': 'linear-gradient(120deg, #195E8C 0%, #3D7EAC 100%)',
-				'yellow-gradient': 'linear-gradient(120deg, #EED760 0%, #F5E690 100%)',
+				'blue-yellow-gradient': 'linear-gradient(135deg, #004A8F 0%, #F5D443 100%)',
+				'blue-gradient': 'linear-gradient(120deg, #004A8F 0%, #2667A5 100%)',
+				'yellow-gradient': 'linear-gradient(120deg, #F5D443 0%, #F7DE6F 100%)',
 				'shimmer-gradient': 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent)',
-				'nature-gradient': 'linear-gradient(120deg, rgba(25, 94, 140, 0.1) 0%, rgba(238, 215, 96, 0.1) 100%)'
+				'nature-gradient': 'linear-gradient(120deg, rgba(0, 74, 143, 0.1) 0%, rgba(245, 212, 67, 0.1) 100%)'
 			}
 		}
 	},
