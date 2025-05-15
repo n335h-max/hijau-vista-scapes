@@ -5,9 +5,7 @@ const AboutHero = () => {
   const [current, setCurrent] = useState(0);
   
   const backgroundImages = [
-    "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-    "/lovable-uploads/3f82aae2-c144-4b5e-b996-e4b2170e0b2a.png",
-    "/lovable-uploads/0c0689f1-ffa9-418e-a8d5-79ec0c75aa13.png"
+    "/lovable-uploads/ad1046da-7fa2-46e6-b0b5-2d776bcf08a2.png"
   ];
 
   useEffect(() => {
