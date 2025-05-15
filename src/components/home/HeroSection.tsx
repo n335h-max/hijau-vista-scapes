@@ -14,7 +14,13 @@ const HeroSection = () => {
     "/lovable-uploads/2a003a1b-532d-46e8-bb41-2d2e5b1fc4fa.png",
     "/lovable-uploads/41c05190-02e0-4a32-99a1-fdca6bba4f59.png",
     "/lovable-uploads/15452662-2597-4414-a794-3b589cf6cb91.png",
-    "/lovable-uploads/474dca0f-d87a-44ce-846b-db71422fd38c.png"
+    "/lovable-uploads/474dca0f-d87a-44ce-846b-db71422fd38c.png",
+    // New images
+    "/lovable-uploads/202c9ed7-b2f7-4781-8496-737fdcf809dd.png",
+    "/lovable-uploads/3f82aae2-c144-4b5e-b996-e4b2170e0b2a.png",
+    "/lovable-uploads/ea123fb5-18d1-4a9b-bd54-bd5fb0b2b01c.png",
+    "/lovable-uploads/709c4739-60a7-4fb1-ad9b-01ae2dc9672a.png",
+    "/lovable-uploads/0c0689f1-ffa9-418e-a8d5-79ec0c75aa13.png"
   ];
 
   useEffect(() => {
