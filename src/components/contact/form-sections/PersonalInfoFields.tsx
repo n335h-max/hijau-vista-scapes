@@ -1,15 +1,12 @@
-
 import React from "react";
 import { Control } from "react-hook-form";
 import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { ContactFormValues } from "@/utils/contactFormValidation";
 import { User, Mail, Phone } from "lucide-react";
-
 interface PersonalInfoFieldsProps {
   control: Control<ContactFormValues>;
 }
-
 const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({
   control
 }) => {
@@ -56,5 +53,4 @@ const PersonalInfoFields: React.FC<PersonalInfoFieldsProps> = ({
       </div>
     </>;
 };
-
 export default PersonalInfoFields;
