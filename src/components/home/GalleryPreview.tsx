@@ -6,18 +6,14 @@ import { Button } from "@/components/ui/button";
 import { galleryItems } from "@/components/gallery/galleryItems.data";
 
 const GalleryPreview = () => {
-  // Select a mix of original and new images to showcase (limited to 9 for the grid)
-  const selectedImages = [
-    galleryItems[0].image,  // Zen Garden
-    galleryItems[1].image,  // Modern Backyard
-    galleryItems[22].image, // Curved Garden Path (replacing Paved Garden Walkway)
-    galleryItems[12].image, // Poolside
-    galleryItems[20].image, // Courtyard Design (replacing Outdoor Living Space)
-    galleryItems[21].image, // Urban Garden Design
-    galleryItems[15].image, // Artificial turf
-    galleryItems[23].image, // Modern Deck
-    galleryItems[24].image, // Garden Water Feature
-  ];
+  // Select specific gallery items by their IDs to showcase
+  const selectedItemIds = [1, 2, 13, 12, 15, 21, 26, 28, 31];
+  
+  // Find the gallery items with those IDs, ensuring we don't have undefined items
+  const selectedImages = selectedItemIds
+    .map(id => galleryItems.find(item => item.id === id))
+    .filter(item => item !== undefined)
+    .map(item => item?.image || "");
 
   return (
     <section className="section-padding bg-hijau-light">

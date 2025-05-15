@@ -98,39 +98,52 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 14,
-    title: "Modern Softscape Installation",
+    title: "Commercial Landscape",
     description: "Professional landscaping for commercial property entrances and walkways.",
     type: "Commercial",
     image: "/lovable-uploads/4b576a69-dc1e-4347-aca4-49aca6fe3b67.png"
   },
   {
     id: 15,
-    title: "Modern Hardscape Installation",
+    title: "Artificial Turf Installation",
     description: "Low-maintenance artificial turf installation with decorative stone borders.",
     type: "Residential",
     image: "/lovable-uploads/5f776d9a-f54c-4153-9351-d4ad59dadcad.png"
   },
   {
     id: 16,
-    title: "Modern Garden Pathway",
+    title: "Garden Pathway Design",
     description: "Contemporary garden pathway design with integrated hardscape and plantings.",
     type: "Residential",
     image: "/lovable-uploads/f080bcd6-b8a9-47b0-af01-0f83a905a03e.png"
   },
   {
     id: 17,
-    title: "Indoor Garden Space",
+    title: "Interior Landscaping",
     description: "Interior landscaping design for natural transitions between indoor and outdoor spaces.",
     type: "Commercial",
     image: "/lovable-uploads/5061f982-c72d-40e7-a16c-92a0f18b40b9.png"
   },
-  // Additional images (replacing the removed ones)
   {
     id: 18,
-    title: "Construction",
-    description: "Elegant stone walkway with bordered plants creating a formal garden path is being constructed.",
+    title: "Stone Walkway Construction",
+    description: "Elegant stone walkway with bordered plants creating a formal garden path.",
     type: "Residential",
     image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
+  },
+  {
+    id: 19,
+    title: "Vertical Garden Consultation",
+    description: "Space-efficient vertical garden design for urban environments and small spaces.",
+    type: "Residential",
+    image: "/lovable-uploads/ecc2acb1-bde1-4ebe-8468-a4d9a3f3c167.png"
+  },
+  {
+    id: 20,
+    title: "Tropical Garden Installation",
+    description: "Lush tropical landscaping with exotic plants and integrated water elements.",
+    type: "Residential",
+    image: "/lovable-uploads/00c636ad-26e6-4f9b-b3a0-a4c96a426d11.png"
   },
   {
     id: 21,
@@ -141,31 +154,94 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 22,
-    title: "Construction",
-    description: "Natural stone walkway with curved design through native plantings is being constructed.",
+    title: "Curved Path Construction",
+    description: "Natural stone walkway with curved design through native plantings.",
     type: "Residential",
     image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
   },
   {
     id: 23,
-    title: "Artificial Grass Installation",
+    title: "Deck Installation",
     description: "Contemporary wooden deck with integrated planters and lighting.",
     type: "Residential",
     image: "/lovable-uploads/d96d9c3e-98ae-4314-93b5-11957619afaf.png"
   },
-  // Replacement images - NEW
   {
-    id: 19,
-    title: "Consultation",
-    description: "Space-efficient vertical garden design was being consulted for urban environments and small spaces.",
-    type: "Residential",
-    image: "/lovable-uploads/ecc2acb1-bde1-4ebe-8468-a4d9a3f3c167.png"
-  },
-  {
-    id: 25,
-    title: "Nursery",
-    description: "Space-efficient vertical garden design for urban environments and small spaces.",
+    id: 24,
+    title: "Plant Nursery",
+    description: "Our plant nursery features a wide selection of plants for your landscaping projects.",
     type: "Commercial",
     image: "/lovable-uploads/f72f0489-a7b3-4018-96e5-9aa112b0763f.png"
+  },
+  // New uploaded images
+  {
+    id: 25,
+    title: "Garden Maintenance",
+    description: "Professional garden maintenance services to keep your landscape looking its best.",
+    type: "Residential",
+    image: "/lovable-uploads/02a8e859-1456-4cf5-b47d-d1da981c88fb.png"
+  },
+  {
+    id: 26,
+    title: "Hardscape Design",
+    description: "Beautiful hardscape designs that combine functionality with aesthetic appeal.",
+    type: "Residential",
+    image: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png"
+  },
+  {
+    id: 27,
+    title: "Commercial Landscaping",
+    description: "Complete commercial landscaping solutions for businesses and organizations.",
+    type: "Commercial",
+    image: "/lovable-uploads/0c08177c-abfa-475a-ab4f-26b0d98aa520.png"
+  },
+  {
+    id: 28,
+    title: "Flower Garden Installation",
+    description: "Vibrant flower garden designs that bring color and life to your outdoor spaces.",
+    type: "Residential",
+    image: "/lovable-uploads/0cc399a2-d2b3-4e16-a313-ee80b82c57e3.png"
+  },
+  {
+    id: 29,
+    title: "Patio Design",
+    description: "Custom patio designs creating perfect outdoor living and entertainment areas.",
+    type: "Residential",
+    image: "/lovable-uploads/172a3b65-a471-497c-bde9-5f7346466f50.png"
+  },
+  {
+    id: 30,
+    title: "Rock Garden",
+    description: "Beautiful rock garden installations with drought-resistant plants.",
+    type: "Residential",
+    image: "/lovable-uploads/1c44c350-d4dc-4863-ac34-a1e1bc37bb48.png"
+  },
+  {
+    id: 31,
+    title: "Drought-Resistant Landscaping",
+    description: "Eco-friendly and water-conservative landscape designs for arid environments.",
+    type: "Residential",
+    image: "/lovable-uploads/2365ff66-44be-4943-ace0-539f74703ad1.png"
+  },
+  {
+    id: 32,
+    title: "Urban Landscape Design",
+    description: "Modern urban landscape solutions that maximize limited space.",
+    type: "Commercial",
+    image: "/lovable-uploads/29524c64-19b4-4efb-8123-8238e80aa031.png"
+  },
+  {
+    id: 33,
+    title: "Botanical Garden Design",
+    description: "Specialized botanical garden designs featuring rare and exotic plants.",
+    type: "Commercial",
+    image: "/lovable-uploads/2c821c52-9821-4c9e-bd30-fb787c0e2317.png"
+  },
+  {
+    id: 34,
+    title: "Mediterranean Garden",
+    description: "Mediterranean-inspired garden designs with suitable plants and hardscape elements.",
+    type: "Residential",
+    image: "/lovable-uploads/2cac424d-c277-46c1-a93f-80404c7bb5b2.png"
   }
 ];
