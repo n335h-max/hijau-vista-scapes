@@ -17,6 +17,7 @@ interface BookingCalendarProps {
     phone: string;
     email: string;
     address: string;
+    outsideNegeriSembilan?: boolean;
     package: string;  // This is named package in the form data
   };
   onBookingComplete: (date: Date, time: string) => void;
@@ -108,6 +109,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
     phone: contactDetails.phone,
     email: contactDetails.email,
     address: contactDetails.address,
+    outsideNegeriSembilan: contactDetails.outsideNegeriSembilan,
     service: contactDetails.package // Map package to service for BookingSummary
   };
 

@@ -7,6 +7,7 @@ export const contactFormSchema = z.object({
   phone: z.string().min(10, { message: "Please enter a valid phone number" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   address: z.string().min(5, { message: "Address must be at least 5 characters" }),
+  outsideNegeriSembilan: z.boolean().default(false),
   package: z.string({ required_error: "Please select a package" }),
   message: z.string().optional(),
 });

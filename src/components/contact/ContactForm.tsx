@@ -31,6 +31,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
       phone: "",
       email: "",
       address: "",
+      outsideNegeriSembilan: false,
       package: initialService || "",
       message: initialMessage || "",
     },
