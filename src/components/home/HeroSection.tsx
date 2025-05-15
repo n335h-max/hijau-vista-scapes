@@ -9,7 +9,7 @@ const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   
   const heroImages = [
-    "/lovable-uploads/10570302-7029-4bc1-beff-496304e7da04.png",
+    // First image removed
     "/lovable-uploads/67b37ebe-693d-4dd4-ab03-42145f237f85.png",
     "/lovable-uploads/2a003a1b-532d-46e8-bb41-2d2e5b1fc4fa.png",
     "/lovable-uploads/41c05190-02e0-4a32-99a1-fdca6bba4f59.png",
