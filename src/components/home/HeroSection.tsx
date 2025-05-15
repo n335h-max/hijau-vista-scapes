@@ -29,7 +29,7 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <Button asChild size="lg" className="bg-hijau-blue hover:bg-hijau-blue-dark text-white shadow-lg border border-hijau-blue/20">
-              <Link to="/services">Our Packages</Link>
+              <Link to="/packages">Our Packages</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-hijau-yellow/10 text-white hover:text-hijau-dark hover:bg-hijau-yellow border-hijau-yellow">
               <Link to="/contact">Contact Us</Link>
