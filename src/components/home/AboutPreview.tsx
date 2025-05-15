@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 const AboutPreview = () => {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-hijau-yellow/10">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>

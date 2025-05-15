@@ -8,10 +8,10 @@
     --background: 84 9% 96%;
     --foreground: 200 15% 21%;
 
-    --card: 0 0% 100%;
+    --card: 47 90% 95%;
     --card-foreground: 200 15% 21%;
 
-    --popover: 0 0% 100%;
+    --popover: 47 90% 95%;
     --popover-foreground: 200 15% 21%;
 
     --primary: 212 100% 28%; /* Navy Blue */
@@ -35,7 +35,7 @@
 
     --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 47 90% 95%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 212 100% 28%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -91,7 +91,7 @@
   }
 
   body {
-    @apply bg-hijau-blue/5 text-foreground;
+    @apply bg-hijau-yellow/5 text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
   
@@ -151,7 +151,7 @@
   }
   
   .glass-card {
-    @apply backdrop-blur-md bg-white/80 border border-white/20 rounded-xl shadow-lg;
+    @apply backdrop-blur-md bg-hijau-yellow/80 border border-white/20 rounded-xl shadow-lg;
   }
   
   .gradient-bg {
@@ -171,7 +171,7 @@
   }
   
   .bg-eco-gradient {
-    @apply bg-gradient-to-b from-white to-hijau-blue/5;
+    @apply bg-gradient-to-b from-hijau-yellow/50 to-hijau-blue/5;
   }
   
   /* Mobile optimized classes */

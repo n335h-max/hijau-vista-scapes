@@ -35,6 +35,7 @@
 
 .card {
   padding: 2em;
+  background-color: #F5D443;
 }
 
 .read-the-docs {
@@ -52,7 +53,7 @@
 
 /* Blue-yellow gradient background */
 .bg-blue-yellow-gradient {
-  background: linear-gradient(135deg, rgba(0, 74, 143, 0.1), rgba(245, 212, 67, 0.1));
+  background: linear-gradient(135deg, rgba(0, 74, 143, 0.1), rgba(245, 212, 67, 0.5));
 }
 
 /* Hover underline effect with yellow color */
@@ -95,7 +96,7 @@
     90deg,
     transparent,
     rgba(0, 74, 143, 0.2),
-    rgba(245, 212, 67, 0.2),
+    rgba(245, 212, 67, 0.4),
     transparent
   );
   animation: shimmer 2s infinite;
@@ -112,6 +113,7 @@
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
+  background-color: #F5D443;
 }
 
 .highlight-box::before {
@@ -129,6 +131,7 @@
   border: 1px solid transparent;
   background-clip: padding-box;
   position: relative;
+  background-color: #F5D443;
 }
 
 .card-gradient-border::before {

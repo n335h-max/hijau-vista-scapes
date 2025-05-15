@@ -14,7 +14,7 @@ interface ContactInfoSectionProps {
 
 const ContactInfoSection: React.FC<ContactInfoSectionProps> = ({ onAdminLogin }) => {
   return (
-    <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
+    <div className="bg-hijau-yellow/10 rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-hijau-yellow/20 animate-fade-in">
       {/* Section Header */}
       <SectionHeading title="Get In Touch" />
       
