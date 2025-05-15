@@ -42,8 +42,8 @@ const Navigation = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled || isOpen
-          ? "bg-gradient-to-r from-hijau-blue to-hijau-blue-dark shadow-lg py-2"
-          : "bg-transparent py-3 md:py-4"
+          ? "bg-hijau-blue shadow-lg py-2"
+          : "bg-hijau-blue py-3 md:py-4"
       }`}
     >
       <div className="container-custom flex justify-between items-center">
@@ -56,7 +56,7 @@ const Navigation = () => {
           />
           <span className="font-display text-xl md:text-2xl font-bold text-white relative group">
             Hijau{" "}
-            <span className="text-hijau-yellow relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300 drop-shadow-sm">
+            <span className="text-hijau-yellow relative inline-block drop-shadow-sm">
               Group
             </span>
           </span>
@@ -68,18 +68,18 @@ const Navigation = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
+              className={`font-medium ${
                 location.pathname === link.path
-                  ? "text-hijau-yellow after:bg-hijau-yellow after:scale-x-100"
-                  : "text-white after:bg-hijau-yellow"
-              }`}
+                  ? "text-hijau-yellow"
+                  : "text-white hover:text-hijau-yellow"
+              } transition-colors duration-200`}
             >
               {link.name}
             </Link>
           ))}
           <Button 
             asChild 
-            className="bg-hijau-yellow text-hijau-blue hover:bg-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-bold"
+            className="bg-hijau-yellow text-hijau-blue hover:bg-white rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-bold"
             size={isMobile ? "sm" : "default"}
           >
             <Link to="/contact">Book Now</Link>
@@ -98,7 +98,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-hijau-blue-dark to-hijau-blue shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-hijau-blue shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto">
           <div className="container-custom py-4 flex flex-col space-y-3">
             {navLinks.map((link) => (
               <Link
@@ -113,7 +113,7 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Button asChild className="bg-hijau-yellow text-hijau-blue hover:bg-white hover:text-hijau-blue w-full shadow-md mt-2 font-bold">
+            <Button asChild className="bg-hijau-yellow text-hijau-blue hover:bg-white hover:text-hijau-blue w-full shadow-md mt-2 font-bold rounded-full">
               <Link to="/contact">Book Now</Link>
             </Button>
           </div>
