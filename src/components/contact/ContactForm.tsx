@@ -75,6 +75,18 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
         <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-hijau-yellow/5 rounded-full -z-10"></div>
       </div>
       
+      {/* Important note about location charges */}
+      <div className="mb-6 p-3 bg-hijau-yellow/10 border border-hijau-yellow/30 rounded-lg">
+        <p className="text-sm text-hijau-blue-dark font-medium flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-hijau-yellow-dark">
+            <path d="M12 9v4"/>
+            <path d="M12 17h.01"/>
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+          <span>Remarks: Locations outside of Negeri Sembilan will be charged RM300.</span>
+        </p>
+      </div>
+      
       {/* Form with enhanced styling */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative">
