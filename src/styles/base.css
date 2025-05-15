@@ -1,0 +1,28 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-hijau-yellow/5 text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  /* Improve input handling on mobile */
+  input, 
+  textarea, 
+  select, 
+  button {
+    @apply max-w-full;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}

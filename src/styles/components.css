@@ -1,0 +1,66 @@
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-24;
+  }
+  
+  .hover-grow {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .btn-primary {
+    @apply bg-hijau-blue text-white font-medium py-2 px-6 rounded-lg shadow-lg hover:bg-hijau-blue/90 transition-all;
+  }
+  
+  .btn-secondary {
+    @apply bg-hijau-yellow text-hijau-dark font-medium py-2 px-6 rounded-lg shadow-lg hover:bg-hijau-yellow/90 transition-all;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-hijau-blue text-hijau-blue font-medium py-2 px-6 rounded-lg shadow-md hover:bg-hijau-blue hover:text-white transition-all;
+  }
+  
+  .heading-large {
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight;
+  }
+  
+  .heading-medium {
+    @apply text-2xl md:text-3xl font-display font-bold leading-tight;
+  }
+  
+  .heading-small {
+    @apply text-xl md:text-2xl font-display font-semibold leading-tight;
+  }
+  
+  .card-shadow {
+    @apply shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-hijau-yellow/80 border border-white/20 rounded-xl shadow-lg;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-hijau-blue to-hijau-blue/70;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-hijau-blue to-hijau-yellow bg-clip-text text-transparent;
+  }
+  
+  .highlight-box {
+    @apply border-l-4 border-hijau-yellow pl-4 py-2;
+  }
+  
+  .accent-border {
+    @apply border-2 border-hijau-yellow;
+  }
+  
+  .bg-eco-gradient {
+    @apply bg-gradient-to-b from-hijau-yellow/50 to-hijau-blue/5;
+  }
+}
