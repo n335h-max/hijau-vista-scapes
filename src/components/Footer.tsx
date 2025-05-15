@@ -24,8 +24,8 @@ const Footer = () => {
                 className="h-12 md:h-16 w-auto mr-3 drop-shadow-lg"
               />
               <div>
-                <h3 className="font-display text-2xl md:text-3xl font-bold mb-1 md:mb-2">
-                  Hijau <span className="text-hijau-yellow">Group</span>
+                <h3 className="font-display text-2xl md:text-3xl font-bold mb-1 md:mb-2 text-hijau-yellow">
+                  Hijau <span className="text-hijau-yellow">Group Landscape</span>
                 </h3>
                 <div className="w-12 md:w-16 h-1 bg-hijau-yellow rounded-full"></div>
               </div>
