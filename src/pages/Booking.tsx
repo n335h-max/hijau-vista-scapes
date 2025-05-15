@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -102,11 +101,13 @@ const BookingPage = () => {
         throw error;
       }
       
-      // Update booking details with the returned data from Supabase
-      // Convert date string back to Date object for the UI
+      // Create a complete booking details object that has all needed properties
+      // regardless of what Supabase returns
       const savedBooking = {
         ...data[0],
-        date: new Date(data[0].date)
+        date: new Date(data[0].date),
+        // Ensure outsideNegeriSembilan is available from our original request
+        outsideNegeriSembilan: newBookingDetails.outsideNegeriSembilan
       };
       
       setBookingDetails(savedBooking);

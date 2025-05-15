@@ -11,6 +11,8 @@ interface BookingConfirmationProps {
     date: Date;
     time: string;
     email: string;
+    address?: string;
+    outsideNegeriSembilan?: boolean;
   };
 }
 
@@ -53,6 +55,20 @@ const BookingConfirmation: React.FC<BookingConfirmationProps> = ({ bookingDetail
             
             <p className="text-gray-500">Time:</p>
             <p className="font-medium">{bookingDetails.time}</p>
+
+            {bookingDetails.address && (
+              <>
+                <p className="text-gray-500">Address:</p>
+                <p className="font-medium">{bookingDetails.address}</p>
+              </>
+            )}
+
+            {bookingDetails.outsideNegeriSembilan && (
+              <>
+                <p className="text-gray-500">Location Fee:</p>
+                <p className="font-medium text-green-600">Paid (RM 300)</p>
+              </>
+            )}
           </div>
         </div>
       </div>
