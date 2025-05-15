@@ -42,7 +42,7 @@ const Navigation = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled || isOpen
-          ? "bg-white/95 backdrop-blur-md shadow-md py-2"
+          ? "bg-gradient-to-r from-hijau-blue to-hijau-blue-dark shadow-lg py-2"
           : "bg-transparent py-3 md:py-4"
       }`}
     >
@@ -52,11 +52,11 @@ const Navigation = () => {
           <img 
             src="/lovable-uploads/09459ed9-aef9-43f6-80f7-fa2c86a42871.png" 
             alt="Hijau Group Logo" 
-            className="h-8 md:h-10 w-auto mr-2"
+            className="h-8 md:h-10 w-auto mr-2 drop-shadow-md"
           />
-          <span className={`font-display text-xl md:text-2xl font-bold ${isScrolled || isOpen ? 'text-hijau-dark' : 'text-white'} relative group`}>
+          <span className="font-display text-xl md:text-2xl font-bold text-white relative group">
             Hijau{" "}
-            <span className={`${isScrolled || isOpen ? 'text-hijau-blue' : 'text-hijau-yellow'} relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300`}>
+            <span className="text-hijau-yellow relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300 drop-shadow-sm">
               Group
             </span>
           </span>
@@ -70,8 +70,8 @@ const Navigation = () => {
               to={link.path}
               className={`font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
                 location.pathname === link.path
-                  ? isScrolled ? "text-hijau-blue after:bg-hijau-blue after:scale-x-100" : "text-hijau-yellow after:bg-hijau-yellow after:scale-x-100"
-                  : isScrolled ? "text-hijau-dark after:bg-hijau-yellow" : "text-white after:bg-hijau-yellow"
+                  ? "text-hijau-yellow after:bg-hijau-yellow after:scale-x-100"
+                  : "text-white after:bg-hijau-yellow"
               }`}
             >
               {link.name}
@@ -79,7 +79,7 @@ const Navigation = () => {
           ))}
           <Button 
             asChild 
-            className="bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+            className="bg-hijau-yellow text-hijau-blue hover:bg-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 font-bold"
             size={isMobile ? "sm" : "default"}
           >
             <Link to="/contact">Book Now</Link>
@@ -88,7 +88,7 @@ const Navigation = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-hijau-dark p-2 rounded-full bg-gray-100/80 hover:bg-gray-200/80 transition-colors"
+          className="md:hidden text-white p-2 rounded-full bg-hijau-yellow/20 hover:bg-hijau-yellow/30 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -98,7 +98,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-hijau-blue-dark to-hijau-blue shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto">
           <div className="container-custom py-4 flex flex-col space-y-3">
             {navLinks.map((link) => (
               <Link
@@ -106,14 +106,14 @@ const Navigation = () => {
                 to={link.path}
                 className={`py-3 px-4 rounded-md font-medium transition-colors ${
                   location.pathname === link.path
-                    ? "text-hijau-blue bg-hijau-blue/10"
-                    : "text-hijau-dark hover:bg-gray-100"
+                    ? "text-hijau-yellow bg-white/10"
+                    : "text-white hover:bg-white/5"
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            <Button asChild className="bg-hijau-blue hover:bg-hijau-blue/90 w-full shadow-md mt-2">
+            <Button asChild className="bg-hijau-yellow text-hijau-blue hover:bg-white hover:text-hijau-blue w-full shadow-md mt-2 font-bold">
               <Link to="/contact">Book Now</Link>
             </Button>
           </div>
