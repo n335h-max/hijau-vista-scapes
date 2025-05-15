@@ -29,6 +29,22 @@ const Contact = () => {
     console.log("URL Package parameter:", packageName);
     console.log("URL Message parameter:", message);
   }, [location.search]);
+  
+  // Add auto-scrolling for carousels
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const carousels = document.querySelectorAll('.embla__container');
+      carousels.forEach(carousel => {
+        // @ts-ignore
+        if (carousel.parentElement.__embla) {
+          // @ts-ignore
+          carousel.parentElement.__embla.scrollNext();
+        }
+      });
+    }, 3000); // Scroll every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Admin login handler
   const handleAdminLogin = () => {
