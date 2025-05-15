@@ -8,11 +8,11 @@ const GalleryHero = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')",
+            "url('/lovable-uploads/d3b22c60-79f0-42ae-8108-5459310ebab9.png')",
           filter: "saturate(1.2) contrast(1.1)",
         }}
         role="img"
-        aria-label="Landscaping project showcase header image"
+        aria-label="Water feature with lily pads and tropical plants in a garden setting"
       >
         <div className="absolute inset-0 bg-gradient-to-r from-hijau-blue/80 to-black/50"></div>
       </div>
