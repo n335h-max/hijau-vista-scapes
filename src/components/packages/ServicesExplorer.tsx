@@ -16,7 +16,7 @@ const ServicesExplorer: React.FC<ServicesExplorerProps> = ({
   scrollToServices,
 }) => {
   return (
-    <section className="section-padding bg-[#F9F6E8]">
+    <section className="section-padding bg-hijau-yellow/20">
       <div className="container-custom text-center">
         <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-hijau-dark">
           Want to build your dream landscape? See our services first!
