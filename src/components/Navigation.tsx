@@ -54,10 +54,10 @@ const Navigation = () => {
             alt="Hijau Group Logo" 
             className="h-8 md:h-10 w-auto mr-2 drop-shadow-md"
           />
-          <span className="font-display text-xl md:text-2xl font-bold text-white relative group">
+          <span className="font-display text-xl md:text-2xl font-bold text-hijau-yellow relative group">
             Hijau{" "}
             <span className="text-hijau-yellow relative inline-block drop-shadow-sm">
-              Group
+              Group Landscape
             </span>
           </span>
         </Link>
