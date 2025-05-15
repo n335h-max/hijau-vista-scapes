@@ -29,7 +29,7 @@ const AboutTabs = () => {
           </TabsList>
 
           <TabsContent value="mission" className="animate-fade-in">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
               <div>
                 <h2 className="heading-medium text-hijau-blue mb-4">Our Mission</h2>
                 <ol className="space-y-6 text-hijau-dark/80">
@@ -59,12 +59,14 @@ const AboutTabs = () => {
                   </li>
                 </ol>
               </div>
-              <div>
-                <img
-                  src="/lovable-uploads/29524c64-19b4-4efb-8123-8238e80aa031.png"
-                  alt="Landscaper trimming hedge"
-                  className="rounded-lg shadow-lg"
-                />
+              <div className="flex items-center justify-center h-full">
+                <div className="max-h-[350px] overflow-hidden rounded-lg shadow-lg">
+                  <img
+                    src="/lovable-uploads/29524c64-19b4-4efb-8123-8238e80aa031.png"
+                    alt="Landscaper trimming hedge"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </TabsContent>
@@ -75,7 +77,7 @@ const AboutTabs = () => {
                 <img
                   src="/lovable-uploads/e620cbd8-f83b-442d-9e8e-82f3b7dadc22.png"
                   alt="Tiny house with child and landscaper"
-                  className="rounded-lg shadow-lg"
+                  className="rounded-lg shadow-lg max-h-[280px] w-full object-cover"
                 />
               </div>
               <div>
@@ -98,12 +100,14 @@ const AboutTabs = () => {
                   Hijau Group is setting new benchmarks for sustainability, quality, and innovation in the landscape industry.
                 </p>
               </div>
-              <div>
-                <img
-                  src="/lovable-uploads/f72f0489-a7b3-4018-96e5-9aa112b0763f.png"
-                  alt="Plants in a greenhouse"
-                  className="rounded-lg shadow-lg"
-                />
+              <div className="flex items-center justify-center h-full">
+                <div className="max-h-[300px] overflow-hidden rounded-lg shadow-lg">
+                  <img
+                    src="/lovable-uploads/f72f0489-a7b3-4018-96e5-9aa112b0763f.png"
+                    alt="Plants in a greenhouse"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </TabsContent>
