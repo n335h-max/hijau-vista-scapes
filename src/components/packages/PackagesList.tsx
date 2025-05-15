@@ -19,7 +19,7 @@ const PackagesList: React.FC<PackagesListProps> = ({
   const isMobile = useMobile();
   
   return (
-    <section className="section-padding bg-hijau-yellow/20" id="packages-list">
+    <section className="section-padding bg-[#F5F1DF]" id="packages-list">
       <div className="container-custom">
         <h2 className="text-2xl font-semibold mb-6 md:mb-10 text-center" id="packages-heading">Our Packages</h2>
         

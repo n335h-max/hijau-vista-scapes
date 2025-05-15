@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,14 +63,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Updated hijau brand colors to Navy Blue & Bright Yellow
+				// Updated hijau brand colors to Navy Blue & Mustard Yellow
 				hijau: {
 					blue: '#004A8F', // Navy Blue primary
 					'blue-light': '#2667A5', // Lighter navy blue
 					'blue-dark': '#003A72', // Darker navy blue
-					yellow: '#F5D443', // Bright Yellow
-					'yellow-light': '#F7DE6F', // Lighter yellow
-					'yellow-dark': '#EDBD21', // Darker yellow
+					yellow: '#D4B12A', // Mustard Yellow
+					'yellow-light': '#E3C65B', // Lighter mustard yellow
+					'yellow-dark': '#BF9C21', // Darker mustard yellow
 					green: '#004A8F', // Using navy blue instead of green
 					'green-light': '#2667A5', // Using lighter navy blue
 					'green-dark': '#003A72', // Using darker navy blue
@@ -78,7 +79,7 @@ export default {
 					moss: '#004A8F', // Using navy blue
 					sage: '#2667A5', // Using lighter navy blue
 					earth: '#003A72', // Using darker navy blue
-					clay: '#F5D443', // Using bright yellow
+					clay: '#D4B12A', // Using mustard yellow
 					leaf: '#004A8F', // Using navy blue
 					forest: '#003A72', // Using darker navy blue
 				}
