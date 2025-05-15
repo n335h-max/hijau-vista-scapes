@@ -7,7 +7,7 @@ import { galleryItems } from "@/components/gallery/galleryItems.data";
 
 const GalleryPreview = () => {
   // Select specific gallery items by their IDs to showcase
-  const selectedItemIds = [1, 2, 13, 12, 15, 21, 26, 28, 31];
+  const selectedItemIds = [1, 2, 13, 12, 15, 21, 27, 28, 31];
   
   // Find the gallery items with those IDs, ensuring we don't have undefined items
   const selectedImages = selectedItemIds
