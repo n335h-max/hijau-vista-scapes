@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { isSameDay } from "date-fns";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useMobile } from "@/hooks/use-mobile";
 import CalendarSelector from "./calendar/CalendarSelector";
 import TimeSlotSelector from "./calendar/TimeSlotSelector";
 import BookingSummary from "./calendar/BookingSummary";
@@ -30,6 +31,7 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
   const [bookedSlots, setBookedSlots] = useState<Array<{date: Date, time: string}>>([]);
   const { toast } = useToast();
+  const isMobile = useMobile();
 
   // Load existing bookings from Supabase on component mount
   useEffect(() => {
@@ -110,15 +112,15 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
-      <h2 className="heading-medium text-hijau-blue mb-8 relative inline-block">
+    <div className="bg-white rounded-xl shadow-xl p-4 sm:p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
+      <h2 className="heading-medium text-hijau-blue mb-6 sm:mb-8 relative inline-block text-2xl sm:text-3xl">
         Choose Your Appointment Date & Time
         <span className="absolute -bottom-2 left-0 w-1/2 h-1 bg-hijau-yellow rounded-full"></span>
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {/* Calendar Side */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <CalendarSelector
             selectedDate={selectedDate}
             currentMonth={currentMonth}
@@ -135,14 +137,22 @@ const BookingCalendar: React.FC<BookingCalendarProps> = ({
             />
           )}
           
+          {isMobile && selectedDate && selectedTime && (
+            <ConfirmationPanel
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
+              onBookingSubmit={handleBookingSubmit}
+            />
+          )}
+          
           <BookingAlert />
         </div>
 
         {/* Booking Details Side */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <BookingSummary contactDetails={bookingSummaryDetails} />
 
-          {selectedDate && selectedTime && (
+          {!isMobile && selectedDate && selectedTime && (
             <ConfirmationPanel
               selectedDate={selectedDate}
               selectedTime={selectedTime}

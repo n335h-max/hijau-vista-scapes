@@ -1,20 +1,18 @@
 
 import React from "react";
-import { AlertTriangle } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { CalendarIcon } from "lucide-react";
 
-const BookingAlert: React.FC = () => {
+const BookingAlert = () => {
   return (
-    <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg">
-      <div className="flex items-start">
-        <AlertTriangle className="h-5 w-5 text-amber-500 mr-2 mt-0.5" />
-        <div>
-          <h4 className="font-medium text-amber-800">Booking Information</h4>
-          <p className="text-sm text-amber-700 mt-1">
-            Time slots that are already booked will not be shown. We only display available time slots to prevent double bookings.
-          </p>
-        </div>
-      </div>
-    </div>
+    <Alert className="bg-blue-50 border-blue-200 text-xs sm:text-sm">
+      <CalendarIcon className="h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
+      <AlertTitle className="text-blue-700 font-medium text-sm sm:text-base">Booking Information</AlertTitle>
+      <AlertDescription className="text-blue-600 mt-1">
+        <p>Consultations are available Monday-Saturday, from 10:00 AM to 4:00 PM.</p>
+        <p className="mt-1">Please book at least 24 hours in advance.</p>
+      </AlertDescription>
+    </Alert>
   );
 };
 

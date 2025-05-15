@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -119,7 +120,7 @@ const BookingPage = () => {
   // Main render
   return (
     <>
-      <section className="relative h-[40vh] md:h-[50vh]">
+      <section className="relative h-[30vh] sm:h-[40vh] md:h-[50vh]">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -130,13 +131,13 @@ const BookingPage = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
         </div>
 
-        <div className="container-custom relative h-full flex items-center">
+        <div className="container-custom relative h-full flex items-center px-4 sm:px-6">
           <div className="max-w-xl text-white">
-            <h1 className="heading-large mb-4 relative">
+            <h1 className="heading-large mb-3 sm:mb-4 relative text-2xl sm:text-3xl md:text-4xl">
               Book Your Consultation
-              <span className="absolute -bottom-4 left-0 w-24 h-1 bg-hijau-yellow"></span>
+              <span className="absolute -bottom-2 sm:-bottom-4 left-0 w-16 sm:w-24 h-1 bg-hijau-yellow"></span>
             </h1>
-            <p className="text-lg md:text-xl mt-6 opacity-90">
+            <p className="text-base sm:text-lg md:text-xl mt-4 sm:mt-6 opacity-90">
               Schedule your landscaping consultation to begin the journey
               to your perfect outdoor space.
             </p>
@@ -146,7 +147,7 @@ const BookingPage = () => {
 
       <BookingProcess />
 
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 px-4 sm:px-6">
         <div className="container-custom">
           {!isConfirmed ? (
             <BookingCalendar

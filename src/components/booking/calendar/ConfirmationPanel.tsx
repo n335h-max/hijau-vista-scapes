@@ -17,14 +17,14 @@ const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
   if (!selectedDate || !selectedTime) return null;
 
   return (
-    <div className="bg-hijau-blue/5 p-6 rounded-lg border border-hijau-blue/30 animate-fade-in">
-      <h3 className="font-medium text-hijau-blue mb-2">Selected Appointment</h3>
-      <p className="text-lg font-semibold">
+    <div className="bg-hijau-blue/5 p-4 sm:p-6 rounded-lg border border-hijau-blue/30 animate-fade-in">
+      <h3 className="font-medium text-hijau-blue mb-2 text-sm sm:text-base">Selected Appointment</h3>
+      <p className="text-base sm:text-lg font-semibold">
         {format(selectedDate, "EEEE, MMMM d, yyyy")} at {selectedTime}
       </p>
       <Button
         onClick={onBookingSubmit}
-        className="w-full mt-4 bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+        className="w-full mt-4 bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 text-sm sm:text-base"
         size="lg"
       >
         Confirm Booking
