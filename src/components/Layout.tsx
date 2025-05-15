@@ -53,12 +53,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   }, [location.pathname]);
 
-  // Page transition animation
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5 } },
-  };
-
   return (
     <div className="flex flex-col min-h-screen w-full bg-hijau-blue/5">
       <Navigation />
@@ -77,7 +71,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Mobile optimization indicator */}
       {showMobileIndicator && (
         <div 
-          className="fixed bottom-24 left-4 z-40 bg-hijau-blue text-white px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 text-sm animate-fade-in"
+          className="fixed bottom-20 left-4 z-40 bg-hijau-blue text-white px-3 py-2 rounded-lg shadow-lg flex items-center gap-2 text-xs animate-fade-in"
           role="status"
           aria-live="polite"
         >

@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMobile } from "@/hooks/use-mobile";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const isMobile = useMobile();
 
   // Handle scroll effect
   useEffect(() => {
@@ -39,9 +41,9 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-md py-2"
-          : "bg-transparent py-4"
+        isScrolled || isOpen
+          ? "bg-white/95 backdrop-blur-md shadow-md py-2"
+          : "bg-transparent py-3 md:py-4"
       }`}
     >
       <div className="container-custom flex justify-between items-center">
@@ -50,26 +52,26 @@ const Navigation = () => {
           <img 
             src="/lovable-uploads/09459ed9-aef9-43f6-80f7-fa2c86a42871.png" 
             alt="Hijau Group Logo" 
-            className="h-10 w-auto mr-2"
+            className="h-8 md:h-10 w-auto mr-2"
           />
-          <span className="font-display text-2xl font-bold text-hijau-dark relative group">
+          <span className={`font-display text-xl md:text-2xl font-bold ${isScrolled || isOpen ? 'text-hijau-dark' : 'text-white'} relative group`}>
             Hijau{" "}
-            <span className="text-hijau-blue relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300">
+            <span className={`${isScrolled || isOpen ? 'text-hijau-blue' : 'text-hijau-yellow'} relative inline-block after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-hijau-yellow after:transform after:origin-bottom-right after:scale-x-0 group-hover:after:scale-x-100 after:transition-transform after:duration-300`}>
               Group
             </span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
               className={`font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:transform after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
                 location.pathname === link.path
-                  ? "text-hijau-blue after:bg-hijau-blue after:scale-x-100"
-                  : "text-hijau-dark after:bg-hijau-yellow"
+                  ? isScrolled ? "text-hijau-blue after:bg-hijau-blue after:scale-x-100" : "text-hijau-yellow after:bg-hijau-yellow after:scale-x-100"
+                  : isScrolled ? "text-hijau-dark after:bg-hijau-yellow" : "text-white after:bg-hijau-yellow"
               }`}
             >
               {link.name}
@@ -78,6 +80,7 @@ const Navigation = () => {
           <Button 
             asChild 
             className="bg-hijau-blue hover:bg-hijau-blue/90 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
+            size={isMobile ? "sm" : "default"}
           >
             <Link to="/contact">Book Now</Link>
           </Button>
@@ -95,8 +98,8 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg animate-fade-in">
-          <div className="container-custom py-4 flex flex-col space-y-4">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto">
+          <div className="container-custom py-4 flex flex-col space-y-3">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -110,7 +113,7 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
-            <Button asChild className="bg-hijau-blue hover:bg-hijau-blue/90 w-full shadow-md">
+            <Button asChild className="bg-hijau-blue hover:bg-hijau-blue/90 w-full shadow-md mt-2">
               <Link to="/contact">Book Now</Link>
             </Button>
           </div>

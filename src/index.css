@@ -98,6 +98,15 @@
   html {
     @apply scroll-smooth;
   }
+  
+  /* Improve input handling on mobile */
+  input, 
+  textarea, 
+  select, 
+  button {
+    @apply max-w-full;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
 }
 
 @layer components {
@@ -106,7 +115,7 @@
   }
   
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-12 md:py-16 lg:py-24;
   }
   
   .hover-grow {
@@ -126,7 +135,7 @@
   }
   
   .heading-large {
-    @apply text-3xl md:text-5xl font-display font-bold leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold leading-tight;
   }
   
   .heading-medium {
@@ -163,5 +172,64 @@
   
   .bg-eco-gradient {
     @apply bg-gradient-to-b from-white to-hijau-blue/5;
+  }
+  
+  /* Mobile optimized classes */
+  .mobile-container {
+    @apply px-4 py-3;
+  }
+  
+  .mobile-section-spacing {
+    @apply py-8;
+  }
+  
+  .mobile-card {
+    @apply rounded-lg shadow-md p-4;
+  }
+  
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px]; /* Apple's recommended minimum touch target size */
+  }
+}
+
+/* Mobile-specific media queries */
+@media (max-width: 640px) {
+  .heading-large {
+    font-size: 2rem; /* 32px */
+    line-height: 1.2;
+  }
+  
+  .heading-medium {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.3;
+  }
+  
+  /* Fix iOS 100vh issue */
+  .h-screen {
+    height: 100vh; /* Fallback */
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Improve touch area for links in navigation and similar elements */
+  nav a, 
+  .footer a,
+  button {
+    padding: 0.5rem;
+    margin: -0.5rem;
+  }
+}
+
+/* Fix for position: fixed elements on mobile Safari */
+@supports (-webkit-touch-callout: none) {
+  .fixed {
+    position: fixed;
+    /* Using negative margin to prevent content from shifting when scrolling */
+    width: 100%;
+    /* Additional Safari-specific fixes if needed */
   }
 }

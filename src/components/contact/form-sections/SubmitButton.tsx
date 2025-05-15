@@ -3,9 +3,11 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
 import { useFormContext } from "react-hook-form";
+import { useMobile } from "@/hooks/use-mobile";
 
 const SubmitButton: React.FC = () => {
   const form = useFormContext();
+  const isMobile = useMobile();
   
   return (
     <div className="pt-6">
@@ -16,10 +18,10 @@ const SubmitButton: React.FC = () => {
         size="lg"
       >
         <Calendar className="mr-2 h-5 w-5" />
-        Proceed to Booking Calendar
+        {isMobile ? "Proceed to Booking" : "Proceed to Booking Calendar"}
         <ArrowRight className="ml-1 h-5 w-5" />
       </Button>
-      <p className="text-gray-500 text-sm text-center mt-3">
+      <p className="text-gray-500 text-xs md:text-sm text-center mt-3">
         Select your details and package to proceed to our booking calendar.
         <span className="text-hijau-yellow-dark font-medium"> We're open Monday to Saturday, 9am to 5:30pm.</span>
       </p>
