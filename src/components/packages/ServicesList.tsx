@@ -67,7 +67,7 @@ const ServicesList: React.FC<ServicesListProps> = ({
   return (
     <motion.section 
       id="services-section" 
-      className="section-padding bg-white"
+      className="section-padding bg-hijau-yellow/20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
