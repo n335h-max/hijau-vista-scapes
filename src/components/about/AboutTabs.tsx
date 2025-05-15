@@ -62,8 +62,8 @@ const AboutTabs = () => {
               <div className="flex items-center justify-center h-full">
                 <div className="max-h-[350px] overflow-hidden rounded-lg shadow-lg">
                   <img
-                    src="/lovable-uploads/29524c64-19b4-4efb-8123-8238e80aa031.png"
-                    alt="Landscaper trimming hedge"
+                    src="/lovable-uploads/aefcf738-a440-4777-9bb1-a182b47ff6b5.png"
+                    alt="Landscaper trimming topiary with shears"
                     className="w-full h-full object-cover"
                   />
                 </div>
