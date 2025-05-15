@@ -14,7 +14,6 @@ const TopClients = () => {
   const clientLogos: ClientLogo[] = [
     { name: "KPJ Healthcare", logoUrl: "/lovable-uploads/40c7647e-26d4-420d-b6d5-976a239fc567.png" },
     { name: "Mofaz Sdn Bhd", logoUrl: "/lovable-uploads/bfb571a4-dbfc-49cc-b9fe-9fdd58e83869.png" },
-    { name: "Koperasi Kuatmaju Berhad", logoUrl: "/lovable-uploads/8610685f-0863-4494-b8b8-e4641f952ad9.png" },
     { name: "Kismet Engineering Technologies Sdn Bhd", logoUrl: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png" },
     { name: "UCSI International School", logoUrl: "/lovable-uploads/172a3b65-a471-497c-bde9-5f7346466f50.png" },
     { name: "Columbia Asia", logoUrl: "/lovable-uploads/c140ffde-3793-4b0b-8329-75263a95c0aa.png" },
