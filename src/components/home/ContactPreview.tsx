@@ -51,7 +51,7 @@ const ContactPreview = () => {
                 <div className="mr-3 bg-white/10 p-2 rounded-full text-hijau-yellow">
                   <Mail className="h-5 w-5" />
                 </div>
-                <span className="text-white/90 font-medium truncate">info@hijaugroup.com</span>
+                <span className="text-white/90 font-medium truncate">contactus@hijaugroup.com.my</span>
               </div>
               
               <div className="flex items-center transform transition-transform duration-300 hover:translate-x-1">

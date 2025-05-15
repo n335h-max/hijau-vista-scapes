@@ -11,24 +11,21 @@ const ServicesPreview = () => {
       icon: <Leaf className="text-hijau-blue" />,
       title: "Smart Package",
       description: "Perfect for small spaces or simple upgrades to enhance your outdoor area.",
-      regularPrice: "RM2,000",
-      discountPrice: "RM1,800",
+      regularPrice: "RM2,000 or below",
       serviceType: "smart-package"
     },
     {
       icon: <Construction className="text-hijau-blue" />,
       title: "Signature Package",
       description: "Our most popular option for a complete landscape transformation with premium elements.",
-      regularPrice: "RM9,999",
-      discountPrice: "RM8,999",
+      regularPrice: "RM2,001 - RM9,999",
       serviceType: "signature-package"
     },
     {
       icon: <Droplet className="text-hijau-blue" />,
       title: "Elite Package",
       description: "The ultimate luxury landscape package with premium features for discerning clients.",
-      regularPrice: "RM40,000",
-      discountPrice: "RM36,000",
+      regularPrice: "RM10,000 - RM40,000",
       serviceType: "elite-package"
     },
   ];
