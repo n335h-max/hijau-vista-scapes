@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,22 +62,25 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Enhanced Hijau brand colors with emphasis on blue and yellow
+				// Refined Hijau brand colors - Earth & Sky palette
 				hijau: {
-					blue: '#195E8C', // Primary blue
-					'blue-light': '#3D7EAC', // Lighter blue for hover states
-					'blue-dark': '#0E4C76', // Darker blue for shadows/accents
-					yellow: '#EED760', // Primary yellow
-					'yellow-light': '#F5E690', // Lighter yellow for hover states
-					'yellow-dark': '#DBBA2D', // Darker yellow for shadows/accents
-					light: '#F2FCE2',
-					dark: '#1E293B',
-					moss: '#6B8E23',
-					sage: '#9CAF88',
-					earth: '#8B7355',
-					clay: '#D6C4B8',
-					leaf: '#4CAF50',
-					forest: '#2E7D32',
+					blue: '#2A5E7B', // Primary blue - deeper, more trustworthy
+					'blue-light': '#4A7999', // Lighter blue for hover states
+					'blue-dark': '#1F4A63', // Darker blue for shadows/accents
+					yellow: '#D9B44A', // Warmer, less vibrant yellow
+					'yellow-light': '#E8CC7A', // Lighter yellow for hover states
+					'yellow-dark': '#B89937', // Darker yellow for shadows/accents
+					green: '#4A7C59', // Secondary green - natural foliage
+					'green-light': '#6A9277', // Lighter green for hover states
+					'green-dark': '#3A614A', // Darker green for shadows/accents
+					light: '#F5F7F4', // Off-white with slight green undertone
+					dark: '#2D3B40', // Rich charcoal
+					moss: '#586B4C', // Muted moss green
+					sage: '#AAC0AA', // Light sage green
+					earth: '#6D5C4D', // Earth brown
+					clay: '#BEA99A', // Clay beige
+					leaf: '#3F6844', // Deep leaf green
+					forest: '#2A4631', // Forest green
 				}
 			},
 			borderRadius: {

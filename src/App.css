@@ -12,10 +12,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #195E8C);
+  filter: drop-shadow(0 0 2em #2A5E7B);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #EED760);
+  filter: drop-shadow(0 0 2em #D9B44A);
 }
 
 @keyframes logo-spin {
@@ -43,7 +43,7 @@
 
 /* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(90deg, #195E8C, #EED760);
+  background: linear-gradient(90deg, #2A5E7B, #D9B44A);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -52,7 +52,7 @@
 
 /* Blue-yellow gradient background */
 .bg-blue-yellow-gradient {
-  background: linear-gradient(135deg, rgba(25, 94, 140, 0.1), rgba(238, 215, 96, 0.1));
+  background: linear-gradient(135deg, rgba(42, 94, 123, 0.1), rgba(217, 180, 74, 0.1));
 }
 
 /* Hover underline effect with yellow color */
@@ -67,7 +67,7 @@
   height: 2px;
   bottom: -2px;
   left: 0;
-  background-color: #EED760;
+  background-color: #D9B44A;
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease-out;
@@ -94,8 +94,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(25, 94, 140, 0.2),
-    rgba(238, 215, 96, 0.2),
+    rgba(42, 94, 123, 0.2),
+    rgba(217, 180, 74, 0.2),
     transparent
   );
   animation: shimmer 2s infinite;
@@ -121,7 +121,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #195E8C, #EED760);
+  background: linear-gradient(to bottom, #2A5E7B, #D9B44A);
 }
 
 /* Card with blue-yellow gradient border */
@@ -140,7 +140,7 @@
   left: 0;
   margin: -1px;
   border-radius: inherit;
-  background: linear-gradient(45deg, #195E8C, #EED760);
+  background: linear-gradient(45deg, #2A5E7B, #D9B44A);
   z-index: -1;
 }
 
@@ -148,7 +148,7 @@
 .btn-gradient {
   background-size: 200% auto;
   transition: all 0.3s ease;
-  background-image: linear-gradient(to right, #195E8C 0%, #EED760 51%, #195E8C 100%);
+  background-image: linear-gradient(to right, #2A5E7B 0%, #D9B44A 51%, #2A5E7B 100%);
 }
 
 .btn-gradient:hover {
