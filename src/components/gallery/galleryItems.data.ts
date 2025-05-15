@@ -6,42 +6,42 @@ export const galleryItems: GalleryItem[] = [
   // Original gallery items
   {
     id: 1,
-    title: "Zen Garden Transformation",
+    title: "Natural Garden Installation",
     description: "A peaceful garden space with native plantings and stone pathways.",
     type: "Residential",
     image: "/lovable-uploads/ce002d00-e396-47a6-8a1c-0890bb70d2aa.png"
   },
   {
     id: 2,
-    title: "Modern Backyard Design",
+    title: "Natural Grass - Philipine",
     description: "Clean lines and contemporary elements create this stunning backyard retreat.",
     type: "Residential",
     image: "/lovable-uploads/e1133523-440f-4ec3-8b9f-a93906fc0272.png"
   },
   {
     id: 3,
-    title: "Tropical Garden Path",
+    title: "Natural Grass - Cowgrass",
     description: "Lush foliage and vibrant color create a tropical paradise in this garden.",
     type: "Residential",
     image: "/lovable-uploads/96f1860e-e387-4f26-81ab-948b14420cbc.png"
   },
   {
     id: 4,
-    title: "Elegant Patio Design",
+    title: "Tiny House 1",
     description: "A functional and beautiful outdoor living space with custom paving.",
     type: "Residential",
     image: "/lovable-uploads/5ddcc32d-dfe8-4ac6-b43c-af1bed3a8191.png"
   },
   {
     id: 5,
-    title: "Tranquil Garden Retreat",
+    title: "Tiny House 2",
     description: "A serene garden space designed for relaxation and contemplation.",
     type: "Residential",
     image: "/lovable-uploads/5ab02348-939e-497b-865f-f5d6d14bcc81.png"
   },
   {
     id: 6,
-    title: "Custom Water Feature",
+    title: "Water Feature",
     description: "A striking water feature that serves as the centerpiece of this landscape design.",
     type: "Residential",
     image: "/lovable-uploads/1a73e93c-f297-44cc-ab0d-e55e138cc1c4.png"
@@ -55,14 +55,14 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 8,
-    title: "Lush Softscape Design",
-    description: "Carefully selected plants create texture, color, and year-round interest.",
+    title: "Tiny House 4",
+    description: "A serene garden space designed for relaxation and contemplation.",
     type: "Residential",
     image: "/lovable-uploads/8fc258f6-46b3-4443-b0be-a81c4f0c8085.png"
   },
   {
     id: 9,
-    title: "Native Plant Garden",
+    title: "Modern Softscape Installation",
     description: "A sustainable landscape featuring local native plants and eco-friendly design.",
     type: "Residential",
     image: "/lovable-uploads/6d48415f-3c31-4f13-bfdb-64c19a36d0f3.png"
@@ -77,7 +77,7 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 11,
-    title: "Residential Landscape Project",
+    title: "Consultation",
     description: "Complete landscape planning and execution for a residential property.",
     type: "Residential",
     image: "/lovable-uploads/54655973-22bf-415f-b227-7fd334866e58.png"
@@ -98,14 +98,14 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 14,
-    title: "Commercial Building Entrance",
+    title: "Modern Softscape Installation",
     description: "Professional landscaping for commercial property entrances and walkways.",
     type: "Commercial",
     image: "/lovable-uploads/4b576a69-dc1e-4347-aca4-49aca6fe3b67.png"
   },
   {
     id: 15,
-    title: "Artificial Turf Installation",
+    title: "Modern Hardscape Installation",
     description: "Low-maintenance artificial turf installation with decorative stone borders.",
     type: "Residential",
     image: "/lovable-uploads/5f776d9a-f54c-4153-9351-d4ad59dadcad.png"
@@ -127,17 +127,10 @@ export const galleryItems: GalleryItem[] = [
   // Additional images (replacing the removed ones)
   {
     id: 18,
-    title: "Paved Garden Walkway",
-    description: "Elegant stone walkway with bordered plants creating a formal garden path.",
+    title: "Construction",
+    description: "Elegant stone walkway with bordered plants creating a formal garden path is being constructed.",
     type: "Residential",
     image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
-  },
-  {
-    id: 20,
-    title: "Courtyard Design",
-    description: "Private courtyard with decorative paving and strategic plantings.",
-    type: "Residential",
-    image: "/lovable-uploads/c7dbe7b8-ca6f-4692-a3ab-5405385314e2.png"
   },
   {
     id: 21,
@@ -148,37 +141,30 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 22,
-    title: "Curved Garden Path",
-    description: "Natural stone walkway with curved design through native plantings.",
+    title: "Construction",
+    description: "Natural stone walkway with curved design through native plantings is being constructed.",
     type: "Residential",
     image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
   },
   {
     id: 23,
-    title: "Modern Deck Installation",
+    title: "Artificial Grass Installation",
     description: "Contemporary wooden deck with integrated planters and lighting.",
     type: "Residential",
     image: "/lovable-uploads/d96d9c3e-98ae-4314-93b5-11957619afaf.png"
   },
-  {
-    id: 24,
-    title: "Garden Water Feature",
-    description: "Custom water feature installation creating a focal point in garden design.",
-    type: "Residential",
-    image: "/lovable-uploads/dbeeaf61-797b-40df-a7e9-a7b0a93204ae.png"
-  },
   // Replacement images - NEW
   {
     id: 19,
-    title: "Minimalist Japanese Garden",
-    description: "Clean, elegant Japanese-inspired garden design with careful attention to balance and harmony.",
+    title: "Consultation",
+    description: "Space-efficient vertical garden design was being consulted for urban environments and small spaces.",
     type: "Residential",
     image: "/lovable-uploads/ecc2acb1-bde1-4ebe-8468-a4d9a3f3c167.png"
   },
   {
     id: 25,
-    title: "Vertical Garden Installation",
-    description: "Space-efficient vertical garden design perfect for urban environments and small spaces.",
+    title: "Nursery",
+    description: "Space-efficient vertical garden design for urban environments and small spaces.",
     type: "Commercial",
     image: "/lovable-uploads/f72f0489-a7b3-4018-96e5-9aa112b0763f.png"
   }
