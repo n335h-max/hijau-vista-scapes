@@ -11,6 +11,7 @@ const ServicesPreview = () => {
       icon: <Leaf className="w-10 h-10 text-hijau-blue" />,
       title: "Lawn Care",
       description: "Professional lawn mowing, edging, and maintenance services to keep your yard looking pristine.",
+      regularPrice: "$79",
       discountPrice: "$49",
       serviceType: "maintenance"
     },
@@ -18,6 +19,7 @@ const ServicesPreview = () => {
       icon: <Trees className="w-10 h-10 text-hijau-blue" />,
       title: "Garden Design",
       description: "Custom garden designs that reflect your style while enhancing your property's natural beauty.",
+      regularPrice: "$299",
       discountPrice: "$199",
       serviceType: "design"
     },
@@ -25,6 +27,7 @@ const ServicesPreview = () => {
       icon: <Shovel className="w-10 h-10 text-hijau-blue" />,
       title: "Planting & Mulching",
       description: "Expert plant selection and installation with premium mulch for healthy, beautiful landscapes.",
+      regularPrice: "$249",
       discountPrice: "$149",
       serviceType: "installation"
     },
@@ -32,6 +35,7 @@ const ServicesPreview = () => {
       icon: <Wrench className="w-10 h-10 text-hijau-blue" />,
       title: "Hardscaping",
       description: "Custom patios, walkways, and retaining walls that combine functionality with aesthetic appeal.",
+      regularPrice: "$499",
       discountPrice: "$299",
       serviceType: "construction"
     },
@@ -39,6 +43,7 @@ const ServicesPreview = () => {
       icon: <Droplets className="w-10 h-10 text-hijau-blue" />,
       title: "Irrigation Systems",
       description: "Water-efficient irrigation systems designed, installed, and maintained to keep your landscape thriving.",
+      regularPrice: "$299",
       discountPrice: "$189",
       serviceType: "installation"
     },
@@ -46,6 +51,7 @@ const ServicesPreview = () => {
       icon: <PaintBucket className="w-10 h-10 text-hijau-blue" />,
       title: "Outdoor Lighting",
       description: "Enhance your property's beauty and security with professionally designed lighting solutions.",
+      regularPrice: "$259",
       discountPrice: "$159",
       serviceType: "installation"
     }
@@ -68,7 +74,8 @@ const ServicesPreview = () => {
               icon={service.icon}
               title={service.title}
               description={service.description}
-              price={service.discountPrice} 
+              regularPrice={service.regularPrice}
+              discountPrice={service.discountPrice}
               serviceType={service.serviceType}
             />
           ))}
