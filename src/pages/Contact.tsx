@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import ContactInfoSection from "@/components/contact/ContactInfoSection";
 import ContactForm from "@/components/contact/ContactForm";
@@ -12,9 +12,11 @@ const Contact = () => {
   const [adminPassword, setAdminPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { toast } = useToast();
   const [packageParam, setPackageParam] = useState<string | null>(null);
   const [messageParam, setMessageParam] = useState<string | null>(null);
+  const paymentCanceled = searchParams.get("paymentCanceled") === "true";
 
   // Extract parameters from URL if available
   useEffect(() => {
@@ -28,7 +30,23 @@ const Contact = () => {
     
     console.log("URL Package parameter:", packageName);
     console.log("URL Message parameter:", message);
-  }, [location.search]);
+    
+    // Check if payment was canceled
+    if (paymentCanceled) {
+      toast({
+        title: "Payment Canceled",
+        description: "You've canceled the payment process. Please try again or choose a location within Negeri Sembilan.",
+        variant: "destructive",
+      });
+      
+      // Try to restore form data from localStorage
+      const savedFormData = localStorage.getItem("contactFormData");
+      if (savedFormData) {
+        // We'll let the ContactForm component handle the form restoration
+        console.log("Form data found in localStorage, ready for restoration");
+      }
+    }
+  }, [location.search, toast, paymentCanceled]);
   
   // Add auto-scrolling for carousels
   useEffect(() => {
@@ -70,6 +88,22 @@ const Contact = () => {
     }
   };
 
+  // Get saved form data for restoration if available
+  const getSavedFormData = () => {
+    try {
+      const savedData = localStorage.getItem("contactFormData");
+      if (savedData) {
+        const parsedData = JSON.parse(savedData);
+        // Clear localStorage after retrieving
+        localStorage.removeItem("contactFormData");
+        return parsedData;
+      }
+    } catch (error) {
+      console.error("Error parsing saved form data:", error);
+    }
+    return null;
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -109,7 +143,8 @@ const Contact = () => {
             {/* Booking Form */}
             <ContactForm 
               initialService={packageParam || undefined} 
-              initialMessage={messageParam || undefined} 
+              initialMessage={messageParam || undefined}
+              savedFormData={getSavedFormData()}
             />
           </div>
         </div>

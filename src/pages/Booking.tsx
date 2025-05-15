@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import BookingCalendar from "@/components/booking/BookingCalendar";
@@ -10,15 +10,51 @@ import BookingProcess from "@/components/booking/BookingProcess";
 const BookingPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { toast } = useToast();
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [contactDetails, setContactDetails] = useState<any>(null);
+  const paymentSuccess = searchParams.get("paymentSuccess") === "true";
 
-  // Get contact details from location state or redirect back to contact page
+  // Get contact details from location state or localStorage (if coming from payment)
   useEffect(() => {
-    // If no contact details, redirect to contact page
-    if (!location.state || !location.state.contactDetails) {
+    // Check if we're coming back from successful payment
+    if (paymentSuccess) {
+      const savedFormData = localStorage.getItem("contactFormData");
+      
+      if (savedFormData) {
+        try {
+          const parsedData = JSON.parse(savedFormData);
+          setContactDetails(parsedData);
+          
+          // Show success toast
+          toast({
+            title: "Payment Successful",
+            description: "Your location fee has been paid. Now please select your appointment time.",
+          });
+          
+          // Clear the saved form data
+          localStorage.removeItem("contactFormData");
+        } catch (error) {
+          console.error("Error parsing saved form data:", error);
+          navigate("/contact");
+        }
+      } else {
+        // If no saved data found, redirect to contact page
+        toast({
+          title: "Information Missing",
+          description: "Please fill out the contact form again.",
+          variant: "destructive",
+        });
+        navigate("/contact");
+      }
+    } else if (location.state && location.state.contactDetails) {
+      // Regular flow - coming directly from Contact form
+      setContactDetails(location.state.contactDetails);
+    } else {
+      // No data found, redirect to contact page
       toast({
         title: "Information Missing",
         description: "Please fill out the contact form first.",
@@ -26,14 +62,21 @@ const BookingPage = () => {
       });
       navigate("/contact");
     }
-  }, [location.state, navigate, toast]);
+  }, [location.state, navigate, toast, paymentSuccess]);
 
   const handleBookingComplete = async (date: Date, time: string) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     
-    // Get contact details from location state
-    const contactDetails = location.state.contactDetails;
+    if (!contactDetails) {
+      toast({
+        title: "Error",
+        description: "Contact details missing. Please try again.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
     
     // Create booking object
     const newBookingDetails = {
@@ -45,6 +88,7 @@ const BookingPage = () => {
       date: date.toISOString(),
       time: time,
       address: contactDetails.address || "Not provided",
+      outsideNegeriSembilan: contactDetails.outsideNegeriSembilan || false,
     };
     
     try {
@@ -76,7 +120,8 @@ const BookingPage = () => {
             service: savedBooking.service,
             date: savedBooking.date.toISOString(),
             time: savedBooking.time,
-            address: savedBooking.address
+            address: savedBooking.address,
+            outsideNegeriSembilan: savedBooking.outsideNegeriSembilan
           },
         });
         
@@ -113,10 +158,6 @@ const BookingPage = () => {
     }
   };
 
-  if (!location.state || !location.state.contactDetails) {
-    return null; // Will redirect in useEffect
-  }
-
   // Main render
   return (
     <>
@@ -150,10 +191,20 @@ const BookingPage = () => {
       <section className="section-padding bg-gray-50 px-4 sm:px-6">
         <div className="container-custom">
           {!isConfirmed ? (
-            <BookingCalendar
-              contactDetails={location.state.contactDetails}
-              onBookingComplete={handleBookingComplete}
-            />
+            contactDetails ? (
+              <BookingCalendar
+                contactDetails={{
+                  ...contactDetails,
+                  service: contactDetails.package // Map package to service for BookingCalendar
+                }}
+                onBookingComplete={handleBookingComplete}
+              />
+            ) : (
+              <div className="text-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-hijau-blue mx-auto mb-4"></div>
+                <p className="text-hijau-blue">Loading your booking details...</p>
+              </div>
+            )
           ) : (
             <BookingConfirmation bookingDetails={bookingDetails} />
           )}

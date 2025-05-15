@@ -17,16 +17,21 @@ import SubmitButton from "./form-sections/SubmitButton";
 interface ContactFormProps {
   initialService?: string;
   initialMessage?: string | null;
+  savedFormData?: ContactFormValues | null;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessage }) => {
+const ContactForm: React.FC<ContactFormProps> = ({ 
+  initialService, 
+  initialMessage,
+  savedFormData 
+}) => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
   // Create form
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: {
+    defaultValues: savedFormData || {
       name: "",
       phone: "",
       email: "",
@@ -39,29 +44,30 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialService, initialMessag
 
   // Effect to update package field when initialService prop changes
   useEffect(() => {
-    if (initialService) {
-      form.setValue("package", initialService);
+    if (!savedFormData) {
+      if (initialService) {
+        form.setValue("package", initialService);
+      }
+      if (initialMessage) {
+        form.setValue("message", initialMessage);
+      }
     }
-    if (initialMessage) {
-      form.setValue("message", initialMessage);
-    }
-  }, [initialService, initialMessage, form]);
+  }, [initialService, initialMessage, form, savedFormData]);
 
-  // Form submission handler
+  // Effect for restoring data from canceled payment
+  useEffect(() => {
+    if (savedFormData) {
+      // If we have restored form data, show a message
+      toast({
+        title: "Form Restored",
+        description: "We've restored your form data from your previous attempt.",
+      });
+    }
+  }, [savedFormData, toast]);
+
+  // Form submission handler is now handled in SubmitButton component
   const onSubmit = (values: ContactFormValues) => {
     console.log("Form submitted with values:", values);
-    
-    // Navigate to the booking page with the form data
-    navigate("/booking", { 
-      state: { 
-        contactDetails: values 
-      } 
-    });
-    
-    toast({
-      title: "Form Submitted Successfully",
-      description: "Now you can select your preferred appointment time.",
-    });
   };
 
   return (

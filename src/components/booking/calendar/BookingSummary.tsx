@@ -61,7 +61,11 @@ const BookingSummary: React.FC<BookingSummaryProps> = ({ contactDetails }) => {
               <p>RM {totalAmount}</p>
             </div>
             <p className="text-xs text-hijau-blue/70 mt-2">
-              * This amount will need to be paid via our payment gateway after confirming your booking.
+              {outsideNegeriSembilan ? (
+                "✓ Payment completed. Thank you!"
+              ) : (
+                "* This amount will need to be paid via our payment gateway after confirming your booking."
+              )}
             </p>
           </div>
         )}
