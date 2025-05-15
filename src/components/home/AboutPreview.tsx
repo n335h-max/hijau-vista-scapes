@@ -11,8 +11,8 @@ const AboutPreview = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <img 
-              src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" 
-              alt="Landscapers working" 
+              src="/lovable-uploads/c52322fb-d4ee-47a1-a813-1d71a27af9ac.png" 
+              alt="Greenhouse with plants" 
               className="rounded-lg shadow-lg"
             />
           </div>
