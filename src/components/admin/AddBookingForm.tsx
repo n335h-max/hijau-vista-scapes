@@ -13,6 +13,7 @@ import { CalendarClock, Plus } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Modified schema to match our Supabase table structure
 const bookingSchema = z.object({
@@ -23,6 +24,8 @@ const bookingSchema = z.object({
   date: z.date({ required_error: "Please select a date" }),
   time: z.string({ required_error: "Please select a time" }),
   address: z.string().min(5, { message: "Address must be at least 5 characters" }),
+  outsideNegeriSembilan: z.boolean().default(false),
+  payment_completed: z.boolean().default(false)
 });
 
 type BookingFormData = z.infer<typeof bookingSchema>;
@@ -36,6 +39,8 @@ interface Booking {
   date: Date;
   time: string;
   address: string;
+  outsideNegeriSembilan?: boolean;
+  payment_completed?: boolean;
 }
 
 interface AddBookingFormProps {
@@ -71,6 +76,8 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
       service: "",
       address: "",
       time: "",
+      outsideNegeriSembilan: false,
+      payment_completed: false
     },
   });
 
@@ -83,7 +90,9 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
       service: data.service,
       date: data.date,
       time: data.time,
-      address: data.address
+      address: data.address,
+      outsideNegeriSembilan: data.outsideNegeriSembilan,
+      payment_completed: data.payment_completed
     };
 
     // Pass the new booking up to the parent component
@@ -293,6 +302,46 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
                         <Input placeholder="123 Main St, City" {...field} />
                       </FormControl>
                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Outside Negeri Sembilan Checkbox */}
+                <FormField
+                  control={form.control}
+                  name="outsideNegeriSembilan"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-2">
+                      <FormControl>
+                        <Checkbox 
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-gray-700">Outside Negeri Sembilan</FormLabel>
+                        <p className="text-xs text-muted-foreground">Location requires additional RM300 fee</p>
+                      </div>
+                    </FormItem>
+                  )}
+                />
+
+                {/* Payment Completed Checkbox */}
+                <FormField
+                  control={form.control}
+                  name="payment_completed"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-2">
+                      <FormControl>
+                        <Checkbox 
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-gray-700">Payment Completed</FormLabel>
+                        <p className="text-xs text-muted-foreground">Mark if outside location fee has been paid</p>
+                      </div>
                     </FormItem>
                   )}
                 />

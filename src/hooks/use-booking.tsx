@@ -96,6 +96,7 @@ export const useBooking = () => {
       time: time,
       address: contactDetails.address || "Not provided",
       outsideNegeriSembilan: contactDetails.outsideNegeriSembilan || false,
+      payment_completed: paymentSuccess || false // Track payment status
     };
     
     try {
@@ -115,7 +116,8 @@ export const useBooking = () => {
         ...data[0],
         date: new Date(data[0].date),
         // Ensure outsideNegeriSembilan is available from our original request
-        outsideNegeriSembilan: newBookingDetails.outsideNegeriSembilan
+        outsideNegeriSembilan: newBookingDetails.outsideNegeriSembilan,
+        payment_completed: newBookingDetails.payment_completed
       };
       
       setBookingDetails(savedBooking);
@@ -130,7 +132,8 @@ export const useBooking = () => {
             date: savedBooking.date.toISOString(),
             time: savedBooking.time,
             address: savedBooking.address,
-            outsideNegeriSembilan: savedBooking.outsideNegeriSembilan
+            outsideNegeriSembilan: savedBooking.outsideNegeriSembilan,
+            payment_completed: savedBooking.payment_completed
           },
         });
         

@@ -17,6 +17,8 @@ export type Database = {
           email: string
           id: string
           name: string
+          outsidenegerisembilan: boolean | null
+          payment_completed: boolean | null
           phone: string
           service: string
           time: string
@@ -29,6 +31,8 @@ export type Database = {
           email: string
           id?: string
           name: string
+          outsidenegerisembilan?: boolean | null
+          payment_completed?: boolean | null
           phone: string
           service: string
           time: string
@@ -41,6 +45,8 @@ export type Database = {
           email?: string
           id?: string
           name?: string
+          outsidenegerisembilan?: boolean | null
+          payment_completed?: boolean | null
           phone?: string
           service?: string
           time?: string
