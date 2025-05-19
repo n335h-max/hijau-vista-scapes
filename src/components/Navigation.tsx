@@ -54,12 +54,15 @@ const Navigation = () => {
             alt="Hijau Group Logo" 
             className="h-8 md:h-10 w-auto mr-2 drop-shadow-md"
           />
-          <span className="font-display text-xl md:text-2xl font-bold text-hijau-yellow relative group">
-            Hijau{" "}
-            <span className="text-hijau-yellow relative inline-block drop-shadow-sm">
-              Group Landscape
+          <div className="flex flex-col">
+            <span className="font-display text-xl md:text-2xl font-bold text-hijau-yellow relative group">
+              Hijau{" "}
+              <span className="text-hijau-yellow relative inline-block drop-shadow-sm">
+                Group Landscape
+              </span>
             </span>
-          </span>
+            <span className="text-yellow-400 text-sm font-semibold -mt-1">YOUR LANDSCAPE PARTNER</span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
