@@ -8,6 +8,7 @@ import { Form } from "@/components/ui/form";
 import { Plus } from "lucide-react";
 import { bookingSchema, type BookingFormData } from "./booking-form-schema";
 import BookingFormFields from "./BookingFormFields";
+import BookingFormHeader from "./BookingFormHeader";
 import type { Booking } from "./booking-types";
 
 interface AddBookingFormProps {

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { format } from "date-fns";
 import { FileText, CalendarClock, Trash2 } from "lucide-react";
@@ -28,12 +27,14 @@ interface BookingsListProps {
   bookings: Booking[];
   selectedDate?: Date;
   onDeleteBooking: (id: number | string) => void;
+  loading?: boolean; // Add to match the props being passed
 }
 
 const BookingsList: React.FC<BookingsListProps> = ({ 
   bookings, 
   selectedDate, 
-  onDeleteBooking 
+  onDeleteBooking, 
+  loading 
 }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-2 border border-gray-100 hover:shadow-xl transition-all">      

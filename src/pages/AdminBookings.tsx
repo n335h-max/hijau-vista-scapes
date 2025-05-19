@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -7,6 +6,8 @@ import AdminHeader from "@/components/admin/AdminHeader";
 import DateFilter from "@/components/admin/DateFilter";
 import BookingsSection from "@/components/admin/BookingsSection";
 import BookingStats from "@/components/admin/BookingStats";
+import BookingsList from "@/components/admin/BookingsList";
+import AddBookingForm from "@/components/admin/booking-form";
 
 interface Booking {
   id: number | string;
@@ -194,12 +195,14 @@ const AdminBookings = () => {
               {isLoading ? (
                 <div className="text-center py-12">Loading bookings...</div>
               ) : (
-                <BookingsSection 
-                  bookings={filteredBookings}
-                  selectedDate={selectedDate}
-                  onBookingAdded={handleAddBooking}
-                  onDeleteBooking={handleDeleteBooking}
-                />
+                <div>
+                  <AddBookingForm onBookingAdded={handleAddBooking} />
+                  <BookingsList 
+                    bookings={filteredBookings}
+                    selectedDate={selectedDate}
+                    onDeleteBooking={handleDeleteBooking}
+                  />
+                </div>
               )}
             </div>
           </div>

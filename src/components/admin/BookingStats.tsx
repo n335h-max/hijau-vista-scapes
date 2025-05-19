@@ -4,6 +4,8 @@ import React from "react";
 interface BookingStatsProps {
   totalBookings: number;
   todayBookings: number;
+  bookings?: any[]; // Add to match the props being passed
+  loading?: boolean; // Add to match the props being passed
 }
 
 const BookingStats: React.FC<BookingStatsProps> = ({ totalBookings, todayBookings }) => {

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -10,6 +11,7 @@ const BookingsSection = () => {
   const { toast } = useToast();
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -36,10 +38,10 @@ const BookingsSection = () => {
 
   return (
     <div className="p-6">
-      <BookingStats bookings={bookings} loading={loading} />
+      <BookingStats bookings={bookings} loading={loading} totalBookings={bookings.length} todayBookings={0} />
       <AddBookingForm onBookingAdded={handleBookingAdded} />
-      <BookingsList bookings={bookings} loading={loading} />
-      <DateFilter />
+      <BookingsList bookings={bookings} loading={loading} onDeleteBooking={() => {}} />
+      <DateFilter selectedDate={selectedDate} onSelectDate={setSelectedDate} />
     </div>
   );
 };
