@@ -1,4 +1,3 @@
-
 import { GalleryItem } from "./GalleryItem.interface";
 
 // Gallery items data - including all the uploaded images
@@ -207,7 +206,7 @@ export const galleryItems: GalleryItem[] = [
     title: "Patio Design",
     description: "Custom patio designs creating perfect outdoor living and entertainment areas.",
     type: "Residential",
-    image: "/lovable-uploads/172a3b65-a471-497c-bde9-5f7346466f50.png"
+    image: "/lovable-uploads/d96d9c3e-98ae-4314-93b5-11957619afaf.png"
   },
   {
     id: 30,
@@ -228,7 +227,7 @@ export const galleryItems: GalleryItem[] = [
     title: "Urban Landscape Design",
     description: "Modern urban landscape solutions that maximize limited space.",
     type: "Commercial",
-    image: "/lovable-uploads/29524c64-19b4-4efb-8123-8238e80aa031.png"
+    image: "/lovable-uploads/4b576a69-dc1e-4347-aca4-49aca6fe3b67.png"
   },
   {
     id: 33,
