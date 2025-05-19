@@ -1,41 +1,46 @@
+import React, { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import BookingStats from "./BookingStats";
+import BookingsList from "./BookingsList";
+import AddBookingForm from "./booking-form";
+import DateFilter from "./DateFilter";
 
-import React from "react";
-import AddBookingForm from "@/components/admin/AddBookingForm";
-import BookingsList from "@/components/admin/BookingsList";
+const BookingsSection = () => {
+  const { toast } = useToast();
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-interface Booking {
-  id: number | string;
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  date: Date;
-  time: string;
-  address: string;
-}
+  useEffect(() => {
+    const fetchBookings = async () => {
+      setLoading(true);
+      const { data, error } = await supabase.from("bookings").select("*");
+      if (error) {
+        toast({
+          title: "Error fetching bookings",
+          description: error.message,
+          variant: "destructive",
+        });
+      } else {
+        setBookings(data);
+      }
+      setLoading(false);
+    };
 
-interface BookingsSectionProps {
-  bookings: Booking[];
-  selectedDate?: Date;
-  onBookingAdded: (booking: Booking) => void;
-  onDeleteBooking: (id: number | string) => void;
-}
+    fetchBookings();
+  }, [toast]);
 
-const BookingsSection: React.FC<BookingsSectionProps> = ({ 
-  bookings, 
-  selectedDate, 
-  onBookingAdded,
-  onDeleteBooking
-}) => {
+  const handleBookingAdded = (newBooking) => {
+    setBookings((prev) => [...prev, newBooking]);
+  };
+
   return (
-    <>
-      <AddBookingForm onBookingAdded={onBookingAdded} />
-      <BookingsList 
-        bookings={bookings} 
-        selectedDate={selectedDate}
-        onDeleteBooking={onDeleteBooking}
-      />
-    </>
+    <div className="p-6">
+      <BookingStats bookings={bookings} loading={loading} />
+      <AddBookingForm onBookingAdded={handleBookingAdded} />
+      <BookingsList bookings={bookings} loading={loading} />
+      <DateFilter />
+    </div>
   );
 };
 
