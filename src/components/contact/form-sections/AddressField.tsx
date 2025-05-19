@@ -52,7 +52,7 @@ const AddressField: React.FC<AddressFieldProps> = ({ control }) => {
                 Location is outside of Negeri Sembilan
               </FormLabel>
               <FormDescription className="text-hijau-blue-dark/70 text-sm">
-                An additional charge of RM300 will apply
+                An additional charge of RM300 will apply. Once the booking is confirmed, the RM300 will be returned by cashback.
               </FormDescription>
             </div>
           </FormItem>
