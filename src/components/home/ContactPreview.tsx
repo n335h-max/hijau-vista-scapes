@@ -6,7 +6,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const ContactPreview = () => {
   return (
-    <section className="section-padding bg-hijau-blue text-white">
+    <section className="section-padding bg-hijau-blue text-white my-8 mx-4 rounded-lg shadow-lg">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">

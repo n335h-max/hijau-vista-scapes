@@ -16,6 +16,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [showMobileIndicator, setShowMobileIndicator] = useState(false);
   
+  // Determine if current page should have yellow background
+  const isYellowBackground = ["/", "/about", "/gallery", "/contact"].includes(location.pathname);
+  
   // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,7 +57,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }, [location.pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen w-full bg-hijau-blue/5">
+    <div className={`flex flex-col min-h-screen w-full ${isYellowBackground ? "bg-yellow-400" : "bg-hijau-blue/5"}`}>
       <Navigation />
       <main className="flex-grow w-full pt-16 md:pt-20">
         <div

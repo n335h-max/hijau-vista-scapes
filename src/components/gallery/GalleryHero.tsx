@@ -3,7 +3,7 @@ import React from "react";
 
 const GalleryHero = () => {
   return (
-    <section className="relative h-[40vh] md:h-[50vh]" aria-label="Gallery header section">
+    <section className="relative h-[40vh] md:h-[50vh] bg-white/5 backdrop-blur-sm" aria-label="Gallery header section">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
