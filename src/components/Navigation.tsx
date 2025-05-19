@@ -61,7 +61,7 @@ const Navigation = () => {
                 Group Landscape
               </span>
             </span>
-            <span className="text-yellow-400 text-sm font-semibold -mt-1">YOUR LANDSCAPE PARTNER</span>
+            <span className="text-yellow-400 text-sm font-semibold -mt-1">{Your Landscape Partner}</span>
           </div>
         </Link>
 
