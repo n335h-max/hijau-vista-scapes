@@ -95,11 +95,13 @@ export const useBooking = () => {
       date: date.toISOString(),
       time: time,
       address: contactDetails.address || "Not provided",
-      outsideNegeriSembilan: contactDetails.outsideNegeriSembilan || false,
+      outsidenegerisembilan: contactDetails.outsideNegeriSembilan || false, // Change column name to match database
       payment_completed: paymentSuccess || false // Track payment status
     };
     
     try {
+      console.log("Submitting booking with data:", newBookingDetails);
+      
       // Save booking to Supabase
       const { data, error } = await supabase
         .from('bookings')
@@ -107,16 +109,19 @@ export const useBooking = () => {
         .select();
       
       if (error) {
+        console.error("Supabase error:", error);
         throw error;
       }
+      
+      console.log("Booking saved successfully:", data);
       
       // Create a complete booking details object that has all needed properties
       // regardless of what Supabase returns
       const savedBooking = {
         ...data[0],
         date: new Date(data[0].date),
-        // Ensure outsideNegeriSembilan is available from our original request
-        outsideNegeriSembilan: newBookingDetails.outsideNegeriSembilan,
+        // Ensure properties are available from our original request
+        outsideNegeriSembilan: newBookingDetails.outsidenegerisembilan,
         payment_completed: newBookingDetails.payment_completed
       };
       

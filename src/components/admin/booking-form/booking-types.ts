@@ -5,9 +5,9 @@ export interface Booking {
   email: string;
   phone: string;
   service: string;
-  date: Date;
+  date: Date | string;
   time: string;
   address: string;
-  outsideNegeriSembilan?: boolean;
+  outsidenegerisembilan?: boolean; // Changed to match the database column name
   payment_completed?: boolean;
 }

@@ -13,11 +13,14 @@ interface BookingConfirmationProps {
     email: string;
     address?: string;
     outsideNegeriSembilan?: boolean;
+    payment_completed?: boolean;
   };
 }
 
 const BookingConfirmation: React.FC<BookingConfirmationProps> = ({ bookingDetails }) => {
   const navigate = useNavigate();
+
+  console.log("Rendering BookingConfirmation with details:", bookingDetails);
 
   return (
     <div className="bg-white rounded-xl shadow-xl p-4 sm:p-8 max-w-2xl mx-auto transition-all animate-fade-in">
