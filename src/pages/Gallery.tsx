@@ -5,7 +5,7 @@ import GalleryGrid from "@/components/gallery/GalleryGrid";
 import GalleryLightbox from "@/components/gallery/GalleryLightbox";
 import GalleryCTA from "@/components/gallery/GalleryCTA";
 import GalleryFilter from "@/components/gallery/GalleryFilter";
-import { galleryItems } from "@/components/gallery/galleryItems.data";
+import { galleryItems } from "@/components/gallery/data";
 import { GalleryItem } from "@/components/gallery/GalleryItem.interface";
 
 const Gallery = () => {

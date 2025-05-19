@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,7 +27,7 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
       service: "",
       address: "",
       time: "",
-      outsideNegeriSembilan: false,
+      outsidenegerisembilan: false,
       payment_completed: false
     },
   });
@@ -43,7 +42,7 @@ const AddBookingForm: React.FC<AddBookingFormProps> = ({ onBookingAdded }) => {
       date: data.date,
       time: data.time,
       address: data.address,
-      outsideNegeriSembilan: data.outsideNegeriSembilan,
+      outsidenegerisembilan: data.outsidenegerisembilan,
       payment_completed: data.payment_completed
     };
 

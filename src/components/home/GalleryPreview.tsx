@@ -3,17 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { galleryItems } from "@/components/gallery/galleryItems.data";
+import { getFeaturedItems } from "@/components/gallery/data";
 
 const GalleryPreview = () => {
-  // Select specific gallery items by their IDs to showcase
-  const selectedItemIds = [1, 2, 13, 12, 15, 21, 27, 28, 31];
-  
-  // Find the gallery items with those IDs, ensuring we don't have undefined items
-  const selectedImages = selectedItemIds
-    .map(id => galleryItems.find(item => item.id === id))
-    .filter(item => item !== undefined)
-    .map(item => item?.image || "");
+  // Get featured images using the new helper function
+  const selectedImages = getFeaturedItems(9).map(item => item.image);
 
   return (
     <section className="section-padding bg-hijau-light">

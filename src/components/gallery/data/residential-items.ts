@@ -1,8 +1,8 @@
-import { GalleryItem } from "./GalleryItem.interface";
 
-// Gallery items data - including all the uploaded images
-export const galleryItems: GalleryItem[] = [
-  // Original gallery items
+import { GalleryItem } from "../GalleryItem.interface";
+
+// Residential gallery items
+export const residentialGalleryItems: GalleryItem[] = [
   {
     id: 1,
     title: "Natural Garden Installation",
@@ -46,13 +46,6 @@ export const galleryItems: GalleryItem[] = [
     image: "/lovable-uploads/1a73e93c-f297-44cc-ab0d-e55e138cc1c4.png"
   },
   {
-    id: 7,
-    title: "Modern Hardscape Installation",
-    description: "Contemporary hardscaping elements create structure and flow in this landscape.",
-    type: "Commercial",
-    image: "/lovable-uploads/4001e500-c4aa-44d2-97ea-c97f0bc4aaa9.png"
-  },
-  {
     id: 8,
     title: "Tiny House 4",
     description: "A serene garden space designed for relaxation and contemplation.",
@@ -65,21 +58,6 @@ export const galleryItems: GalleryItem[] = [
     description: "A sustainable landscape featuring local native plants and eco-friendly design.",
     type: "Residential",
     image: "/lovable-uploads/6d48415f-3c31-4f13-bfdb-64c19a36d0f3.png"
-  },
-  // Newly added gallery items
-  {
-    id: 10,
-    title: "Indoor Plant Nursery",
-    description: "Our specialized plant nursery with a variety of plant selections for your landscaping needs.",
-    type: "Commercial",
-    image: "/lovable-uploads/17b71060-afdb-45d1-b477-4266cbc7d171.png"
-  },
-  {
-    id: 11,
-    title: "Consultation",
-    description: "Complete landscape planning and execution for a residential property.",
-    type: "Residential",
-    image: "/lovable-uploads/54655973-22bf-415f-b227-7fd334866e58.png"
   },
   {
     id: 12,
@@ -96,13 +74,6 @@ export const galleryItems: GalleryItem[] = [
     image: "/lovable-uploads/df2dbe9e-188a-4f8b-a444-26ab1d1ceac4.png"
   },
   {
-    id: 14,
-    title: "Commercial Landscape",
-    description: "Professional landscaping for commercial property entrances and walkways.",
-    type: "Commercial",
-    image: "/lovable-uploads/4b576a69-dc1e-4347-aca4-49aca6fe3b67.png"
-  },
-  {
     id: 15,
     title: "Artificial Turf Installation",
     description: "Low-maintenance artificial turf installation with decorative stone borders.",
@@ -115,13 +86,6 @@ export const galleryItems: GalleryItem[] = [
     description: "Contemporary garden pathway design with integrated hardscape and plantings.",
     type: "Residential",
     image: "/lovable-uploads/f080bcd6-b8a9-47b0-af01-0f83a905a03e.png"
-  },
-  {
-    id: 17,
-    title: "Interior Landscaping",
-    description: "Interior landscaping design for natural transitions between indoor and outdoor spaces.",
-    type: "Commercial",
-    image: "/lovable-uploads/5061f982-c72d-40e7-a16c-92a0f18b40b9.png"
   },
   {
     id: 18,
@@ -145,13 +109,6 @@ export const galleryItems: GalleryItem[] = [
     image: "/lovable-uploads/00c636ad-26e6-4f9b-b3a0-a4c96a426d11.png"
   },
   {
-    id: 21,
-    title: "Urban Garden Design",
-    description: "Maximizing small spaces with vertical gardens and container plantings.",
-    type: "Commercial",
-    image: "/lovable-uploads/cc5e13a5-09f0-4f8b-952c-4f3950f9e918.png"
-  },
-  {
     id: 22,
     title: "Curved Path Construction",
     description: "Natural stone walkway with curved design through native plantings.",
@@ -166,14 +123,6 @@ export const galleryItems: GalleryItem[] = [
     image: "/lovable-uploads/d96d9c3e-98ae-4314-93b5-11957619afaf.png"
   },
   {
-    id: 24,
-    title: "Plant Nursery",
-    description: "Our plant nursery features a wide selection of plants for your landscaping projects.",
-    type: "Commercial",
-    image: "/lovable-uploads/f72f0489-a7b3-4018-96e5-9aa112b0763f.png"
-  },
-  // New uploaded images
-  {
     id: 25,
     title: "Garden Maintenance",
     description: "Professional garden maintenance services to keep your landscape looking its best.",
@@ -186,13 +135,6 @@ export const galleryItems: GalleryItem[] = [
     description: "Beautiful hardscape designs that combine functionality with aesthetic appeal.",
     type: "Residential",
     image: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png"
-  },
-  {
-    id: 27,
-    title: "Commercial Landscaping",
-    description: "Complete commercial landscaping solutions for businesses and organizations.",
-    type: "Commercial",
-    image: "/lovable-uploads/0c08177c-abfa-475a-ab4f-26b0d98aa520.png"
   },
   {
     id: 28,
@@ -221,20 +163,6 @@ export const galleryItems: GalleryItem[] = [
     description: "Eco-friendly and water-conservative landscape designs for arid environments.",
     type: "Residential",
     image: "/lovable-uploads/2365ff66-44be-4943-ace0-539f74703ad1.png"
-  },
-  {
-    id: 32,
-    title: "Urban Landscape Design",
-    description: "Modern urban landscape solutions that maximize limited space.",
-    type: "Commercial",
-    image: "/lovable-uploads/4b576a69-dc1e-4347-aca4-49aca6fe3b67.png"
-  },
-  {
-    id: 33,
-    title: "Botanical Garden Design",
-    description: "Specialized botanical garden designs featuring rare and exotic plants.",
-    type: "Commercial",
-    image: "/lovable-uploads/2c821c52-9821-4c9e-bd30-fb787c0e2317.png"
   },
   {
     id: 34,
