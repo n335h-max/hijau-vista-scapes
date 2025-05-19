@@ -8,6 +8,6 @@ export interface Booking {
   date: Date | string;
   time: string;
   address: string;
-  outsidenegerisembilan?: boolean; // Changed to match the database column name
+  outsidenegerisembilan?: boolean; // Properly matching the database column name
   payment_completed?: boolean;
 }

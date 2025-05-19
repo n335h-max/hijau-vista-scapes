@@ -10,7 +10,7 @@ export const bookingSchema = z.object({
   date: z.date({ required_error: "Please select a date" }),
   time: z.string({ required_error: "Please select a time" }),
   address: z.string().min(5, { message: "Address must be at least 5 characters" }),
-  outsideNegeriSembilan: z.boolean().default(false),
+  outsidenegerisembilan: z.boolean().default(false),
   payment_completed: z.boolean().default(false)
 });
 

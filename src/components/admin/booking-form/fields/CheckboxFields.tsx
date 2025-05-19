@@ -21,7 +21,7 @@ const CheckboxFields: React.FC<CheckboxFieldsProps> = ({ control }) => {
       {/* Outside Negeri Sembilan Checkbox */}
       <FormField
         control={control}
-        name="outsideNegeriSembilan"
+        name="outsidenegerisembilan"
         render={({ field }) => (
           <FormItem className="flex flex-row items-start space-x-3 space-y-0 py-2">
             <FormControl>
