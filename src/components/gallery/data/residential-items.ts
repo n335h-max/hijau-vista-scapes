@@ -1,4 +1,3 @@
-
 import { GalleryItem } from "../GalleryItem.interface";
 
 // Residential gallery items
@@ -134,7 +133,7 @@ export const residentialGalleryItems: GalleryItem[] = [
     title: "Hardscape Design",
     description: "Beautiful hardscape designs that combine functionality with aesthetic appeal.",
     type: "Residential",
-    image: "/lovable-uploads/09a246a6-f378-467d-ac01-df7aea7e4b19.png"
+    image: "/lovable-uploads/93b3112-a542-4f5e-b4ca-410d37c8e13e.png"
   },
   {
     id: 28,
