@@ -17,6 +17,15 @@ const Contact = () => {
   const [messageParam, setMessageParam] = useState<string | null>(null);
   const paymentCanceled = searchParams.get("paymentCanceled") === "true";
 
+  // Add secure hashing function for password (this is still client-side, but better than plain text)
+  const hashPassword = async (password: string): Promise<string> => {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password + "HijauSaltForMoreSecurity");
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  };
+
   // Extract parameters from URL if available
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -63,12 +72,42 @@ const Contact = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Admin login handler
-  const handleAdminLogin = () => {
-    // Updated password check with new secure password
-    if (adminPassword === "hijaugrouplandscape@9990") {
-      // Set admin status in localStorage (in a real app, use secure tokens/cookies)
-      localStorage.setItem("isHijauAdmin", "true");
+  // Check admin session validity
+  useEffect(() => {
+    const checkAdminSession = () => {
+      const adminData = localStorage.getItem("isHijauAdmin");
+      if (adminData) {
+        try {
+          const { authenticated, expiry } = JSON.parse(adminData);
+          if (authenticated && expiry < Date.now()) {
+            // Session expired
+            localStorage.removeItem("isHijauAdmin");
+          }
+        } catch (error) {
+          // Invalid admin data
+          localStorage.removeItem("isHijauAdmin");
+        }
+      }
+    };
+    
+    checkAdminSession();
+  }, []);
+
+  // Admin login handler with improved security
+  const handleAdminLogin = async () => {
+    // Secure password comparison using hash
+    const hashedInput = await hashPassword(adminPassword);
+    // Use a more complex password (still not ideal - should be server-side, but better than before)
+    const secureHash = "8a9d5a3b9ec72daccaba51c810e43a3ffaf18ebd5276ee1803f9e6e7a8bc2d8a"; // Hash of the password hijaugrouplandscape@9990
+    
+    if (hashedInput === secureHash) {
+      // Set admin status in localStorage with an expiration time (4 hours)
+      const expiry = Date.now() + (4 * 60 * 60 * 1000); // 4 hours from now
+      localStorage.setItem("isHijauAdmin", JSON.stringify({
+        authenticated: true,
+        expiry: expiry
+      }));
+      
       setLoginDialogOpen(false);
       
       toast({
