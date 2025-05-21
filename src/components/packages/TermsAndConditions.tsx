@@ -21,7 +21,7 @@ const TermsAndConditions: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <InfoIcon className="h-5 w-5 text-hijau-blue mt-1 flex-shrink-0" aria-hidden="true" />
-                <span>This offer is limited to the first 100 customers eligible for cashback.</span>
+                <span>This offer is available to the first 100 eligible customers who qualify for cashback. Terms apply and availability is on a first-come, first-served basis.</span>
               </motion.li>
               <motion.li 
                 className="flex items-start gap-2"
