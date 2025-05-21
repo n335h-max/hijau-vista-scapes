@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -30,20 +31,40 @@ const AdminBookings = () => {
 
   // Check if user is admin and load bookings
   useEffect(() => {
-    // In a real app, this would check a session or localStorage token
-    const adminStatus = localStorage.getItem("isHijauAdmin");
-    if (adminStatus !== "true") {
-      toast({
-        title: "Access Denied",
-        description: "Please log in as an administrator.",
-        variant: "destructive",
-      });
-      navigate("/contact");
-    } else {
+    // Check admin authentication from localStorage
+    const adminStatusJson = localStorage.getItem("isHijauAdmin");
+    
+    if (!adminStatusJson) {
+      handleNotAuthenticated();
+      return;
+    }
+    
+    try {
+      const adminStatus = JSON.parse(adminStatusJson);
+      if (!adminStatus.authenticated || adminStatus.expiry < Date.now()) {
+        // Session expired or not authenticated
+        handleNotAuthenticated();
+        return;
+      }
+      
+      // User is authenticated admin
       setIsAdmin(true);
       fetchBookings();
+    } catch (error) {
+      // Invalid admin data
+      handleNotAuthenticated();
     }
-  }, [navigate, toast]);
+  }, [navigate]);
+  
+  const handleNotAuthenticated = () => {
+    localStorage.removeItem("isHijauAdmin");
+    toast({
+      title: "Access Denied",
+      description: "Please log in as an administrator.",
+      variant: "destructive",
+    });
+    navigate("/contact");
+  };
 
   // Fetch bookings from Supabase
   const fetchBookings = async () => {
