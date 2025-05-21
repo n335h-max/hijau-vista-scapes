@@ -87,13 +87,6 @@ export const residentialGalleryItems: GalleryItem[] = [
     image: "/lovable-uploads/f080bcd6-b8a9-47b0-af01-0f83a905a03e.png"
   },
   {
-    id: 18,
-    title: "Stone Walkway Construction",
-    description: "Elegant stone walkway with bordered plants creating a formal garden path.",
-    type: "Residential",
-    image: "/lovable-uploads/d25d3afa-b35e-4040-b1be-c24a64540d72.png"
-  },
-  {
     id: 19,
     title: "Vertical Garden Consultation",
     description: "Space-efficient vertical garden design for urban environments and small spaces.",
