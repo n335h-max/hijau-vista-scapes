@@ -129,13 +129,6 @@ export const residentialGalleryItems: GalleryItem[] = [
     image: "/lovable-uploads/02a8e859-1456-4cf5-b47d-d1da981c88fb.png"
   },
   {
-    id: 26,
-    title: "Hardscape Design",
-    description: "Beautiful hardscape designs that combine functionality with aesthetic appeal.",
-    type: "Residential",
-    image: "/lovable-uploads/93b3112-a542-4f5e-b4ca-410d37c8e13e.png"
-  },
-  {
     id: 28,
     title: "Flower Garden Installation",
     description: "Vibrant flower garden designs that bring color and life to your outdoor spaces.",
