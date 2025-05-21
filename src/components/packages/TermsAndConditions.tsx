@@ -31,7 +31,7 @@ const TermsAndConditions: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <InfoIcon className="h-5 w-5 text-hijau-blue mt-1 flex-shrink-0" aria-hidden="true" />
-                <span>A booking fee of RM2,000 is required for each package and will be deducted from the total package price.</span>
+                <span>An appointment fee of RM2,000 is required for each package and will be deducted from the total package price.</span>
               </motion.li>
             </ul>
           </CardContent>
