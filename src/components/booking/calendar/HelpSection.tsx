@@ -16,7 +16,7 @@ const HelpSection = () => {
             </p>
             <div className="flex items-center text-hijau-blue-dark font-medium">
               <Phone className="h-4 w-4 mr-2" />
-              <span className="text-sm sm:text-base">+1 (800) 123-4567</span>
+              <span className="text-sm sm:text-base">+60 11-1062 9990</span>
             </div>
           </div>
         </div>
