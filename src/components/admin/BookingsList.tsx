@@ -164,16 +164,16 @@ const BookingsList: React.FC<BookingsListProps> = ({
                 
                 return (
                   <TableRow key={booking.id} className="hover:bg-gray-50/80">
-                    <TableCell>
+                    <TableCell className="py-3">
                       <div className="font-medium">{booking.name}</div>
-                      <div className="text-sm text-gray-500">{booking.email}</div>
-                      <div className="text-sm text-gray-500">{booking.phone}</div>
+                      <div className="text-sm text-gray-500 mt-1">{booking.email}</div>
+                      <div className="text-sm text-gray-500 mt-1">{booking.phone}</div>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="py-3">
                       <Badge variant="outline" className="bg-hijau-blue/5 text-hijau-blue border-hijau-blue/20">
                         {booking.service}
                       </Badge>
-                      <div className="text-sm text-gray-500 mt-1">
+                      <div className="text-sm text-gray-500 mt-2">
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
@@ -188,13 +188,13 @@ const BookingsList: React.FC<BookingsListProps> = ({
                         </TooltipProvider>
                       </div>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="py-3">
                       <div className="font-medium text-hijau-blue">
                         {format(booking.date, "MMM d, yyyy")}
                       </div>
-                      <div className="text-sm text-gray-500">at {booking.time}</div>
+                      <div className="text-sm text-gray-500 mt-1">at {booking.time}</div>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="py-3">
                       <Badge variant={status.variant} className={status.color}>
                         <span className="flex items-center">
                           {status.icon}
@@ -202,14 +202,14 @@ const BookingsList: React.FC<BookingsListProps> = ({
                         </span>
                       </Badge>
                       {booking.outsidenegerisembilan && (
-                        <div className="mt-1">
+                        <div className="mt-2">
                           <Badge variant="outline" className="text-gray-600 border-gray-300 bg-gray-50 text-xs">
                             Outside NS
                           </Badge>
                         </div>
                       )}
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="py-3">
                       <div className="flex space-x-2">
                         <Dialog>
                           <DialogTrigger asChild>
@@ -218,54 +218,75 @@ const BookingsList: React.FC<BookingsListProps> = ({
                               View
                             </Button>
                           </DialogTrigger>
-                          <DialogContent className="sm:max-w-md">
-                            <DialogHeader>
-                              <DialogTitle>Booking Details</DialogTitle>
-                              <DialogDescription>
+                          <DialogContent className="sm:max-w-[600px] p-6">
+                            <DialogHeader className="mb-4">
+                              <DialogTitle className="text-xl">Booking Details</DialogTitle>
+                              <DialogDescription className="text-sm mt-2">
                                 Full details for booking #{booking.id.toString().substring(0, 8)}
                               </DialogDescription>
                             </DialogHeader>
-                            <div className="grid gap-4 py-4">
-                              <div className="grid grid-cols-3 gap-4">
-                                <div>
+                            
+                            <div className="space-y-5 py-2">
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Client</h3>
-                                  <p className="mt-1">{booking.name}</p>
+                                  <p className="text-base">{booking.name}</p>
                                 </div>
-                                <div>
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Email</h3>
-                                  <p className="mt-1">{booking.email}</p>
+                                  <p className="text-base break-all">{booking.email}</p>
                                 </div>
-                                <div>
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Phone</h3>
-                                  <p className="mt-1">{booking.phone}</p>
+                                  <p className="text-base">{booking.phone}</p>
                                 </div>
                               </div>
-                              <div>
+                              
+                              <div className="space-y-1.5">
                                 <h3 className="font-medium text-sm text-gray-500">Service</h3>
-                                <p className="mt-1">{booking.service}</p>
+                                <p className="text-base p-2 bg-hijau-blue/5 rounded-md inline-block">
+                                  {booking.service}
+                                </p>
                               </div>
-                              <div>
+                              
+                              <div className="space-y-1.5">
                                 <h3 className="font-medium text-sm text-gray-500">Address</h3>
-                                <p className="mt-1">{booking.address}</p>
+                                <p className="text-base p-3 bg-gray-50 rounded-md border border-gray-100">
+                                  {booking.address}
+                                </p>
                               </div>
-                              <div className="grid grid-cols-2 gap-4">
-                                <div>
+                              
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Date</h3>
-                                  <p className="mt-1">{format(booking.date, "MMMM d, yyyy")}</p>
+                                  <p className="text-base">{format(booking.date, "MMMM d, yyyy")}</p>
                                 </div>
-                                <div>
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Time</h3>
-                                  <p className="mt-1">{booking.time}</p>
+                                  <p className="text-base">{booking.time}</p>
                                 </div>
                               </div>
-                              <div className="grid grid-cols-2 gap-4">
-                                <div>
+                              
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-gray-100">
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Outside Negeri Sembilan</h3>
-                                  <p className="mt-1">{booking.outsidenegerisembilan ? "Yes" : "No"}</p>
+                                  <p className="text-base">
+                                    <Badge variant="outline" className={booking.outsidenegerisembilan ? 
+                                      "bg-amber-50 text-amber-700 border-amber-200" : 
+                                      "bg-gray-50 text-gray-700 border-gray-200"}>
+                                      {booking.outsidenegerisembilan ? "Yes" : "No"}
+                                    </Badge>
+                                  </p>
                                 </div>
-                                <div>
+                                <div className="space-y-1.5">
                                   <h3 className="font-medium text-sm text-gray-500">Payment Completed</h3>
-                                  <p className="mt-1">{booking.payment_completed ? "Yes" : "No"}</p>
+                                  <p className="text-base">
+                                    <Badge variant="outline" className={booking.payment_completed ? 
+                                      "bg-green-50 text-green-700 border-green-200" : 
+                                      "bg-red-50 text-red-700 border-red-200"}>
+                                      {booking.payment_completed ? "Yes" : "No"}
+                                    </Badge>
+                                  </p>
                                 </div>
                               </div>
                             </div>
