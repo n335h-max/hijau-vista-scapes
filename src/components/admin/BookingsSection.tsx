@@ -36,11 +36,51 @@ const BookingsSection = () => {
     setBookings((prev) => [...prev, newBooking]);
   };
 
+  // Add the missing handler for updating payment status
+  const handleUpdatePaymentStatus = async (id: number | string, status: boolean) => {
+    try {
+      // Update the booking in Supabase
+      const { error } = await supabase
+        .from('bookings')
+        .update({ payment_completed: status })
+        .eq('id', String(id));
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Update the booking in local state
+      setBookings(prevBookings => 
+        prevBookings.map(booking => 
+          booking.id === id ? { ...booking, payment_completed: status } : booking
+        )
+      );
+      
+      toast({
+        title: status ? "Payment Marked as Completed" : "Payment Marked as Pending",
+        description: "The payment status has been successfully updated.",
+      });
+    } catch (error: any) {
+      console.error("Error updating payment status:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update payment status",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="p-6">
       <BookingStats bookings={bookings} loading={loading} totalBookings={bookings.length} todayBookings={0} />
       <AddBookingForm onBookingAdded={handleBookingAdded} />
-      <BookingsList bookings={bookings} loading={loading} onDeleteBooking={() => {}} />
+      <BookingsList 
+        bookings={bookings} 
+        loading={loading} 
+        onDeleteBooking={() => {}} 
+        onUpdatePaymentStatus={handleUpdatePaymentStatus}
+        selectedDate={selectedDate}
+      />
       <DateFilter selectedDate={selectedDate} onSelectDate={setSelectedDate} />
     </div>
   );
