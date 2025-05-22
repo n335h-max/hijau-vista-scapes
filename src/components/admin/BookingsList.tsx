@@ -1,3 +1,4 @@
+
 import React from "react";
 import { format } from "date-fns";
 import { FileText, CalendarClock, Trash2 } from "lucide-react";
@@ -11,6 +12,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { truncateText } from "@/lib/utils";
 
 interface Booking {
   id: number | string;
@@ -69,8 +77,19 @@ const BookingsList: React.FC<BookingsListProps> = ({
                     <Badge variant="outline" className="bg-hijau-blue/5 text-hijau-blue border-hijau-blue/20">
                       {booking.service}
                     </Badge>
-                    <div className="text-sm text-gray-500 mt-1 truncate max-w-[200px]">
-                      {booking.address}
+                    <div className="text-sm text-gray-500 mt-1">
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <span className="cursor-help">
+                              {truncateText(booking.address, 40)}
+                            </span>
+                          </TooltipTrigger>
+                          <TooltipContent className="max-w-[350px] break-words bg-white p-2 text-sm shadow-lg">
+                            {booking.address}
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                   </TableCell>
                   <TableCell>
