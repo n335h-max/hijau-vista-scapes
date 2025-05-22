@@ -63,4 +63,45 @@
   .bg-eco-gradient {
     @apply bg-gradient-to-b from-hijau-yellow/50 to-hijau-blue/5;
   }
+  
+  /* New enhanced components */
+  .admin-card {
+    @apply bg-white rounded-xl shadow-md border border-gray-100 p-5 hover:shadow-lg transition-shadow;
+  }
+  
+  .admin-heading {
+    @apply font-semibold text-hijau-blue mb-3 text-lg flex items-center;
+  }
+  
+  .admin-icon {
+    @apply mr-2 text-hijau-yellow;
+  }
+  
+  .stat-card {
+    @apply p-3 rounded-lg shadow-sm flex items-center;
+  }
+  
+  .stat-icon-container {
+    @apply p-2 rounded-full mr-3;
+  }
+  
+  .form-container {
+    @apply bg-white rounded-xl shadow-md border border-gray-100 p-5 hover:shadow-lg transition-shadow;
+  }
+  
+  .table-container {
+    @apply bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow;
+  }
+  
+  .table-header {
+    @apply bg-gray-50 text-hijau-blue font-medium text-sm uppercase tracking-wider;
+  }
+  
+  .badge-primary {
+    @apply bg-hijau-blue/10 text-hijau-blue border-hijau-blue/20 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+  
+  .badge-secondary {
+    @apply bg-hijau-yellow/20 text-hijau-dark border-hijau-yellow/40 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
 }

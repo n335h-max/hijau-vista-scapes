@@ -6,6 +6,7 @@ import BookingStats from "./BookingStats";
 import BookingsList from "./BookingsList";
 import AddBookingForm from "./booking-form";
 import DateFilter from "./DateFilter";
+import { BarChart, Calendar } from "lucide-react";
 
 const BookingsSection = () => {
   const { toast } = useToast();
@@ -36,7 +37,7 @@ const BookingsSection = () => {
     setBookings((prev) => [...prev, newBooking]);
   };
 
-  // Add the missing handler for updating payment status
+  // Handler for updating payment status
   const handleUpdatePaymentStatus = async (id: number | string, status: boolean) => {
     try {
       // Update the booking in Supabase
@@ -71,17 +72,47 @@ const BookingsSection = () => {
   };
 
   return (
-    <div className="p-6">
-      <BookingStats bookings={bookings} loading={loading} totalBookings={bookings.length} todayBookings={0} />
-      <AddBookingForm onBookingAdded={handleBookingAdded} />
-      <BookingsList 
-        bookings={bookings} 
-        loading={loading} 
-        onDeleteBooking={() => {}} 
-        onUpdatePaymentStatus={handleUpdatePaymentStatus}
-        selectedDate={selectedDate}
-      />
-      <DateFilter selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+    <div className="p-4 md:p-6 space-y-6 animate-fade-in">
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-hijau-blue mb-2 flex items-center">
+          <BarChart className="mr-2 h-6 w-6 text-hijau-yellow" />
+          Booking Management
+        </h1>
+        <p className="text-gray-600">Manage and track all appointment details</p>
+      </div>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left sidebar with filters and stats */}
+        <div className="space-y-6">
+          <div className="bg-white rounded-xl shadow-md border border-gray-100 p-4 hover:shadow-lg transition-shadow">
+            <h2 className="text-lg font-semibold text-hijau-blue mb-4 flex items-center">
+              <Calendar className="mr-2 h-5 w-5 text-hijau-yellow" />
+              Filter Bookings
+            </h2>
+            <DateFilter selectedDate={selectedDate} onSelectDate={setSelectedDate} />
+          </div>
+          
+          <BookingStats 
+            bookings={bookings} 
+            loading={loading} 
+            totalBookings={bookings.length} 
+            todayBookings={0} 
+          />
+        </div>
+        
+        {/* Main content area */}
+        <div className="lg:col-span-2 space-y-6">
+          <AddBookingForm onBookingAdded={handleBookingAdded} />
+          
+          <BookingsList 
+            bookings={bookings} 
+            loading={loading} 
+            onDeleteBooking={() => {}} 
+            onUpdatePaymentStatus={handleUpdatePaymentStatus}
+            selectedDate={selectedDate}
+          />
+        </div>
+      </div>
     </div>
   );
 };

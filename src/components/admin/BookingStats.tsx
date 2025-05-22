@@ -69,56 +69,64 @@ const BookingStats: React.FC<BookingStatsProps> = ({
   }, [bookings]);
   
   return (
-    <div className="mt-6 space-y-6">
-      <div className="p-4 bg-gradient-to-r from-hijau-blue/10 to-hijau-yellow/10 rounded-lg border border-hijau-blue/20">
-        <h3 className="font-medium text-hijau-blue mb-2 text-sm flex items-center">
-          <BarChart className="h-4 w-4 mr-1" />
-          Booking Stats
+    <div className="space-y-5">
+      <div className="bg-white rounded-xl shadow-md border border-gray-100 p-5 hover:shadow-lg transition-shadow">
+        <h3 className="font-semibold text-hijau-blue mb-3 text-lg flex items-center">
+          <BarChart className="h-5 w-5 mr-2 text-hijau-yellow" />
+          Booking Overview
         </h3>
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <div className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center border-l-4 border-hijau-blue">
-            <span className="text-gray-500">Total</span>
-            <span className="text-hijau-blue font-bold text-lg">{totalBookings}</span>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-hijau-blue to-hijau-blue-light p-4 rounded-lg shadow-sm flex flex-col items-center text-white">
+            <span className="text-white/80 text-sm mb-1">Total Bookings</span>
+            <span className="text-white font-bold text-2xl">{totalBookings}</span>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow-sm flex flex-col items-center border-l-4 border-hijau-yellow">
-            <span className="text-gray-500">Today</span>
-            <span className="text-hijau-blue font-bold text-lg">{todayBookings}</span>
+          <div className="bg-gradient-to-br from-hijau-yellow to-hijau-yellow-light p-4 rounded-lg shadow-sm flex flex-col items-center text-hijau-dark">
+            <span className="text-hijau-dark/80 text-sm mb-1">Today</span>
+            <span className="text-hijau-dark font-bold text-2xl">{todayBookings}</span>
           </div>
         </div>
       </div>
       
-      <div className="p-4 bg-gradient-to-r from-hijau-yellow/10 to-hijau-blue/5 rounded-lg border border-hijau-yellow/20">
-        <h3 className="font-medium text-hijau-blue mb-2 text-sm flex items-center">
-          <Calendar className="h-4 w-4 mr-1" />
+      <div className="bg-white rounded-xl shadow-md border border-gray-100 p-5 hover:shadow-lg transition-shadow">
+        <h3 className="font-semibold text-hijau-blue mb-3 text-lg flex items-center">
+          <Calendar className="h-5 w-5 mr-2 text-hijau-yellow" />
           Additional Insights
         </h3>
-        <div className="grid grid-cols-2 gap-2 text-sm">
-          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-amber-400">
-            <CreditCard className="h-4 w-4 text-amber-500 mr-2" />
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-amber-400 hover:bg-amber-50/30 transition-colors">
+            <div className="bg-amber-100 p-2 rounded-full mr-3">
+              <CreditCard className="h-4 w-4 text-amber-600" />
+            </div>
             <div>
               <span className="text-gray-500 block text-xs">Pending Payment</span>
-              <span className="text-hijau-blue font-bold">{stats.pendingPayments}</span>
+              <span className="text-hijau-blue font-bold text-lg">{stats.pendingPayments}</span>
             </div>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-green-400">
-            <DollarSign className="h-4 w-4 text-green-500 mr-2" />
+          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-green-400 hover:bg-green-50/30 transition-colors">
+            <div className="bg-green-100 p-2 rounded-full mr-3">
+              <DollarSign className="h-4 w-4 text-green-600" />
+            </div>
             <div>
               <span className="text-gray-500 block text-xs">Payments Received</span>
-              <span className="text-hijau-blue font-bold">{stats.completedPayments}</span>
+              <span className="text-hijau-blue font-bold text-lg">{stats.completedPayments}</span>
             </div>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-purple-400">
-            <MapPin className="h-4 w-4 text-purple-500 mr-2" />
+          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-purple-400 hover:bg-purple-50/30 transition-colors">
+            <div className="bg-purple-100 p-2 rounded-full mr-3">
+              <MapPin className="h-4 w-4 text-purple-600" />
+            </div>
             <div>
               <span className="text-gray-500 block text-xs">Outside NS</span>
-              <span className="text-hijau-blue font-bold">{stats.outsideNSBookings}</span>
+              <span className="text-hijau-blue font-bold text-lg">{stats.outsideNSBookings}</span>
             </div>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-blue-400">
-            <Calendar className="h-4 w-4 text-blue-500 mr-2" />
+          <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-blue-400 hover:bg-blue-50/30 transition-colors">
+            <div className="bg-blue-100 p-2 rounded-full mr-3">
+              <Calendar className="h-4 w-4 text-blue-600" />
+            </div>
             <div>
               <span className="text-gray-500 block text-xs">Future Bookings</span>
-              <span className="text-hijau-blue font-bold">{stats.futureBookings}</span>
+              <span className="text-hijau-blue font-bold text-lg">{stats.futureBookings}</span>
             </div>
           </div>
         </div>
