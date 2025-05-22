@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
@@ -173,6 +172,40 @@ const AdminBookings = () => {
     }
   };
 
+  // New function to update payment status
+  const handleUpdatePaymentStatus = async (id: number | string, status: boolean) => {
+    try {
+      // Update the booking in Supabase
+      const { error } = await supabase
+        .from('bookings')
+        .update({ payment_completed: status })
+        .eq('id', String(id));
+      
+      if (error) {
+        throw error;
+      }
+      
+      // Update the booking in local state
+      setBookings(prevBookings => 
+        prevBookings.map(booking => 
+          booking.id === id ? { ...booking, payment_completed: status } : booking
+        )
+      );
+      
+      toast({
+        title: status ? "Payment Marked as Completed" : "Payment Marked as Pending",
+        description: "The payment status has been successfully updated.",
+      });
+    } catch (error: any) {
+      console.error("Error updating payment status:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to update payment status",
+        variant: "destructive",
+      });
+    }
+  };
+
   // Filter bookings by selected date or date range
   const filteredBookings = bookings.filter(booking => {
     if (selectedDate) {
@@ -235,6 +268,7 @@ const AdminBookings = () => {
                     bookings={filteredBookings}
                     selectedDate={selectedDate}
                     onDeleteBooking={handleDeleteBooking}
+                    onUpdatePaymentStatus={handleUpdatePaymentStatus}
                   />
                 </div>
               )}

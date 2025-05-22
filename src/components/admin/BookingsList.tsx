@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { format } from "date-fns";
-import { FileText, CalendarClock, Trash2, Eye, Check, XCircle, AlertCircle } from "lucide-react";
+import { FileText, CalendarClock, Trash2, Eye, Check, XCircle, AlertCircle, DollarSign, CreditCard } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +26,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { truncateText } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 interface Booking {
   id: number | string;
@@ -45,6 +48,7 @@ interface BookingsListProps {
   bookings: Booking[];
   selectedDate?: Date;
   onDeleteBooking: (id: number | string) => void;
+  onUpdatePaymentStatus: (id: number | string, status: boolean) => void;
   loading?: boolean;
 }
 
@@ -52,9 +56,11 @@ const BookingsList: React.FC<BookingsListProps> = ({
   bookings, 
   selectedDate, 
   onDeleteBooking, 
+  onUpdatePaymentStatus,
   loading 
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const { toast } = useToast();
   
   // Filter bookings based on search term
   const filteredBookings = searchTerm 
@@ -115,6 +121,17 @@ const BookingsList: React.FC<BookingsListProps> = ({
     };
   };
 
+  const handlePaymentToggle = (id: number | string, currentStatus: boolean | undefined) => {
+    const newStatus = !currentStatus;
+    onUpdatePaymentStatus(id, newStatus);
+    
+    toast({
+      title: newStatus ? "Payment Marked as Completed" : "Payment Marked as Pending",
+      description: `The payment status has been updated.`,
+      variant: newStatus ? "default" : "destructive",
+    });
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-2 border border-gray-100 hover:shadow-xl transition-all">      
       <div className="flex items-center justify-between mb-4">
@@ -155,6 +172,7 @@ const BookingsList: React.FC<BookingsListProps> = ({
                 <TableHead className="font-semibold text-hijau-blue">Service</TableHead>
                 <TableHead className="font-semibold text-hijau-blue">Date & Time</TableHead>
                 <TableHead className="font-semibold text-hijau-blue">Status</TableHead>
+                <TableHead className="font-semibold text-hijau-blue">Payment</TableHead>
                 <TableHead className="font-semibold text-hijau-blue">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -207,6 +225,38 @@ const BookingsList: React.FC<BookingsListProps> = ({
                             Outside NS
                           </Badge>
                         </div>
+                      )}
+                    </TableCell>
+                    <TableCell className="py-3">
+                      {booking.outsidenegerisembilan ? (
+                        <div className="flex flex-col space-y-2">
+                          <Badge
+                            variant="outline"
+                            className={booking.payment_completed 
+                              ? "bg-green-50 text-green-700 border-green-200" 
+                              : "bg-red-50 text-red-700 border-red-200"}
+                          >
+                            <span className="flex items-center">
+                              {booking.payment_completed 
+                                ? <Check className="h-3.5 w-3.5 mr-1" /> 
+                                : <CreditCard className="h-3.5 w-3.5 mr-1" />}
+                              {booking.payment_completed ? "Paid" : "Unpaid"}
+                            </span>
+                          </Badge>
+                          <div className="flex items-center space-x-2">
+                            <Switch
+                              id={`payment-toggle-${booking.id}`}
+                              checked={booking.payment_completed}
+                              onCheckedChange={() => handlePaymentToggle(booking.id, booking.payment_completed)}
+                              className="data-[state=checked]:bg-green-500"
+                            />
+                            <Label htmlFor={`payment-toggle-${booking.id}`} className="text-xs">
+                              Toggle payment
+                            </Label>
+                          </div>
+                        </div>
+                      ) : (
+                        <span className="text-sm text-gray-500">N/A</span>
                       )}
                     </TableCell>
                     <TableCell className="py-3">
@@ -279,14 +329,41 @@ const BookingsList: React.FC<BookingsListProps> = ({
                                   </p>
                                 </div>
                                 <div className="space-y-1.5">
-                                  <h3 className="font-medium text-sm text-gray-500">Payment Completed</h3>
-                                  <p className="text-base">
+                                  <h3 className="font-medium text-sm text-gray-500">Payment Status</h3>
+                                  <div className="flex items-center space-x-3">
                                     <Badge variant="outline" className={booking.payment_completed ? 
                                       "bg-green-50 text-green-700 border-green-200" : 
                                       "bg-red-50 text-red-700 border-red-200"}>
-                                      {booking.payment_completed ? "Yes" : "No"}
+                                      <span className="flex items-center">
+                                        {booking.payment_completed 
+                                          ? <DollarSign className="h-3.5 w-3.5 mr-1" /> 
+                                          : <CreditCard className="h-3.5 w-3.5 mr-1" />}
+                                        {booking.payment_completed ? "Paid" : "Payment Required"}
+                                      </span>
                                     </Badge>
-                                  </p>
+                                    
+                                    {booking.outsidenegerisembilan && (
+                                      <div className="flex items-center space-x-2">
+                                        <Switch
+                                          id={`payment-toggle-modal-${booking.id}`}
+                                          checked={booking.payment_completed}
+                                          onCheckedChange={() => handlePaymentToggle(booking.id, booking.payment_completed)}
+                                          className="data-[state=checked]:bg-green-500"
+                                        />
+                                        <Label htmlFor={`payment-toggle-modal-${booking.id}`} className="text-xs">
+                                          Update
+                                        </Label>
+                                      </div>
+                                    )}
+                                  </div>
+                                  
+                                  {booking.outsidenegerisembilan && (
+                                    <p className="text-xs text-gray-500 mt-2">
+                                      {booking.payment_completed 
+                                        ? "Extra fee for outside NS has been paid." 
+                                        : "Extra fee of RM300 for outside NS location required."}
+                                    </p>
+                                  )}
                                 </div>
                               </div>
                             </div>

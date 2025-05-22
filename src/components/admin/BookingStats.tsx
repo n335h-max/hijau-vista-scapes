@@ -1,6 +1,6 @@
 
 import React, { useMemo } from "react";
-import { BarChart, Calendar, Clock, MapPin, Users } from "lucide-react";
+import { BarChart, Calendar, Clock, MapPin, Users, DollarSign, CreditCard } from "lucide-react";
 
 interface Booking {
   id: number | string;
@@ -34,6 +34,11 @@ const BookingStats: React.FC<BookingStatsProps> = ({
       booking => booking.outsidenegerisembilan && !booking.payment_completed
     ).length;
     
+    // Get completed payments count
+    const completedPayments = bookings.filter(
+      booking => booking.outsidenegerisembilan && booking.payment_completed
+    ).length;
+    
     // Get unique services count
     const uniqueServices = new Set(bookings.map(booking => booking.service)).size;
     
@@ -56,6 +61,7 @@ const BookingStats: React.FC<BookingStatsProps> = ({
     
     return {
       pendingPayments,
+      completedPayments,
       uniqueServices,
       outsideNSBookings,
       futureBookings
@@ -88,17 +94,17 @@ const BookingStats: React.FC<BookingStatsProps> = ({
         </h3>
         <div className="grid grid-cols-2 gap-2 text-sm">
           <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-amber-400">
-            <Clock className="h-4 w-4 text-amber-500 mr-2" />
+            <CreditCard className="h-4 w-4 text-amber-500 mr-2" />
             <div>
               <span className="text-gray-500 block text-xs">Pending Payment</span>
               <span className="text-hijau-blue font-bold">{stats.pendingPayments}</span>
             </div>
           </div>
           <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-green-400">
-            <Users className="h-4 w-4 text-green-500 mr-2" />
+            <DollarSign className="h-4 w-4 text-green-500 mr-2" />
             <div>
-              <span className="text-gray-500 block text-xs">Service Types</span>
-              <span className="text-hijau-blue font-bold">{stats.uniqueServices}</span>
+              <span className="text-gray-500 block text-xs">Payments Received</span>
+              <span className="text-hijau-blue font-bold">{stats.completedPayments}</span>
             </div>
           </div>
           <div className="bg-white p-3 rounded-lg shadow-sm flex items-center border-l-4 border-purple-400">
