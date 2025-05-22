@@ -5,10 +5,10 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import AdminHeader from "@/components/admin/AdminHeader";
 import DateFilter from "@/components/admin/DateFilter";
-import BookingsSection from "@/components/admin/BookingsSection";
 import BookingStats from "@/components/admin/BookingStats";
 import BookingsList from "@/components/admin/BookingsList";
 import AddBookingForm from "@/components/admin/booking-form";
+import { isWithinInterval, isSameDay } from "date-fns";
 
 interface Booking {
   id: number | string;
@@ -19,6 +19,8 @@ interface Booking {
   date: Date;
   time: string;
   address: string;
+  outsidenegerisembilan?: boolean;
+  payment_completed?: boolean;
 }
 
 const AdminBookings = () => {
@@ -28,6 +30,7 @@ const AdminBookings = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
   const [isLoading, setIsLoading] = useState(true);
+  const [dateRange, setDateRange] = useState<{ from: Date; to: Date } | undefined>(undefined);
 
   // Check if user is admin and load bookings
   useEffect(() => {
@@ -109,7 +112,9 @@ const AdminBookings = () => {
           service: newBooking.service,
           date: newBooking.date.toISOString(),
           time: newBooking.time,
-          address: newBooking.address
+          address: newBooking.address,
+          outsidenegerisembilan: newBooking.outsidenegerisembilan,
+          payment_completed: newBooking.payment_completed
         })
         .select();
       
@@ -168,14 +173,21 @@ const AdminBookings = () => {
     }
   };
 
-  // Filter bookings by selected date
-  const filteredBookings = selectedDate
-    ? bookings.filter(booking => 
-        booking.date.getDate() === selectedDate.getDate() &&
-        booking.date.getMonth() === selectedDate.getMonth() &&
-        booking.date.getFullYear() === selectedDate.getFullYear()
-      )
-    : bookings;
+  // Filter bookings by selected date or date range
+  const filteredBookings = bookings.filter(booking => {
+    if (selectedDate) {
+      // Check if booking is on the selected date
+      return isSameDay(booking.date, selectedDate);
+    } else if (dateRange?.from && dateRange?.to) {
+      // Check if booking is within the date range
+      return isWithinInterval(booking.date, {
+        start: dateRange.from,
+        end: dateRange.to
+      });
+    }
+    // If no filters, return all bookings
+    return true;
+  });
 
   // Calculate today's bookings for stats
   const todayBookings = bookings.filter(b => {
@@ -208,6 +220,7 @@ const AdminBookings = () => {
               <BookingStats 
                 totalBookings={bookings.length}
                 todayBookings={todayBookings}
+                bookings={bookings}
               />
             </div>
 
