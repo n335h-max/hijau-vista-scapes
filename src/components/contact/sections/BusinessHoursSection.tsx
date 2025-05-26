@@ -27,11 +27,11 @@ const BusinessHoursSection: React.FC = () => {
                 <span className="font-semibold text-hijau-blue">9:00 AM - 5:30 PM</span>
               </div>
               
-              <div className="py-1.5 px-3 rounded bg-hijau-yellow/5">
+              <div className="py-1.5 px-3 rounded bg-hijau-blue/5">
                 <span className="font-medium text-hijau-dark">Sunday:</span>
               </div>
-              <div className="py-1.5 px-3 rounded bg-hijau-yellow/10 text-center">
-                <span className="font-semibold text-hijau-dark">Closed</span>
+              <div className="py-1.5 px-3 rounded bg-hijau-blue/10 text-center">
+                <span className="font-semibold text-hijau-blue">9:00 AM - 5:30 PM</span>
               </div>
             </div>
           </div>
