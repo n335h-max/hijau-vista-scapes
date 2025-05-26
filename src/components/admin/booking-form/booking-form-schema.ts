@@ -37,7 +37,7 @@ export const TIME_SLOTS = [
   "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"
 ];
 
-// Function to check if a date is a Sunday (day index 0)
+// Function to check if a date is disabled - now no days are disabled
 export const isDateDisabled = (date: Date) => {
-  return date.getDay() === 0; // Sunday is disabled
+  return false; // Allow all days including Sunday
 };

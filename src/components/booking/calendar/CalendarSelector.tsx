@@ -57,11 +57,7 @@ const CalendarSelector: React.FC<CalendarSelectorProps> = ({
         )}
         disabled={[
           { before: new Date() },
-          // Disable Sundays only - updated to allow Saturdays
-          (date) => {
-            const day = date.getDay();
-            return day === 0; // 0 is Sunday
-          },
+          // No days are disabled - allow all days including Sunday
         ]}
         // Highlight days with available slots
         modifiers={{
