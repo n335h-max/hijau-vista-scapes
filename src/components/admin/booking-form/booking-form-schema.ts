@@ -18,6 +18,10 @@ export type BookingFormData = z.infer<typeof bookingSchema>;
 
 // Available services
 export const SERVICES = [
+  "Smart Package",
+  "Signature Package", 
+  "Elite Package",
+  "Custom Package",
   "Landscape Design & Build",
   "Lawn Maintenance",
   "Hardscaping",
