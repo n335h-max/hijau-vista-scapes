@@ -41,10 +41,227 @@
 
       gtag('config', 'G-PD55YZDG8P');
     </script>
+
+    <!-- Loading Screen Styles -->
+    <style>
+      /* Ripple Background */
+      .ripple-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 9999;
+        background: #000;
+      }
+
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        border: 4px solid rgba(144, 238, 144, 0.08);
+        animation: rippleAnim 6s ease-out infinite;
+        pointer-events: none;
+        filter: blur(1px);
+      }
+
+      @keyframes rippleAnim {
+        0%   { transform: scale(0.1); opacity: 0.5; }
+        100% { transform: scale(10);  opacity: 0; }
+      }
+
+      /* Leaf */
+      .leaf {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10001;
+      }
+
+      .leaf svg {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: #7fff00;
+        stroke-width: 2;
+        animation: leafPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes leafPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+
+      /* Loader Screen */
+      #loading-screen {
+        position: fixed;
+        z-index: 10000;
+        background: rgba(0, 0, 0, 0.85);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 1s ease;
+      }
+
+      #loading-screen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Main Text Container */
+      .loading-text {
+        display: flex;
+        gap: 1.2em;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .loading-text {
+          font-size: 28px;
+          gap: 0.8em;
+        }
+      }
+
+      .word {
+        display: flex;
+        gap: 0.3em;
+      }
+
+      .word span {
+        background: linear-gradient(45deg, #006400, #32cd32, #7fff00);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: bounce 1.3s infinite ease-in-out;
+      }
+
+      .word span:nth-child(n) {
+        animation-delay: calc(0.05s * var(--i));
+      }
+
+      @keyframes bounce {
+        0%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-15px); }
+      }
+
+      /* Colored highlights for H, G, L */
+      .highlight-h {
+        color: #1E90FF !important;
+        font-size: 60px;
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: 900;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+      }
+
+      .highlight-g {
+        color: #FFD700 !important;
+        font-size: 55px;
+        font-family: 'Georgia', serif;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+      }
+
+      .highlight-l {
+        color: #FF8C00 !important;
+        font-size: 55px;
+        font-style: italic;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+      }
+
+      @media (max-width: 768px) {
+        .highlight-h {
+          font-size: 42px;
+        }
+        .highlight-g, .highlight-l {
+          font-size: 38px;
+        }
+      }
+    </style>
   </head>
 
   <body>
+    <!-- Loading Screen -->
+    <div class="ripple-background" id="ripples"></div>
+    
+    <div class="leaf">
+      <svg viewBox="0 0 64 64">
+        <path d="M32 4C20 20 8 32 12 48s24 12 32-4 8-40-12-40z" fill="#32cd32"/>
+        <path d="M32 4C24 20 40 40 52 40" stroke="#006400" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+
+    <div id="loading-screen">
+      <div class="loading-text" id="animated-text"></div>
+    </div>
+
+    <!-- Main App -->
     <div id="root"></div>
+    
+    <!-- Loading Screen Script -->
+    <script>
+      // Create ripple animation
+      const rippleContainer = document.getElementById("ripples");
+      function createRipple() {
+        const ripple = document.createElement("div");
+        ripple.className = "ripple";
+        ripple.style.left = `${Math.random() * 100}%`;
+        ripple.style.top = `${Math.random() * 100}%`;
+        ripple.style.width = ripple.style.height = `${Math.random() * 150 + 150}px`;
+        rippleContainer.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 6000);
+      }
+      setInterval(createRipple, 700);
+
+      // Animated text logic
+      const words = ["HIJAU", "GROUP", "LANDSCAPE"];
+      const textContainer = document.getElementById("animated-text");
+
+      words.forEach((word, wIndex) => {
+        const wordDiv = document.createElement("div");
+        wordDiv.classList.add("word");
+        word.split('').forEach((char, i) => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.style.setProperty("--i", i + wIndex * 10);
+
+          // Colored highlights
+          if (char === "H") span.classList.add("highlight-h");
+          else if (char === "G") span.classList.add("highlight-g");
+          else if (char === "L") span.classList.add("highlight-l");
+
+          wordDiv.appendChild(span);
+        });
+        textContainer.appendChild(wordDiv);
+      });
+
+      // Fade out after React app loads
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loadingScreen = document.getElementById('loading-screen');
+          const ripples = document.getElementById('ripples');
+          if (loadingScreen) {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+              loadingScreen.remove();
+              ripples.remove();
+            }, 1000);
+          }
+        }, 2000);
+      });
+    </script>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
