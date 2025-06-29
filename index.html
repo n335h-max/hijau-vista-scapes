@@ -44,16 +44,31 @@
 
     <!-- Loading Screen Styles -->
     <style>
-      /* Ripple Background */
-      .ripple-background {
+      /* Loader Screen Container */
+      #loading-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        overflow: hidden;
         z-index: 9999;
         background: #000;
+        transition: opacity 1s ease;
+      }
+
+      #loading-container.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* Ripple Background */
+      .ripple-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
       }
 
       .ripple {
@@ -95,9 +110,9 @@
         50% { transform: scale(1.1); }
       }
 
-      /* Loader Screen */
+      /* Loading Screen Content */
       #loading-screen {
-        position: fixed;
+        position: absolute;
         z-index: 10000;
         background: rgba(0, 0, 0, 0.85);
         width: 100%;
@@ -106,12 +121,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: opacity 1s ease;
-      }
-
-      #loading-screen.fade-out {
-        opacity: 0;
-        pointer-events: none;
       }
 
       /* Main Text Container */
@@ -192,18 +201,23 @@
   </head>
 
   <body>
-    <!-- Loading Screen -->
-    <div class="ripple-background" id="ripples"></div>
-    
-    <div class="leaf">
-      <svg viewBox="0 0 64 64">
-        <path d="M32 4C20 20 8 32 12 48s24 12 32-4 8-40-12-40z" fill="#32cd32"/>
-        <path d="M32 4C24 20 40 40 52 40" stroke="#006400" stroke-width="2" fill="none"/>
-      </svg>
-    </div>
+    <!-- Loading Container - Contains all loading elements -->
+    <div id="loading-container">
+      <!-- Ripple Background -->
+      <div class="ripple-background" id="ripples"></div>
+      
+      <!-- Leaf SVG -->
+      <div class="leaf">
+        <svg viewBox="0 0 64 64">
+          <path d="M32 4C20 20 8 32 12 48s24 12 32-4 8-40-12-40z" fill="#32cd32"/>
+          <path d="M32 4C24 20 40 40 52 40" stroke="#006400" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
 
-    <div id="loading-screen">
-      <div class="loading-text" id="animated-text"></div>
+      <!-- Loading Screen Content -->
+      <div id="loading-screen">
+        <div class="loading-text" id="animated-text"></div>
+      </div>
     </div>
 
     <!-- Main App -->
@@ -249,13 +263,11 @@
       // Fade out after React app loads
       window.addEventListener('load', () => {
         setTimeout(() => {
-          const loadingScreen = document.getElementById('loading-screen');
-          const ripples = document.getElementById('ripples');
-          if (loadingScreen) {
-            loadingScreen.classList.add('fade-out');
+          const loadingContainer = document.getElementById('loading-container');
+          if (loadingContainer) {
+            loadingContainer.classList.add('fade-out');
             setTimeout(() => {
-              loadingScreen.remove();
-              ripples.remove();
+              loadingContainer.remove();
             }, 1000);
           }
         }, 2000);
