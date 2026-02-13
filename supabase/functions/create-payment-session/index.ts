@@ -34,7 +34,7 @@ serve(async (req) => {
     if (!stripeKey) {
       console.error("STRIPE_SECRET_KEY is missing");
       return new Response(
-        JSON.stringify({ error: "Server configuration error: STRIPE_SECRET_KEY is missing" }),
+        JSON.stringify({ error: "Internal Server Error" }),
         { 
           headers: { ...corsHeaders, "Content-Type": "application/json" },
           status: 500 
@@ -47,12 +47,32 @@ serve(async (req) => {
     });
 
     const origin = req.headers.get("origin");
-    if (!origin) {
+    const frontendUrl = Deno.env.get("FRONTEND_URL");
+    
+    // Determine the redirect URL
+    let redirectUrl = "";
+    
+    if (frontendUrl) {
+      redirectUrl = frontendUrl;
+    } else if (origin) {
+      // Validate origin if FRONTEND_URL is not set
+      // Allow localhost for development
+      const isLocalhost = origin.includes("localhost") || origin.includes("127.0.0.1");
+      // Allow specific domains if needed (can be extended)
+      const isAllowedDomain = origin.endsWith(".lovable.dev") || origin.endsWith(".vercel.app");
+      
+      if (isLocalhost || isAllowedDomain) {
+        redirectUrl = origin;
+      }
+    }
+    
+    if (!redirectUrl) {
+      console.error(`Invalid origin: ${origin}`);
       return new Response(
-        JSON.stringify({ error: "Origin header is missing" }),
+        JSON.stringify({ error: "Invalid configuration or untrusted origin" }),
         { 
           headers: { ...corsHeaders, "Content-Type": "application/json" },
-          status: 400 
+          status: 403 
         }
       );
     }
@@ -74,8 +94,8 @@ serve(async (req) => {
         },
       ],
       mode: "payment",
-      success_url: `${origin}/booking?paymentSuccess=true`,
-      cancel_url: `${origin}/contact?paymentCanceled=true`,
+      success_url: `${redirectUrl}/booking?paymentSuccess=true`,
+      cancel_url: `${redirectUrl}/contact?paymentCanceled=true`,
       client_reference_id: contactDetails.email || "",
       customer_email: contactDetails.email || "",
     });
