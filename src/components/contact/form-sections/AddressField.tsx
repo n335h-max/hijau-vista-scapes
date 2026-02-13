@@ -58,6 +58,12 @@ const AddressField: React.FC<AddressFieldProps> = ({ control }) => {
           </FormItem>
         )}
       />
+      
+      <div className="mt-4 p-3 bg-hijau-yellow/10 border border-hijau-yellow/30 rounded-lg">
+        <p className="text-sm text-hijau-blue-dark font-medium">
+          A fee of RM1,500 applies for site visit, consultation, and proposal drawings.
+        </p>
+      </div>
     </>
   );
 };
