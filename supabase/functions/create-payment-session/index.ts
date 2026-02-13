@@ -58,8 +58,8 @@ serve(async (req) => {
       // Validate origin if FRONTEND_URL is not set
       // Allow localhost for development
       const isLocalhost = origin.includes("localhost") || origin.includes("127.0.0.1");
-      // Allow specific domains if needed (can be extended)
-      const isAllowedDomain = origin.endsWith(".lovable.dev") || origin.endsWith(".vercel.app");
+      // Allow specific domains
+      const isAllowedDomain = origin.endsWith("hijaugrouplandscapes.com.my") || origin.endsWith(".vercel.app");
       
       if (isLocalhost || isAllowedDomain) {
         redirectUrl = origin;
