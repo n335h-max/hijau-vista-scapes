@@ -30,9 +30,32 @@ serve(async (req) => {
     }
 
     // Initialize Stripe
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+    const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
+    if (!stripeKey) {
+      console.error("STRIPE_SECRET_KEY is missing");
+      return new Response(
+        JSON.stringify({ error: "Server configuration error: STRIPE_SECRET_KEY is missing" }),
+        { 
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 500 
+        }
+      );
+    }
+
+    const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-10-16",
     });
+
+    const origin = req.headers.get("origin");
+    if (!origin) {
+      return new Response(
+        JSON.stringify({ error: "Origin header is missing" }),
+        { 
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 400 
+        }
+      );
+    }
 
     // Create a one-time payment session
     const session = await stripe.checkout.sessions.create({
@@ -51,8 +74,8 @@ serve(async (req) => {
         },
       ],
       mode: "payment",
-      success_url: `${req.headers.get("origin")}/booking?paymentSuccess=true`,
-      cancel_url: `${req.headers.get("origin")}/contact?paymentCanceled=true`,
+      success_url: `${origin}/booking?paymentSuccess=true`,
+      cancel_url: `${origin}/contact?paymentCanceled=true`,
       client_reference_id: contactDetails.email || "",
       customer_email: contactDetails.email || "",
     });
