@@ -153,13 +153,18 @@ const Footer = () => {
                   Site Office: No 324, Jalan S2 A7/2, Green Street Homes, 70300 Seremban, Negeri Sembilan
                 </span>
               </li>
-              <li className="flex items-center">
-                <div className="bg-hijau-yellow/20 p-1.5 md:p-2 rounded-full mr-2 md:mr-3">
+              <li className="flex items-start">
+                <div className="bg-hijau-yellow/20 p-1.5 md:p-2 rounded-full mr-2 md:mr-3 mt-1">
                   <Phone size={14} className="text-hijau-yellow" />
                 </div>
-                <a href="tel:+601110629990" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
-                  +60 11-1062 9990
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a href="tel:+601110629990" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
+                    +60 11-1062 9990
+                  </a>
+                  <a href="tel:+601119990971" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
+                    +60 11-1999 0971 (Auto Admin)
+                  </a>
+                </div>
               </li>
               <li className="flex items-center">
                 <div className="bg-hijau-yellow/20 p-1.5 md:p-2 rounded-full mr-2 md:mr-3">

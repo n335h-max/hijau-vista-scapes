@@ -12,9 +12,14 @@ const ContactSection: React.FC = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Phone Number</h3>
-            <a href="tel:+601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
-              +60 11-1062 9990
-            </a>
+            <div className="flex flex-col gap-1">
+              <a href="tel:+601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+                +60 11-1062 9990
+              </a>
+              <a href="tel:+601119990971" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+                +60 11-1999 0971 (Auto Admin)
+              </a>
+            </div>
           </div>
         </div>
         
