@@ -71,7 +71,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
   return (
     <div className="bg-white rounded-xl shadow-xl p-8 transition-all hover:shadow-2xl border border-gray-100 animate-fade-in">
-      {/* Enhanced header with decorative elements */}
       <div className="relative mb-8">
         <h2 className="heading-medium text-hijau-blue relative inline-block">
           Book a Consultation
@@ -80,8 +79,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <div className="absolute -top-4 -right-4 w-24 h-24 bg-hijau-blue/5 rounded-full -z-10"></div>
         <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-hijau-yellow/5 rounded-full -z-10"></div>
       </div>
-      
-      {/* Important note about location charges */}
+
+      <div className="mb-6">
+        <img
+          src="/lovable-uploads/hgl-service-area.jpg"
+          alt="Hijau Group Landscape service areas in Negeri Sembilan, Klang Valley and Melaka"
+          className="w-full rounded-lg shadow-md border border-gray-200"
+        />
+      </div>
+
       <div className="mb-6 p-3 bg-hijau-yellow/10 border border-hijau-yellow/30 rounded-lg">
         <p className="text-sm text-hijau-blue-dark font-medium flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 text-hijau-yellow-dark">
