@@ -33,10 +33,14 @@ const ContactPreview = () => {
                 <div className="mr-3 bg-white/10 p-2 rounded-full text-hijau-yellow">
                   <Phone className="h-5 w-5" />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-white/90 font-medium">+60 11-1062 9990</span>
-                  <span className="text-white/90 font-medium">+60 11-1999 0971 (Auto Admin)</span>
+                <span className="text-white/90 font-medium">+60 11-1062 9990</span>
+              </div>
+              
+              <div className="flex items-center transform transition-transform duration-300 hover:translate-x-1">
+                <div className="mr-3 bg-white/10 p-2 rounded-full text-hijau-yellow">
+                  <Phone className="h-5 w-5" />
                 </div>
+                <span className="text-white/90 font-medium">+60 11-1999 0971 (Auto Admin)</span>
               </div>
               
               <div className="flex items-center transform transition-transform duration-300 hover:translate-x-1">
