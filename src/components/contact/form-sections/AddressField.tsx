@@ -47,23 +47,28 @@ const AddressField: React.FC<AddressFieldProps> = ({ control }) => {
                 className="data-[state=checked]:bg-hijau-yellow data-[state=checked]:border-hijau-yellow"
               />
             </FormControl>
-            <div className="space-y-1 leading-none">
-              <FormLabel className="text-hijau-blue-dark">
-                Location is outside of Negeri Sembilan
+            <div className="space-y-3 leading-none w-full">
+              <FormLabel className="text-hijau-blue-dark font-bold text-base block mb-2">
+                🟢 Site Visit Coverage Areas:
               </FormLabel>
-              <FormDescription className="text-hijau-blue-dark/70 text-sm">
-                An additional charge of RM300 will apply. Once the booking is confirmed, the RM300 will be returned by cashback.
-              </FormDescription>
+              <div className="text-hijau-blue-dark/80 text-sm space-y-2">
+                <p>Negeri Sembilan, Klang Valley, and Melaka (Masjid Tanah, Ayer Keroh & Simpang Ampat).</p>
+                <p>An additional charge of RM300 applies for site visits within the coverage areas stated above.</p>
+                <p>Upon confirmation of booking, the RM300 will be refunded as cashback.</p>
+              </div>
+              
+              <div className="pt-2 mt-2 border-t border-hijau-yellow/20">
+                <FormLabel className="text-hijau-blue-dark font-bold text-base block mb-2">
+                  🟢 Outside Coverage Areas:
+                </FormLabel>
+                <p className="text-hijau-blue-dark/80 text-sm">
+                  A fee of RM1,500 applies for site visits, consultations, and proposal drawings.
+                </p>
+              </div>
             </div>
           </FormItem>
         )}
       />
-      
-      <div className="mt-4 p-3 bg-hijau-yellow/10 border border-hijau-yellow/30 rounded-lg">
-        <p className="text-sm text-hijau-blue-dark font-medium">
-          A fee of RM1,500 applies for site visit, consultation, and proposal drawings.
-        </p>
-      </div>
     </>
   );
 };
