@@ -163,23 +163,20 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <div className="bg-hijau-yellow/20 p-1.5 md:p-2 rounded-full mr-2 md:mr-3">
-                  <Phone size={14} className="text-hijau-yellow" />
-                </div>
-                <a href="tel:+601119990971" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
-                  +60 11-1999 0971 (Auto Admin)
-                </a>
-              </li>
-              <li className="flex items-center">
-                <div className="bg-hijau-yellow/20 p-1.5 md:p-2 rounded-full mr-2 md:mr-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-hijau-yellow">
                     <path d="M4 11a7 7 0 0 1 7-7 7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7Z"/>
                     <path d="m9 12 2 2 4-4"/>
                     <path d="M7.5 4.2c-.3-.5-.9-.7-1.4-.4C4.3 4.9 4 6.4 4 7.9 4 16 10.1 19 12 20c1.9-1 8-4 8-12.1 0-1.5-.3-3-2.1-4.1-.5-.3-1.1-.1-1.4.4"/>
                   </svg>
                 </div>
-                <a href="https://wa.me/601110629990" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
-                  +60 11-1062 9990 (WhatsApp)
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a href="tel:+601119990971" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
+                    +60 11-1999 0971 (Auto Admin)
+                  </a>
+                  <a href="https://wa.me/601110629990" className="hover:text-hijau-yellow transition-colors text-sm md:text-base">
+                    +60 11-1062 9990 (WhatsApp)
+                  </a>
+                </div>
               </li>
             </ul>
           </div>
