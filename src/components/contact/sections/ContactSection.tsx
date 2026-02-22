@@ -12,17 +12,9 @@ const ContactSection: React.FC = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2 text-hijau-blue">Phone Number</h3>
-            <div className="flex flex-col gap-2">
-              <a href="tel:+601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
-                +60 11-1062 9990
-              </a>
-              <div className="flex flex-col">
-                <a href="tel:+601119990971" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
-                  +60 11-1999 0971
-                </a>
-                <span className="text-sm text-gray-500 font-medium">(Auto Admin)</span>
-              </div>
-            </div>
+            <a href="tel:+601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+              +60 11-1062 9990
+            </a>
           </div>
         </div>
         
@@ -36,9 +28,17 @@ const ContactSection: React.FC = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold mb-2 text-hijau-blue">WhatsApp</h3>
-            <a href="https://wa.me/601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
-              +60 11-1062 9990
-            </a>
+            <div className="flex flex-col gap-2">
+              <a href="https://wa.me/601110629990" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+                +60 11-1062 9990
+              </a>
+              <div className="flex flex-col">
+                <a href="https://wa.me/601119990971" className="text-hijau-dark text-lg font-medium hover:text-hijau-blue transition-colors flex items-center">
+                  +60 11-1999 0971
+                </a>
+                <span className="text-sm text-gray-500 font-medium">(Auto Admin)</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
