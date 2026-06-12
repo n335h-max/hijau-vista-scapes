@@ -32,12 +32,15 @@ export const SERVICES = [
 
 // Available time slots
 export const TIME_SLOTS = [
-  "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", 
-  "12:00", "12:30", "13:00", "13:30", "14:00", "14:30",
-  "15:00", "15:30", "16:00", "16:30", "17:00", "17:30"
+  "10:00",
+  "15:00"
 ];
 
-// Function to check if a date is disabled - now no days are disabled
+// Function to check if a date is disabled - only Wednesday and Friday are allowed
 export const isDateDisabled = (date: Date) => {
-  return false; // Allow all days including Sunday
+  const day = date.getDay();
+  // 3 is Wednesday, 5 is Friday
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return date < today || (day !== 3 && day !== 5);
 };
